@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gkaraffa</groupId>
-	<artifactId>m_cremona</artifactId>
+	<artifactId>cremona</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>m_cremona</name>
+	<name>cremona</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
