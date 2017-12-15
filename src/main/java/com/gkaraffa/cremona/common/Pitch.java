@@ -36,13 +36,15 @@ public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
 
   private int generateAbsVal(Tone tone, int range) {
     int toneOrd = tone.ordinal();
-
+    
+    /*
     if (toneOrd >= 9) {
       toneOrd -= 9;
     }
     else {
       toneOrd += 3;
     }
+    */
 
     int generated = ((range - 1) * 12) + toneOrd;
 

@@ -34,7 +34,6 @@ public class Main {
       
       String fretBoard = FretboardCreator.createFretboard(gM);
       System.out.println(fretBoard);
-      
     }
     catch (Exception e) {
       e.printStackTrace();

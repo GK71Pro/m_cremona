@@ -18,10 +18,10 @@ public class GuitarModelFactory extends InstrumentModelFactory {
     ArrayList<ArrayList<Pitch>> guitarStrings = new ArrayList<ArrayList<Pitch>>();
     
     guitarStrings.add(createStringNotes(new Pitch(Tone.E, 2), fretCount));
-    guitarStrings.add(createStringNotes(new Pitch(Tone.A, 3), fretCount));
+    guitarStrings.add(createStringNotes(new Pitch(Tone.A, 2), fretCount));
     guitarStrings.add(createStringNotes(new Pitch(Tone.D, 3), fretCount));
     guitarStrings.add(createStringNotes(new Pitch(Tone.G, 3), fretCount));
-    guitarStrings.add(createStringNotes(new Pitch(Tone.B, 4), fretCount));
+    guitarStrings.add(createStringNotes(new Pitch(Tone.B, 3), fretCount));
     guitarStrings.add(createStringNotes(new Pitch(Tone.E, 4), fretCount));
 
     return new GuitarModel(guitarStrings, fretCount);
@@ -59,7 +59,7 @@ public class GuitarModelFactory extends InstrumentModelFactory {
     do {
       stringPitches.add(nextPitch);
       
-      if (nextPitch.getTone() == Tone.GSHARP_AFLAT) {
+      if (nextPitch.getTone() == Tone.B) {
         nextPitch = new Pitch(TonalSpectrum.traverseDistance(nextPitch.getTone(), 1), nextPitch.getRange() + 1);
       }
       else {
