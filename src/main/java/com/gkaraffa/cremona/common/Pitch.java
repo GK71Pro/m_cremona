@@ -1,6 +1,7 @@
 package com.gkaraffa.cremona.common;
 
 import com.gkaraffa.cremona.theoretical.TheoreticalObject;
+import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 
 public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
@@ -9,7 +10,7 @@ public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
   private int absVal;
 
   public Pitch(Pitch p) {
-    super(p.getText());
+    super(p.getText()); 
     this.tone = p.getTone();
     this.range = p.getRange();
     this.absVal = generateAbsVal(this.tone, this.range);
@@ -49,6 +50,19 @@ public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
     int generated = ((range - 1) * 12) + toneOrd;
 
     return generated;
+  }
+  
+  public Pitch generatePitchByOffset(int offset) {
+    if (offset < 0) {
+      throw new IllegalArgumentException();
+    }
+    
+    int range = this.range;
+    if (this.tone == Tone.B) {
+      range++;
+    }
+
+    return ( new Pitch( TonalSpectrum.traverseDistance(this.tone, 1), range));   
   }
 
   public int compareTo(Pitch o) {

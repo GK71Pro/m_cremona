@@ -58,7 +58,7 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
       }
     }
 
-    return pitchCollectionBuilder.topitchCollection();
+    return pitchCollectionBuilder.toPitchCollection();
   }
 
   public PitchCollection union(PitchCollection target) {
@@ -69,7 +69,7 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
       pitchCollectionBuilder.insert(pitch);
     }
 
-    return pitchCollectionBuilder.topitchCollection();
+    return pitchCollectionBuilder.toPitchCollection();
   }
 
   public String getSpellingString() {

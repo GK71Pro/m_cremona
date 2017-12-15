@@ -54,7 +54,7 @@ public class PitchCollectionBuilder extends CremonaObject {
     return false;
   }
 
-  public PitchCollection topitchCollection() {
+  public PitchCollection toPitchCollection() {
     if (pitchList.isEmpty()) {
       return null;
     }
