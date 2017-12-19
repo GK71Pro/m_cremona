@@ -30,9 +30,9 @@ public class Main {
     
     System.out.println("Process completes.");
   }
-  
+    
   @SuppressWarnings("unused")
-  private static void testFretboardCreator() {
+  private static void testGuitarModel() {
     ScaleFactory sF = new DiatonicScaleFactory();
     Scale scale = sF.createScale(ScalarIntervalPattern.ionianPattern, Tone.C);
     
