@@ -19,42 +19,42 @@ public enum IntervalNumber {
   FOURTEENTH(13, "Fourteenth", "14th"),
   FIFTEENTH(14, "Fifteenth", "15th");
 
-private int position;
-private String text;
-private String abbrev;
-private final static HashMap<Integer, IntervalNumber> integerToIntervalLookupMap =
-    new HashMap<Integer, IntervalNumber>();
+  private int position;
+  private String text;
+  private String abbrev;
+  private final static HashMap<Integer, IntervalNumber> integerToIntervalLookupMap =
+      new HashMap<Integer, IntervalNumber>();
 
-static {
-  for (IntervalNumber intervalNumber : IntervalNumber.values()) {
-    integerToIntervalLookupMap.put(intervalNumber.position, intervalNumber);
+  static {
+    for (IntervalNumber intervalNumber : IntervalNumber.values()) {
+      integerToIntervalLookupMap.put(intervalNumber.position, intervalNumber);
+    }
   }
-}
 
-IntervalNumber(int position, String text, String abbrev) {
-  this.position = position;
-  this.text = text;
-  this.abbrev = abbrev;
-}
+  IntervalNumber(int position, String text, String abbrev) {
+    this.position = position;
+    this.text = text;
+    this.abbrev = abbrev;
+  }
 
-public final int getPosition() {
-  return this.position;
-}
+  public final int getPosition() {
+    return this.position;
+  }
 
-public final String getText() {
-  return this.text;
-}
+  public final String getText() {
+    return this.text;
+  }
 
-public final String getAbbrev() {
-  return this.abbrev;
-}
+  public final String getAbbrev() {
+    return this.abbrev;
+  }
 
-public final String toString() {
-  return this.text;
-}
+  public final String toString() {
+    return this.text;
+  }
 
-public static final IntervalNumber integerToIntervalNumber(int inputInteger) {
-  return integerToIntervalLookupMap.get(inputInteger);
-}
+  public static final IntervalNumber integerToIntervalNumber(int inputInteger) {
+    return integerToIntervalLookupMap.get(inputInteger);
+  }
 
 }

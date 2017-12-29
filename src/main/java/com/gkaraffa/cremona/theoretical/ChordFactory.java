@@ -61,6 +61,20 @@ public class ChordFactory {
     return renderTertiaryProfile(intervalArray);
   }
 
+  private Interval[] convertToneArrayToIntervalArray(Tone[] toneArray,
+      HarmonicPreference preference) throws IllegalArgumentException {
+    Interval[] intervalArray = new Interval[toneArray.length - 1];
+    int offset = preference.getOffset();
+
+    for (int index = 0, segment = 0; index < intervalArray.length; index++, segment += offset) {
+      intervalArray[index] = Interval.halfStepsAndIntervalNumberToInterval(
+          TonalSpectrum.measureDistance(toneArray[0], toneArray[index + 1]),
+          IntervalNumber.values()[segment + offset]);
+    }
+
+    return intervalArray;
+  }
+
   private HarmonicProfile renderTertiaryProfile(Interval[] intervalArray) throws CremonaException {
     HarmonicProfile harmonicProfile = new HarmonicProfile();
     LinkedHashSet<IntervalNumber> intervalNumberSet = new LinkedHashSet<IntervalNumber>();
@@ -111,19 +125,7 @@ public class ChordFactory {
     throw new CremonaException("Intervals invalid");
   }
 
-  private Interval[] convertToneArrayToIntervalArray(Tone[] toneArray,
-      HarmonicPreference preference) throws IllegalArgumentException {
-    Interval[] intervalArray = new Interval[toneArray.length - 1];
-    int offset = preference.getOffset();
 
-    for (int index = 0, segment = 0; index < intervalArray.length; index++, segment += offset) {
-      intervalArray[index] = Interval.halfStepsAndIntervalNumberToInterval(
-          TonalSpectrum.measureDistance(toneArray[0], toneArray[index + 1]),
-          IntervalNumber.values()[segment + offset]);
-    }
-
-    return intervalArray;
-  }
 
   /*
   private Tone[] intervalPatternAndTonicToToneArray(ChordIntervalPattern chordIntervalPattern,
