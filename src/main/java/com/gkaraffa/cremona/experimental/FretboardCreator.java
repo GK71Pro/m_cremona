@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.workbench;
+package com.gkaraffa.cremona.experimental;
 
 import com.gkaraffa.cremona.common.Pitch;
 import com.gkaraffa.cremona.instrument.model.GuitarModel;
@@ -77,3 +77,22 @@ public class FretboardCreator {
     return sB.toString();
   }
 }
+
+  /*
+  @SuppressWarnings("unused")
+  private static void testGuitarModel() {
+    ScaleFactory sF = new DiatonicScaleFactory();
+    Scale scale = sF.createScale(ScalarIntervalPattern.ionianPattern, Tone.C);
+
+    PitchCollectionBuilder pCB = new PitchCollectionBuilder();
+    pCB.insert(new Pitch(Tone.ASHARP_BFLAT, 3));
+    pCB.insert(new Pitch(Tone.CSHARP_DFLAT, 3));
+    PitchCollection pC = pCB.toPitchCollection();
+
+    InstrumentModelFactory iMF = new GuitarModelFactory();
+    GuitarModel gM = (GuitarModel) iMF.createInstrumentModel();
+
+    String fretBoard = FretboardCreator.createFretboard(gM);
+    System.out.println(fretBoard);
+  }
+  */
