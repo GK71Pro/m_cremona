@@ -12,7 +12,6 @@ public class Main {
     System.out.println("Process starts.");
 
     try {
-      //testFretboardCreator();
       testPitch();
     }
     catch (Exception e) {
