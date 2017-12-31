@@ -37,7 +37,7 @@ public class Main {
   private static void testFretboard() {
     
     ScaleFactory scaleFactory = new DiatonicScaleFactory();
-    Scale scale = scaleFactory.createScale(IntervalPatternFactory.createIntervalPattern("Ionian", DiatonicScaleFactory.ionianPatternString), Tone.C);
+    Scale scale = scaleFactory.createScale(new IntervalPatternFactory().createIntervalPattern("Ionian", DiatonicScaleFactory.ionianPatternString), Tone.C);
   }
 }
 

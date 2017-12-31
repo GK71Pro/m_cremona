@@ -15,7 +15,7 @@ public class IntervalPatternFactory {
 
   public IntervalPatternFactory() {}
 
-  public static IntervalPattern createIntervalPattern(String name, String patternString) {
+  public IntervalPattern createIntervalPattern(String name, String patternString) {
     String[] intervalArray = patternString.split(",");
     List<Interval> intervalList = new ArrayList<Interval>();
 
@@ -27,7 +27,7 @@ public class IntervalPatternFactory {
     return new IntervalPattern(name, intervalList);
   }
 
-  public static Interval getIntervalByString(String lookupString) {
+  public Interval getIntervalByString(String lookupString) {
     Interval lookupValue = lookup.get(lookupString);
 
     if (lookupValue == null) {
@@ -37,7 +37,7 @@ public class IntervalPatternFactory {
     return lookupValue;
   }
 
-  public static IntervalPattern createIntervalPattern(List<Interval> patternList) {
+  public IntervalPattern createIntervalPattern(List<Interval> patternList) {
     return null;
   }
 
