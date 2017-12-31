@@ -5,23 +5,23 @@ public class PentatonicScaleFactory extends ScaleFactory {
   public PentatonicScaleFactory() {}
 
   @Override
-  public Scale createScale(ScalarIntervalPattern scalarIntervalPattern, Tone key)
+  public Scale createScale(IntervalPattern intervalPattern, Tone key)
       throws IllegalArgumentException {
-    if (!validateInputPattern(scalarIntervalPattern)) {
+    if (!validateInputPattern(intervalPattern)) {
       throw new IllegalArgumentException("Input pattern is invalid.");
     }
 
-    ScaleQuality scaleQuality = evaluateScaleQuality(scalarIntervalPattern);
-    Tone[] tones = this.createToneArray(scalarIntervalPattern, key);
+    ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
+    Tone[] tones = this.createToneArray(intervalPattern, key);
 
-    return new PentatonicScale(key.getText() + " " + scalarIntervalPattern.getText(), tones,
+    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), tones,
         scaleQuality);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(ScalarIntervalPattern scalarIntervalPattern) {
+  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
     Interval thirdInterval =
-        scalarIntervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
+        intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
     ScaleQuality scaleQuality = null;
 
     switch (thirdInterval) {
@@ -41,23 +41,27 @@ public class PentatonicScaleFactory extends ScaleFactory {
   }
 
   @Override
-  protected boolean validateInputPattern(ScalarIntervalPattern scalarIntervalPattern) {
-    if (scalarIntervalPattern.getSize() != 5) {
+  protected boolean validateInputPattern(IntervalPattern intervalPattern) {
+    if (intervalPattern.getSize() != 5) {
       return false;
     }
 
-    if (scalarIntervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD) == null) {
+    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD) == null) {
       return false;
     }
 
-    if (scalarIntervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH) == null) {
+    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH) == null) {
       return false;
     }
 
-    if (scalarIntervalPattern.getIntervalByIntervalNumber(IntervalNumber.EIGHTH) == null) {
+    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.EIGHTH) == null) {
       return false;
     }
 
     return true;
   }
+  
+  public static String pentatonicMajorPatternString = "M2,M3,P5,M6,P8";
+  public static String pentatonicMinorPatternString = "m3,P4,P5,m7,P8";
+
 }

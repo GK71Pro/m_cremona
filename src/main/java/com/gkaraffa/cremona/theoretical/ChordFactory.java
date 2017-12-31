@@ -151,4 +151,9 @@ public class ChordFactory {
     LinkedHashSet<IntervalNumber> intervalNumberSet = null;
   }
 
+  public static String majorPattern = "M3,P5";
+  public static String minorPattern = "m3,P5";
+  public static String diminishedPattern = "m3,d5";
+  public static String augmentedPattern = "M3,A5";
+  public static String suspendedFourthPattern = "P4,P5";
 }

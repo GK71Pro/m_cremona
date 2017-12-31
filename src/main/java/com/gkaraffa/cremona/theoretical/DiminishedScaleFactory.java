@@ -7,32 +7,35 @@ public class DiminishedScaleFactory extends SymmetricScaleFactory {
   }
 
   @Override
-  public Scale createScale(ScalarIntervalPattern scalarIntervalPattern, Tone key)
+  public Scale createScale(IntervalPattern intervalPattern, Tone key)
       throws IllegalArgumentException {
-    if (!(validateInputPattern(scalarIntervalPattern))) {
+    if (!(validateInputPattern(intervalPattern))) {
       throw new IllegalArgumentException("Incorrect Pattern for this Factory.");
     }
     
     ScaleQuality scaleQuality = ScaleQuality.DIMINISHED;
-    Tone tones[] = this.createToneArray(scalarIntervalPattern, key);
+    Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new DiminishedScale(key.getText() + " " + scalarIntervalPattern.getText(), tones,
+    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), tones,
         scaleQuality);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(ScalarIntervalPattern scaleIntervalPattern) {
+  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  protected boolean validateInputPattern(ScalarIntervalPattern scaleIntervalPattern) {
+  protected boolean validateInputPattern(IntervalPattern intervalPattern) {
     // TODO Auto-generated method stub
-    if ( !(scaleIntervalPattern.getText().contains("Diminished") ) ) {
+    if ( !(intervalPattern.getText().contains("Diminished") ) ) {
       return false;
     }
     return true;
   }
+
+  public static String firstDiminishedPatternString = "M2,m3,P4,d5,m6,d7,M7,P8";
+  public static String secondDiminishedPatternString = "m2,m3,d4,d5,d6,d7,m7,P8";
 
 }

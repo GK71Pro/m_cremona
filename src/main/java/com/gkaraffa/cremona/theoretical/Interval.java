@@ -54,12 +54,7 @@ public enum Interval {
       "Diminished Eighth",
       "d8"),
   PERFECT_EIGHTH(12, IntervalNumber.EIGHTH, IntervalQuality.PERFECT, "Perfect Eighth", "P8"),
-  DIMINISHED_NINTH(
-      12,
-      IntervalNumber.NINTH,
-      IntervalQuality.DIMINISHED,
-      "Diminished Ninth",
-      "d2"),
+  DIMINISHED_NINTH(12, IntervalNumber.NINTH, IntervalQuality.DIMINISHED, "Diminished Ninth", "d2"),
   MINOR_NINTH(13, IntervalNumber.NINTH, IntervalQuality.MINOR, "Minor Ninth", "m9"),
   MAJOR_NINTH(14, IntervalNumber.NINTH, IntervalQuality.MAJOR, "Major Ninth", "M9"),
   AUGMENTED_NINTH(15, IntervalNumber.NINTH, IntervalQuality.AUGMENTED, "Augmented Ninth", "A9"),
@@ -74,14 +69,39 @@ public enum Interval {
       "Diminished Eleventh",
       "d11"),
   PERFECT_ELEVENTH(17, IntervalNumber.ELEVENTH, IntervalQuality.PERFECT, "Perfect Eleventh", "P11"),
-  AUGMENTED_ELEVENTH(18, IntervalNumber.ELEVENTH, IntervalQuality.AUGMENTED, "Augmented Eleventh", "A11"),
-  DIMINISHED_TWELFTH(18, IntervalNumber.TWELFTH, IntervalQuality.DIMINISHED, "Diminished Twelfth", "d12"),
+  AUGMENTED_ELEVENTH(
+      18,
+      IntervalNumber.ELEVENTH,
+      IntervalQuality.AUGMENTED,
+      "Augmented Eleventh",
+      "A11"),
+  DIMINISHED_TWELFTH(
+      18,
+      IntervalNumber.TWELFTH,
+      IntervalQuality.DIMINISHED,
+      "Diminished Twelfth",
+      "d12"),
   PERFECT_TWELFTH(19, IntervalNumber.TWELFTH, IntervalQuality.PERFECT, "Perfect Twelfth", "P12"),
-  AUGMENTED_TWELFTH(20, IntervalNumber.TWELFTH, IntervalQuality.AUGMENTED, "Augmented Twelfth", "A12"),
-  DIMINISHED_THIRTEENTH(19, IntervalNumber.THIRTEENTH, IntervalQuality.DIMINISHED, "Diminished Thirteenth", "d13"),
+  AUGMENTED_TWELFTH(
+      20,
+      IntervalNumber.TWELFTH,
+      IntervalQuality.AUGMENTED,
+      "Augmented Twelfth",
+      "A12"),
+  DIMINISHED_THIRTEENTH(
+      19,
+      IntervalNumber.THIRTEENTH,
+      IntervalQuality.DIMINISHED,
+      "Diminished Thirteenth",
+      "d13"),
   MINOR_THIRTEENTH(20, IntervalNumber.THIRTEENTH, IntervalQuality.MINOR, "Minor Thirteenth", "m13"),
   MAJOR_THIRTEENTH(21, IntervalNumber.THIRTEENTH, IntervalQuality.MAJOR, "Major Thirteenth", "M13"),
-  AUGMENTED_THIRTEENTH(22, IntervalNumber.THIRTEENTH, IntervalQuality.AUGMENTED, "Augmented Thirteenth", "A13"),
+  AUGMENTED_THIRTEENTH(
+      22,
+      IntervalNumber.THIRTEENTH,
+      IntervalQuality.AUGMENTED,
+      "Augmented Thirteenth",
+      "A13"),
   DIMINISHED_FOURTEENTH(
       21,
       IntervalNumber.FOURTEENTH,
@@ -97,116 +117,117 @@ public enum Interval {
       "Augmented Fourteenth",
       "A14");
 
-private final int halfSteps;
-private final IntervalNumber intervalNumber;
-private final IntervalQuality intervalQuality;
-private final String text;
-private final String abbrev;
-private final static HashMap<IntervalKey, Interval> intervalKeyToIntervalMap =
-    new HashMap<IntervalKey, Interval>();
-private final static HashMap<Integer, ArrayList<Interval>> halfStepToIntervalListMap =
-    new HashMap<Integer, ArrayList<Interval>>();
+  private final int halfSteps;
+  private final IntervalNumber intervalNumber;
+  private final IntervalQuality intervalQuality;
+  private final String text;
+  private final String abbrev;
+  private final static HashMap<IntervalKey, Interval> intervalKeyToIntervalMap =
+      new HashMap<IntervalKey, Interval>();
+  private final static HashMap<Integer, ArrayList<Interval>> halfStepToIntervalListMap =
+      new HashMap<Integer, ArrayList<Interval>>();
 
-static {
-  for (Interval interval : Interval.values()) {
-    intervalKeyToIntervalMap.put(
-        interval.new IntervalKey(interval.getHalfSteps(), interval.getIntervalNumber()), interval);
+  static {
+    for (Interval interval : Interval.values()) {
+      intervalKeyToIntervalMap.put(
+          interval.new IntervalKey(interval.getHalfSteps(), interval.getIntervalNumber()),
+          interval);
+    }
+
+    for (Interval interval : Interval.values()) {
+      if (halfStepToIntervalListMap.containsKey(interval.halfSteps)) {
+        ArrayList<Interval> currentAL = halfStepToIntervalListMap.get(interval.halfSteps);
+        currentAL.add(interval);
+      }
+      else {
+        ArrayList<Interval> currentAL = new ArrayList<Interval>();
+        currentAL.add(interval);
+        halfStepToIntervalListMap.put(interval.halfSteps, currentAL);
+      }
+    }
   }
 
-  for (Interval interval : Interval.values()) {
-    if (halfStepToIntervalListMap.containsKey(interval.halfSteps)) {
-      ArrayList<Interval> currentAL = halfStepToIntervalListMap.get(interval.halfSteps);
-      currentAL.add(interval);
-    }
-    else {
-      ArrayList<Interval> currentAL = new ArrayList<Interval>();
-      currentAL.add(interval);
-      halfStepToIntervalListMap.put(interval.halfSteps, currentAL);
-    }
-  }
-}
-
-Interval(int halfSteps, IntervalNumber intervalNumber, IntervalQuality intervalQuality, String text,
-    String abbrev) {
-  this.halfSteps = halfSteps;
-  this.intervalNumber = intervalNumber;
-  this.intervalQuality = intervalQuality;
-  this.text = text;
-  this.abbrev = abbrev;
-}
-
-public final int getHalfSteps() {
-  return halfSteps;
-}
-
-public final IntervalNumber getIntervalNumber() {
-  return intervalNumber;
-}
-
-public final IntervalQuality getIntervalQuality() {
-  return intervalQuality;
-}
-
-public final String getText() {
-  return text;
-}
-
-public final String getAbbrev() {
-  return abbrev;
-}
-
-public final String toString() {
-  return text;
-}
-
-public static final Interval halfStepsAndIntervalNumberToInterval(int halfSteps,
-    IntervalNumber intervalNumber) {
-  Interval output = null;
-  IntervalKey iK = Interval.UNISON.new IntervalKey(halfSteps, intervalNumber);
-
-  output = intervalKeyToIntervalMap.get(iK);
-
-  return output;
-}
-
-public static final ArrayList<Interval> halfStepsToIntervalList(int halfSteps) {
-  ArrayList<Interval> output = null;
-
-  output = halfStepToIntervalListMap.get(halfSteps);
-
-  return output;
-}
-
-public class IntervalKey {
-  public int halfSteps;
-  public IntervalNumber intervalNumber;
-
-  IntervalKey(int halfSteps, IntervalNumber intervalNumber) {
+  Interval(int halfSteps, IntervalNumber intervalNumber, IntervalQuality intervalQuality,
+      String text, String abbrev) {
     this.halfSteps = halfSteps;
     this.intervalNumber = intervalNumber;
+    this.intervalQuality = intervalQuality;
+    this.text = text;
+    this.abbrev = abbrev;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (!(o instanceof IntervalKey)) {
+  public final int getHalfSteps() {
+    return halfSteps;
+  }
+
+  public final IntervalNumber getIntervalNumber() {
+    return intervalNumber;
+  }
+
+  public final IntervalQuality getIntervalQuality() {
+    return intervalQuality;
+  }
+
+  public final String getText() {
+    return text;
+  }
+
+  public final String getAbbrev() {
+    return abbrev;
+  }
+
+  public final String toString() {
+    return text;
+  }
+
+  public static final Interval halfStepsAndIntervalNumberToInterval(int halfSteps,
+      IntervalNumber intervalNumber) {
+    Interval output = null;
+    IntervalKey iK = Interval.UNISON.new IntervalKey(halfSteps, intervalNumber);
+
+    output = intervalKeyToIntervalMap.get(iK);
+
+    return output;
+  }
+
+  public static final ArrayList<Interval> halfStepsToIntervalList(int halfSteps) {
+    ArrayList<Interval> output = null;
+
+    output = halfStepToIntervalListMap.get(halfSteps);
+
+    return output;
+  }
+
+  public class IntervalKey {
+    public int halfSteps;
+    public IntervalNumber intervalNumber;
+
+    IntervalKey(int halfSteps, IntervalNumber intervalNumber) {
+      this.halfSteps = halfSteps;
+      this.intervalNumber = intervalNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (!(o instanceof IntervalKey)) {
+        return false;
+      }
+
+      IntervalKey iK = (IntervalKey) o;
+      if ((iK.halfSteps == this.halfSteps) && (iK.intervalNumber == this.intervalNumber)) {
+        return true;
+      }
+
       return false;
     }
 
-    IntervalKey iK = (IntervalKey) o;
-    if ((iK.halfSteps == this.halfSteps) && (iK.intervalNumber == this.intervalNumber)) {
-      return true;
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result + halfSteps;
+      result = 31 * result + intervalNumber.hashCode();
+      return result;
     }
-
-    return false;
   }
-
-  @Override
-  public int hashCode() {
-    int result = 17;
-    result = 31 * result + halfSteps;
-    result = 31 * result + intervalNumber.hashCode();
-    return result;
-  }
-}
 
 }

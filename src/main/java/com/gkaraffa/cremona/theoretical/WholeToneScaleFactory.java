@@ -7,32 +7,32 @@ public class WholeToneScaleFactory extends SymmetricScaleFactory {
   }
 
   @Override
-  public Scale createScale(ScalarIntervalPattern scalarIntervalPattern, Tone key)
+  public Scale createScale(IntervalPattern intervalPattern, Tone key)
       throws IllegalArgumentException {
-    if (!(validateInputPattern(scalarIntervalPattern))) {
+    if (!(validateInputPattern(intervalPattern))) {
       throw new IllegalArgumentException("Incorrect Pattern for this Factory.");
     }
 
-    ScaleQuality scaleQuality = evaluateScaleQuality(scalarIntervalPattern);
-    Tone tones[] = this.createToneArray(scalarIntervalPattern, key);
+    ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
+    Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new WholeToneScale(key.getText() + " " + scalarIntervalPattern.getText(), tones,
+    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones,
         scaleQuality);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(ScalarIntervalPattern scaleIntervalPattern) {
+  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
     return ScaleQuality.WHOLE_TONE;
   }
 
   @Override
-  protected boolean validateInputPattern(ScalarIntervalPattern scaleIntervalPattern) {
+  protected boolean validateInputPattern(IntervalPattern intervalPattern) {
     // TODO Auto-generated method stub
-    if (!(scaleIntervalPattern.getText().contains("Whole Tone"))) {
+    if (!(intervalPattern.getText().contains("Whole Tone"))) {
       return false;
     }
     return true;
   }
 
-
+  public static String wholeTonePatternString = "M2,M3,A4,A5,A6,P8";
 }
