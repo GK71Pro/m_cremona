@@ -20,8 +20,7 @@ public class PentatonicScaleFactory extends ScaleFactory {
 
   @Override
   protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
-    Interval thirdInterval =
-        intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
+    Interval thirdInterval = intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
     ScaleQuality scaleQuality = null;
 
     switch (thirdInterval) {
@@ -60,8 +59,4 @@ public class PentatonicScaleFactory extends ScaleFactory {
 
     return true;
   }
-  
-  public static String pentatonicMajorPatternString = "M2,M3,P5,M6,P8";
-  public static String pentatonicMinorPatternString = "m3,P4,P5,m7,P8";
-
 }

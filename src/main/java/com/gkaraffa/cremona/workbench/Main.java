@@ -2,7 +2,7 @@ package com.gkaraffa.cremona.workbench;
 
 import com.gkaraffa.cremona.common.Pitch;
 import com.gkaraffa.cremona.theoretical.DiatonicScaleFactory;
-import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
+import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.Scale;
 import com.gkaraffa.cremona.theoretical.ScaleFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
@@ -11,12 +11,11 @@ public class Main {
 
   public Main() {}
 
-  @SuppressWarnings("unused")
   public static void main(String[] args) {
     System.out.println("Process starts.");
 
     try {
-      testPitch();
+      testScale();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -26,6 +25,7 @@ public class Main {
   }
 
 
+  @SuppressWarnings("unused")
   private static void testPitch() {
     Pitch pitch = new Pitch(Tone.C, 1);
     for (int index = 0; index <= 24; index ++) {
@@ -34,10 +34,11 @@ public class Main {
     }
   }
   
-  private static void testFretboard() {
-    
+  private static void testScale() {    
     ScaleFactory scaleFactory = new DiatonicScaleFactory();
-    Scale scale = scaleFactory.createScale(new IntervalPatternFactory().createIntervalPattern("Ionian", DiatonicScaleFactory.ionianPatternString), Tone.C);
+    Scale scale = scaleFactory.createScale(IntervalPattern.ionianPattern, Tone.C);
+    System.out.println(scale);
+    System.out.println(scale.getSpellingString());
   }
 }
 

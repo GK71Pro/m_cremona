@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class IntervalPatternFactory {
+  private static IntervalPatternFactory instance = null;
   private static HashMap<String, Interval> lookup = new HashMap<String, Interval>();
 
   static {
@@ -13,8 +14,16 @@ public class IntervalPatternFactory {
     }
   }
 
-  public IntervalPatternFactory() {}
+  private IntervalPatternFactory() {}
 
+  public static synchronized IntervalPatternFactory getInstance() {
+    if (instance == null) {
+      instance = new IntervalPatternFactory();
+    }
+    
+    return instance;
+  }
+  
   public IntervalPattern createIntervalPattern(String name, String patternString) {
     String[] intervalArray = patternString.split(",");
     List<Interval> intervalList = new ArrayList<Interval>();

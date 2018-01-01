@@ -1,6 +1,6 @@
 package com.gkaraffa.cremona.theoretical;
 
-public class WholeToneScaleFactory extends SymmetricScaleFactory {
+public class WholeToneScaleFactory extends ScaleFactory {
 
   public WholeToneScaleFactory() {
     // TODO Auto-generated constructor stub
@@ -16,8 +16,7 @@ public class WholeToneScaleFactory extends SymmetricScaleFactory {
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
     Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones,
-        scaleQuality);
+    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality);
   }
 
   @Override
@@ -34,5 +33,4 @@ public class WholeToneScaleFactory extends SymmetricScaleFactory {
     return true;
   }
 
-  public static String wholeTonePatternString = "M2,M3,A4,A5,A6,P8";
 }

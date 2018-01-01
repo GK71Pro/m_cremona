@@ -14,8 +14,7 @@ public class DiatonicScaleFactory extends ScaleFactory {
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
     Tone[] tones = this.createToneArray(intervalPattern, key);
 
-    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), tones,
-        scaleQuality);
+    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality);
   }
 
   @Override
@@ -86,15 +85,5 @@ public class DiatonicScaleFactory extends ScaleFactory {
 
     return true;
   }
-  
-  public static String ionianPatternString = "M2,M3,P4,P5,M6,M7,P8";
-  public static String dorianPatternString = "M2,m3,P4,P5,M6,m7,P8";
-  public static String phrygianPatternString = "m2,m3,P4,P5,m6,m7,P8";
-  public static String lydianPatternString = "M2,M3,A4,P5,M6,M7,P8";
-  public static String mixolydianPatternString = "M2,M3,P4,P5,M6,m7,P8";
-  public static String aeolianPatternString = "M2,m3,P4,P5,m6,m7,P8";
-  public static String locrianPatternString = "m2,m3,P4,d5,m6,m7,P8";
-  public static String harmonicMinorPatternString = "M2,m3,P4,P5,m6,M7,P8";
-  public static String melodicMinorPatternString = "M2,m3,P4,P5,M6,M7,P8";
 
 }
