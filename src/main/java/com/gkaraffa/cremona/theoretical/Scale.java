@@ -17,5 +17,11 @@ public abstract class Scale extends ToneCollection {
   public Tone getKey() {
     return this.key;
   }
+  
+  @Override
+  public String getSpellingString() {
+    String baseString = super.getSpellingString();
+    return ( baseString + ", (" + this.key + ")" );
+  }
 
 }
