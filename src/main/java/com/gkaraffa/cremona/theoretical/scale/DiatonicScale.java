@@ -1,4 +1,8 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.scale;
+
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
+import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.Tone;
 
 public class DiatonicScale extends Scale implements Harmonizable, Modal {
 

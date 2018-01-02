@@ -1,11 +1,11 @@
 package com.gkaraffa.cremona.workbench;
 
 import com.gkaraffa.cremona.common.Pitch;
-import com.gkaraffa.cremona.theoretical.DiatonicScaleFactory;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
-import com.gkaraffa.cremona.theoretical.Scale;
-import com.gkaraffa.cremona.theoretical.ScaleFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.scale.DiatonicScaleFactory;
+import com.gkaraffa.cremona.theoretical.scale.Scale;
+import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 
 public class Main {
 

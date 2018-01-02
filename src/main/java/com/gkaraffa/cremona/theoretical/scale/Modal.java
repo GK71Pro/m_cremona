@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.scale;
 
 public interface Modal {
 

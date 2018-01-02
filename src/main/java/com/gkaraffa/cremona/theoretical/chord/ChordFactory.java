@@ -1,8 +1,13 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.chord;
 
 import java.util.LinkedHashSet;
 
 import com.gkaraffa.cremona.common.CremonaException;
+import com.gkaraffa.cremona.theoretical.Interval;
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
+import com.gkaraffa.cremona.theoretical.TonalSpectrum;
+import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.scale.Harmonizable;
 
 public class ChordFactory {
 

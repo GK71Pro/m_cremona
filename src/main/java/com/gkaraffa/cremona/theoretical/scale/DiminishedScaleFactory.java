@@ -1,8 +1,11 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.scale;
 
-public class WholeToneScaleFactory extends ScaleFactory {
+import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.Tone;
 
-  public WholeToneScaleFactory() {
+public class DiminishedScaleFactory extends ScaleFactory {
+
+  public DiminishedScaleFactory() {
     // TODO Auto-generated constructor stub
   }
 
@@ -13,22 +16,23 @@ public class WholeToneScaleFactory extends ScaleFactory {
       throw new IllegalArgumentException("Incorrect Pattern for this Factory.");
     }
 
-    ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
+    ScaleQuality scaleQuality = ScaleQuality.DIMINISHED;
     Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
+    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
         intervalPattern);
   }
 
   @Override
   protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
-    return ScaleQuality.WHOLE_TONE;
+    // TODO Auto-generated method stub
+    return null;
   }
 
   @Override
   protected boolean validateInputPattern(IntervalPattern intervalPattern) {
     // TODO Auto-generated method stub
-    if (!(intervalPattern.getText().contains("Whole Tone"))) {
+    if (!(intervalPattern.getText().contains("Diminished"))) {
       return false;
     }
     return true;

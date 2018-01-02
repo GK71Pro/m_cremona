@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.chord;
 
 public enum HarmonicPreference {
   TERTIARY("Tertiary", 2),

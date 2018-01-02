@@ -1,8 +1,12 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.scale;
 
-public class DiminishedScale extends SymmetricScale {
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
+import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.Tone;
 
-  public DiminishedScale(String name, Tone[] tones, ScaleQuality scaleQuality,
+public class WholeToneScale extends SymmetricScale {
+
+  public WholeToneScale(String name, Tone[] tones, ScaleQuality scaleQuality,
       IntervalPattern intervalPattern) {
     super(name, tones, scaleQuality, intervalPattern);
   }
@@ -22,5 +26,4 @@ public class DiminishedScale extends SymmetricScale {
       IntervalNumber offsetInterval) {
     return getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
-
 }

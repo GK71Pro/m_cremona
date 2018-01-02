@@ -1,6 +1,10 @@
-package com.gkaraffa.cremona.theoretical;
+package com.gkaraffa.cremona.theoretical.chord;
 
 import java.util.LinkedHashSet;
+
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
+import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class Chord extends ToneCollection {
   private HarmonicPreference harmonicPreference;
