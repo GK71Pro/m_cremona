@@ -16,7 +16,8 @@ public class WholeToneScaleFactory extends ScaleFactory {
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
     Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality);
+    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
+        intervalPattern);
   }
 
   @Override

@@ -14,8 +14,8 @@ public class PentatonicScaleFactory extends ScaleFactory {
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
     Tone[] tones = this.createToneArray(intervalPattern, key);
 
-    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), tones,
-        scaleQuality);
+    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
+        intervalPattern);
   }
 
   @Override

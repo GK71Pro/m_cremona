@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-public class ToneCollection extends TheoreticalObject implements Iterable<Tone> {
+public class ToneCollection extends TheoreticalObject implements Iterable<Tone>, Spellable {
   private final Tone[] tones;
 
   public ToneCollection(String name, Tone[] tones) throws IllegalArgumentException {
@@ -72,6 +72,7 @@ public class ToneCollection extends TheoreticalObject implements Iterable<Tone> 
     return toneCollectionBuilder.toToneCollection();
   }
 
+  @Override
   public String getSpellingString() {
     StringBuilder sb = new StringBuilder();
 
@@ -136,5 +137,6 @@ public class ToneCollection extends TheoreticalObject implements Iterable<Tone> 
       throw new UnsupportedOperationException("not supported yet");
     }
   }
+
 
 }

@@ -2,9 +2,9 @@ package com.gkaraffa.cremona.theoretical;
 
 public class DiminishedScale extends SymmetricScale {
 
-  public DiminishedScale(String name, Tone[] tones, ScaleQuality scaleQuality) {
-    super(name, tones, scaleQuality);
-    // TODO Auto-generated constructor stub
+  public DiminishedScale(String name, Tone[] tones, ScaleQuality scaleQuality,
+      IntervalPattern intervalPattern) {
+    super(name, tones, scaleQuality, intervalPattern);
   }
 
   private int calculateLocation(int segment, int offset) {

@@ -2,9 +2,9 @@ package com.gkaraffa.cremona.theoretical;
 
 public class WholeToneScale extends SymmetricScale {
 
-  public WholeToneScale(String name, Tone[] tones, ScaleQuality scaleQuality) {
-    super(name, tones, scaleQuality);
-    // TODO Auto-generated constructor stub
+  public WholeToneScale(String name, Tone[] tones, ScaleQuality scaleQuality,
+      IntervalPattern intervalPattern) {
+    super(name, tones, scaleQuality, intervalPattern);
   }
 
   private int calculateLocation(int segment, int offset) {
@@ -21,5 +21,5 @@ public class WholeToneScale extends SymmetricScale {
   public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
       IntervalNumber offsetInterval) {
     return getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
-  }  
+  }
 }

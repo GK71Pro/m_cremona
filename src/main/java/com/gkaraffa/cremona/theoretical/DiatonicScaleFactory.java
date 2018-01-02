@@ -14,7 +14,8 @@ public class DiatonicScaleFactory extends ScaleFactory {
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
     Tone[] tones = this.createToneArray(intervalPattern, key);
 
-    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality);
+    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
+        intervalPattern);
   }
 
   @Override

@@ -16,8 +16,8 @@ public class DiminishedScaleFactory extends ScaleFactory {
     ScaleQuality scaleQuality = ScaleQuality.DIMINISHED;
     Tone tones[] = this.createToneArray(intervalPattern, key);
 
-    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), tones,
-        scaleQuality);
+    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
+        intervalPattern);
   }
 
   @Override

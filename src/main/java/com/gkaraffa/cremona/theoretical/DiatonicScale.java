@@ -2,8 +2,9 @@ package com.gkaraffa.cremona.theoretical;
 
 public class DiatonicScale extends Scale implements Harmonizable, Modal {
 
-  public DiatonicScale(String name, Tone[] tones, ScaleQuality scaleQuality) {
-    super(name, tones, scaleQuality);
+  public DiatonicScale(String name, Tone[] tones, ScaleQuality scaleQuality,
+      IntervalPattern intervalPattern) {
+    super(name, tones, scaleQuality, intervalPattern);
   }
 
   private int calculateLocation(int segment, int offset) {
@@ -23,7 +24,7 @@ public class DiatonicScale extends Scale implements Harmonizable, Modal {
   }
 
   public Modal getMode(int modalOffset) {
-    //unimplemented
+    // unimplemented
     throw new java.lang.UnsupportedOperationException();
   }
 
