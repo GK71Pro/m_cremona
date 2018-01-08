@@ -22,8 +22,9 @@ public class ChordFactory {
       IntervalNumber intervalNumber) throws IllegalArgumentException;
   
   abstract protected HarmonicProfile evaluateProfile(Tone[] toneArray, HarmonicPreference preference);
-  */
+  
 
+  
   public Chord createChordFromHarmonizable(Harmonizable harmonizableScale,
       HarmonicPreference preference, IntervalNumber intervalNumber) throws CremonaException {
 
@@ -46,13 +47,14 @@ public class ChordFactory {
 
     return toneArray;
   }
-
+   
+  
   private HarmonicProfile evaluateProfile(Tone[] toneArray, HarmonicPreference preference)
       throws CremonaException {
     Interval[] intervalArray = this.convertToneArrayToIntervalArray(toneArray, preference);
 
 
-    /*
+    
     switch (preference) {
       case TERTIARY:
         return renderTertiaryProfile(intervalArray);
@@ -61,10 +63,11 @@ public class ChordFactory {
       case QUINTAL:
         break;
     }
-    */
+    
 
     return renderTertiaryProfile(intervalArray);
   }
+
 
   private Interval[] convertToneArrayToIntervalArray(Tone[] toneArray,
       HarmonicPreference preference) throws IllegalArgumentException {
@@ -132,7 +135,6 @@ public class ChordFactory {
 
 
 
-  /*
   private Tone[] intervalPatternAndTonicToToneArray(ChordIntervalPattern chordIntervalPattern,
       Tone tonic) {
     int toneCount = chordIntervalPattern.getSize() + 1;
@@ -149,7 +151,6 @@ public class ChordFactory {
   
     return tones;
   }
-  */
 
   class HarmonicProfile {
     ChordQuality chordQuality = null;
@@ -161,4 +162,5 @@ public class ChordFactory {
   public static String diminishedPattern = "m3,d5";
   public static String augmentedPattern = "M3,A5";
   public static String suspendedFourthPattern = "P4,P5";
+  */
 }

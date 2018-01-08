@@ -6,7 +6,9 @@ import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
-public class Chord extends ToneCollection {
+//public class Chord extends ToneCollection {
+public class Chord {
+/*
   private HarmonicPreference harmonicPreference;
   private ChordQuality chordQuality;
   private LinkedHashSet<IntervalNumber> intervalNumberSet;
@@ -32,7 +34,6 @@ public class Chord extends ToneCollection {
     return intervalNumberSet;
   }
 
-  /*
   public final Tone getToneByIntervalNumber(IntervalNumber intervalNumber) throws CremonaException{
     if (intervalNumberSet.contains(intervalNumber)) {
       

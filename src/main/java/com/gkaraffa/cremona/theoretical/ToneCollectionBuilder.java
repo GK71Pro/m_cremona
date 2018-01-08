@@ -2,16 +2,19 @@ package com.gkaraffa.cremona.theoretical;
 
 import java.util.ArrayList;
 
-public class ToneCollectionBuilder extends TheoreticalObject {
+// public class ToneCollectionBuilder extends TheoreticalObject {
+public class ToneCollectionBuilder {
   private final ArrayList<Tone> toneList;
 
-  public ToneCollectionBuilder(String text) {
-    super(text);
+  // public ToneCollectionBuilder(String text) {
+  public ToneCollectionBuilder() {
+    // super(text);
     toneList = new ArrayList<Tone>();
   }
 
-  public ToneCollectionBuilder(String text, ToneCollection toneCollection) {
-    super(text);
+  // public ToneCollectionBuilder(String text, ToneCollection toneCollection) {
+  public ToneCollectionBuilder(ToneCollection toneCollection) {
+    // super(text);
 
     toneList = new ArrayList<Tone>();
 
@@ -41,15 +44,6 @@ public class ToneCollectionBuilder extends TheoreticalObject {
 
   public boolean contains(Tone target) {
     return toneList.contains(target);
-    /*
-    for (Tone tone : toneList) {
-      if (tone == target) {
-        return true;
-      }
-    }
-
-    return false;
-    */
   }
 
   public ToneCollection toToneCollection() {
@@ -57,6 +51,7 @@ public class ToneCollectionBuilder extends TheoreticalObject {
       return null;
     }
 
-    return new ToneCollection(this.getText(), toneList.toArray(new Tone[toneList.size()]));
+    // return new ToneCollection(this.getText(), toneList.toArray(new Tone[toneList.size()]));
+    return new ToneCollection(toneList.toArray(new Tone[toneList.size()]));
   }
 }

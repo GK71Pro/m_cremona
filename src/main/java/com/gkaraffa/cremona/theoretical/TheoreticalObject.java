@@ -7,6 +7,7 @@ public abstract class TheoreticalObject {
     this.text = text;
   }
 
+  @Override
   public String toString() {
     return this.text;
   }

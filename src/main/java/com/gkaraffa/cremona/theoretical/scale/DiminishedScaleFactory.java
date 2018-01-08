@@ -2,6 +2,7 @@ package com.gkaraffa.cremona.theoretical.scale;
 
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class DiminishedScaleFactory extends ScaleFactory {
 
@@ -17,10 +18,15 @@ public class DiminishedScaleFactory extends ScaleFactory {
     }
 
     ScaleQuality scaleQuality = ScaleQuality.DIMINISHED;
-    Tone tones[] = this.createToneArray(intervalPattern, key);
+    // Tone tones[] = this.createToneArray(intervalPattern, key);
+    ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
+    /*
     return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
         intervalPattern);
+    */
+    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+        scaleQuality, intervalPattern);
   }
 
   @Override

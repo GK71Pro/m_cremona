@@ -4,6 +4,7 @@ import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class PentatonicScaleFactory extends ScaleFactory {
 
@@ -17,10 +18,15 @@ public class PentatonicScaleFactory extends ScaleFactory {
     }
 
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
-    Tone[] tones = this.createToneArray(intervalPattern, key);
+    // Tone[] tones = this.createToneArray(intervalPattern, key);
+    ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
+    /*
     return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
         intervalPattern);
+    */
+    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+        scaleQuality, intervalPattern);
   }
 
   @Override
