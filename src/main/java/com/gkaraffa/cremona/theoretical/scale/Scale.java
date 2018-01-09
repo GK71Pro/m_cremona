@@ -7,8 +7,8 @@ import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public abstract class Scale extends TheoreticalObject implements Spellable {
-  private ScaleQuality scaleQuality;
   private Tone key;
+  private ScaleQuality scaleQuality;
   private IntervalPattern intervalPattern;
   private ToneCollection toneCollection;
 
@@ -21,12 +21,12 @@ public abstract class Scale extends TheoreticalObject implements Spellable {
     this.intervalPattern = intervalPattern;
   }
 
-  public ScaleQuality getScaleQuality() {
-    return scaleQuality;
-  }
-
   public Tone getKey() {
     return this.key;
+  }
+
+  public ScaleQuality getScaleQuality() {
+    return scaleQuality;
   }
 
   public IntervalPattern getIntervalPattern() {
