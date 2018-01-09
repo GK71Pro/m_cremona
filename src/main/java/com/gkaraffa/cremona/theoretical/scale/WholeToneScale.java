@@ -6,13 +6,6 @@ import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class WholeToneScale extends SymmetricScale {
-  /*
-  public WholeToneScale(String name, Tone[] tones, ScaleQuality scaleQuality,
-      IntervalPattern intervalPattern) {
-    super(name, tones, scaleQuality, intervalPattern);
-  }
-  */
-
   public WholeToneScale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
       IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleQuality, intervalPattern);
@@ -31,7 +24,6 @@ public class WholeToneScale extends SymmetricScale {
 
   public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
       IntervalNumber offsetInterval) {
-    // return getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }

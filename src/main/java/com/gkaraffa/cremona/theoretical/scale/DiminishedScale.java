@@ -12,13 +12,6 @@ public class DiminishedScale extends SymmetricScale {
     super(name, toneCollection, scaleQuality, intervalPattern);
   }
 
-  /*
-  public DiminishedScale(String name, Tone[] tones, ScaleQuality scaleQuality,
-      IntervalPattern intervalPattern) {
-    super(name, tones, scaleQuality, intervalPattern);
-  }
-  */
-
   private int calculateLocation(int segment, int offset) {
     int location = segment + offset;
     int limit = IntervalNumber.NINTH.getPosition();
@@ -32,9 +25,7 @@ public class DiminishedScale extends SymmetricScale {
 
   public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
       IntervalNumber offsetInterval) {
-    // return getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
-
 }

@@ -11,20 +11,14 @@ public class PentatonicScaleFactory extends ScaleFactory {
   public PentatonicScaleFactory() {}
 
   @Override
-  public Scale createScale(IntervalPattern intervalPattern, Tone key)
-      throws IllegalArgumentException {
+  public Scale createScale(IntervalPattern intervalPattern, Tone key) {
     if (!validateInputPattern(intervalPattern)) {
       throw new IllegalArgumentException("Input pattern is invalid.");
     }
 
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
-    // Tone[] tones = this.createToneArray(intervalPattern, key);
     ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
-    /*
-    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
-        intervalPattern);
-    */
     return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
         scaleQuality, intervalPattern);
   }

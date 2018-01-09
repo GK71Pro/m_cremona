@@ -12,14 +12,6 @@ public class DiatonicScale extends Scale implements Harmonizable, Modal {
     super(name, toneCollection, scaleQuality, intervalPattern);
   }
 
-  /*
-  public DiatonicScale(String name, Tone[] tones, ScaleQuality scaleQuality,
-      IntervalPattern intervalPattern) {
-    super(name, tones, scaleQuality, intervalPattern);
-  }
-  */
-  
-  
   private int calculateLocation(int segment, int offset) {
     int location = segment + offset;
     int limit = IntervalNumber.EIGHTH.getPosition();
@@ -33,14 +25,12 @@ public class DiatonicScale extends Scale implements Harmonizable, Modal {
 
   public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
       IntervalNumber offsetInterval) {
-    
-    return this.getToneCollection().getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
-    //return getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
+
+    return this.getToneCollection()
+        .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
 
   public Modal getMode(int modalOffset) {
-    // unimplemented
     throw new java.lang.UnsupportedOperationException();
   }
-
 }

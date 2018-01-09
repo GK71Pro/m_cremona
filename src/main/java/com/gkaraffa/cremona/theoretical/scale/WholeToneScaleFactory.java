@@ -6,27 +6,19 @@ import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class WholeToneScaleFactory extends ScaleFactory {
 
-  public WholeToneScaleFactory() {
-    // TODO Auto-generated constructor stub
-  }
+  public WholeToneScaleFactory() {}
 
   @Override
-  public Scale createScale(IntervalPattern intervalPattern, Tone key)
-      throws IllegalArgumentException {
+  public Scale createScale(IntervalPattern intervalPattern, Tone key) {
     if (!(validateInputPattern(intervalPattern))) {
       throw new IllegalArgumentException("Incorrect Pattern for this Factory.");
     }
 
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
-    //Tone tones[] = this.createToneArray(intervalPattern, key);
     ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
-    /*
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
-        intervalPattern);
-    */
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), toneCollection, scaleQuality,
-        intervalPattern);
+    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+        scaleQuality, intervalPattern);
   }
 
   @Override
@@ -36,11 +28,9 @@ public class WholeToneScaleFactory extends ScaleFactory {
 
   @Override
   protected boolean validateInputPattern(IntervalPattern intervalPattern) {
-    // TODO Auto-generated method stub
     if (!(intervalPattern.getText().contains("Whole Tone"))) {
       return false;
     }
     return true;
   }
-
 }

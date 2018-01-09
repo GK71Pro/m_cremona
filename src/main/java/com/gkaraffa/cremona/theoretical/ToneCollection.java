@@ -4,13 +4,10 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-//public class ToneCollection extends TheoreticalObject implements Iterable<Tone>, Spellable {
 public class ToneCollection implements Iterable<Tone>, Spellable {
   private final Tone[] tones;
 
-//public ToneCollection(String name, Tone[] tones) throws IllegalArgumentException {  
   public ToneCollection(Tone[] tones) {
-    //super(name);
     if (this.areTonesDistinct(tones)) {
       this.tones = tones;
     }
@@ -48,10 +45,6 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
   }
 
   public ToneCollection intersection(ToneCollection target) {
-    /*
-    ToneCollectionBuilder toneCollectionBuilder = 
-        new ToneCollectionBuilder("Intersection of " + this.getText() + " and " + target.getText());
-    */
     ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder();
 
     for (Tone outerTone : tones) {
@@ -67,13 +60,7 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
   }
 
   public ToneCollection union(ToneCollection target) {
-    /*
-    ToneCollectionBuilder toneCollectionBuilder =
-        new ToneCollectionBuilder("Union of " + this.getText() + " and " + target.getText(), this);
-    */
-    
-    ToneCollectionBuilder toneCollectionBuilder =
-        new ToneCollectionBuilder(this);
+    ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder(this);
 
     for (Tone tone : target) {
       toneCollectionBuilder.insert(tone);
@@ -146,6 +133,4 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
       throw new UnsupportedOperationException("not supported yet");
     }
   }
-
-
 }

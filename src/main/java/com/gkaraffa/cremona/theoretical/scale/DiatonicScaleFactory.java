@@ -11,23 +11,16 @@ public class DiatonicScaleFactory extends ScaleFactory {
   public DiatonicScaleFactory() {}
 
   @Override
-  public Scale createScale(IntervalPattern intervalPattern, Tone key)
-      throws IllegalArgumentException {
+  public Scale createScale(IntervalPattern intervalPattern, Tone key) {
     if (!validateInputPattern(intervalPattern)) {
       throw new IllegalArgumentException("Input pattern is invalid.");
     }
 
     ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
-    // Tone[] tones = this.createToneArray(intervalPattern, key);
     ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
     return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
         scaleQuality, intervalPattern);
-
-    /*
-    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), tones, scaleQuality,
-        intervalPattern);
-    */
   }
 
   @Override
@@ -67,36 +60,14 @@ public class DiatonicScaleFactory extends ScaleFactory {
     if (intervalPattern.getSize() != 7) {
       return false;
     }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.SECOND) == null) {
-      return false;
+    
+    IntervalNumber intervalNumbers[] = IntervalNumber.values();
+    for(int index = 1; index <= 7; index++) {
+      if (intervalPattern.getIntervalByIntervalNumber(intervalNumbers[index]) == null) {
+        return false;
+      }
     }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FOURTH) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.SIXTH) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.SEVENTH) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.EIGHTH) == null) {
-      return false;
-    }
-
+    
     return true;
   }
-
 }

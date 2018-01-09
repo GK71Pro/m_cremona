@@ -10,8 +10,7 @@ public abstract class ScaleFactory {
 
   public ScaleFactory() {}
 
-  abstract public Scale createScale(IntervalPattern intervalPattern, Tone key)
-      throws IllegalArgumentException;
+  abstract public Scale createScale(IntervalPattern intervalPattern, Tone key);
 
   abstract protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern);
 
