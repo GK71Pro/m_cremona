@@ -16,6 +16,7 @@ public abstract class ScaleFactory {
 
   abstract protected boolean validateInputPattern(IntervalPattern intervalPattern);
 
+  //TO REMOVE
   protected Tone[] createToneArray(IntervalPattern intervalPattern, Tone key) {
     int toneCount = intervalPattern.getSize();
     Tone[] tones = new Tone[toneCount];

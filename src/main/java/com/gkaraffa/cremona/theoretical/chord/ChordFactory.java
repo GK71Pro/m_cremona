@@ -1,8 +1,76 @@
 package com.gkaraffa.cremona.theoretical.chord;
 
-public abstract class ChordFactory {
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
+import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.TonalSpectrum;
+import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.ToneCollection;
+import com.gkaraffa.cremona.theoretical.ToneCollectionBuilder;
+
+public class ChordFactory {
 
   public ChordFactory() {}
+
+  public Chord createChordFromIntervalPattern(IntervalPattern intervalPattern, Tone tonic) {
+    ToneCollection toneCollection = convertIntervalPatternToToneCollection(intervalPattern, tonic);
+    ChordQuality chordQuality = evaluateChordQualityFromIntervalPattern(intervalPattern);
+
+    Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordQuality.getText(),
+        toneCollection, chordQuality, intervalPattern, null);
+
+    return chord;
+  }
+
+  private ToneCollection convertIntervalPatternToToneCollection(IntervalPattern intervalPattern,
+      Tone tonic) {
+    int toneCount = intervalPattern.getSize();
+    ToneCollectionBuilder tCB = new ToneCollectionBuilder();
+
+    tCB.insert(tonic);
+    for (int index = 1; index < toneCount; index++) {
+      int halfSteps = intervalPattern.getIntervalByLocation(index).getHalfSteps();
+      Tone currentTone = TonalSpectrum.traverseDistance(tonic, halfSteps);
+      tCB.insert(currentTone);
+    }
+
+    return tCB.toToneCollection();
+  }
+
+  private ChordQuality evaluateChordQualityFromIntervalPattern(IntervalPattern intervalPattern) {
+    QualityEvaluationRule qualityRule =
+        chooseQualityEvaluationRuleForIntervalPattern(intervalPattern);
+    ChordQuality chordQuality = qualityRule.applyRuleForIntervalPattern(intervalPattern);
+
+    return chordQuality;
+  }
+
+  private QualityEvaluationRule chooseQualityEvaluationRuleForIntervalPattern(
+      IntervalPattern intervalPattern) {
+    if (isTriad(intervalPattern)) {
+      return new TriadQualityEvaluationRule();
+    }
+
+    throw new IllegalArgumentException();
+  }
+
+  private boolean isTriad(IntervalPattern intervalPattern) {
+    if (intervalPattern.getSize() != 3) {
+      return false;
+    }
+
+    int count = 0;
+    count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIRST);
+    count += intervalPattern.getCountByIntervalNumber(IntervalNumber.THIRD);
+    count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIFTH);
+
+    if (count != 3) {
+      return false;
+    }
+
+    return true;
+  }
+
+
 
   /*
   abstract public Chord createChordFromIntervalPattern(IntervalPattern intervalPattern, Tone tonic)
