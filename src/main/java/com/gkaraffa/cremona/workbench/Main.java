@@ -51,7 +51,6 @@ public class Main {
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
     System.out.println(chord.getChordQuality().getText());
-    
   }
 }
 
