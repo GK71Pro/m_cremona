@@ -20,9 +20,6 @@ public class TriadQualityEvaluationRule extends QualityEvaluationRule {
       else if (fifthInterval == Interval.AUGMENTED_FIFTH) {
         return ChordQuality.AUGMENTED;
       }
-      else {
-        throw new IllegalArgumentException();
-      }
     }
     else if (thirdInterval == Interval.MINOR_THIRD) {
       if (fifthInterval == Interval.PERFECT_FIFTH) {
@@ -31,13 +28,8 @@ public class TriadQualityEvaluationRule extends QualityEvaluationRule {
       else if (fifthInterval == Interval.DIMINISHED_FIFTH) {
         return ChordQuality.DIMINISHED;
       }
-      else {
-        throw new IllegalArgumentException();
-      }
     }
-    else {
-      throw new IllegalArgumentException();
-    }
-  }
 
+    throw new IllegalArgumentException();
+  }
 }

@@ -41,16 +41,4 @@ public class Chord extends TheoreticalObject {
   public HarmonicPreference getHarmonicPreference() {
     return harmonicPreference;
   }
-
-  /*
-  public final Tone getToneByIntervalNumber(IntervalNumber intervalNumber) throws CremonaException{
-    if (intervalNumberSet.contains(intervalNumber)) {
-      
-    }
-    else {
-      throw new CremonaException ("IntervalNumber does not exist in this Chord.");
-    }
-  }
-  */
-
 }

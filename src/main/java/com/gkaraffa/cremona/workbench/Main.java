@@ -39,14 +39,15 @@ public class Main {
   @SuppressWarnings("unused")
   private static void testScale() {
     ScaleFactory scaleFactory = new DiatonicScaleFactory();
-    Scale scale = scaleFactory.createScale(IntervalPattern.IONIAN_PATTERN, Tone.C);
-    System.out.println(scale);
-    System.out.println(scale.getSpellingString());
+    Scale scale = scaleFactory.createScale(DiatonicScaleFactory.IONIAN_PATTERN, Tone.C);
+    System.out.println(scale.getToneCollection().getSpellingString());
+    System.out.println(scale.getIntervalPattern().getSpellingString());;
   }
   
+  @SuppressWarnings("unused")
   private static void testChord() {
     ChordFactory chordFactory = new ChordFactory();
-    Chord chord = chordFactory.createChordFromIntervalPattern(IntervalPattern.AUGMENTED_CHORD_PATTERN, Tone.C);
+    Chord chord = chordFactory.createChordFromIntervalPattern(Chord.MAJOR_SEVENTH_CHORD_PATTERN, Tone.C);
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
     System.out.println(chord.getChordQuality().getText());
