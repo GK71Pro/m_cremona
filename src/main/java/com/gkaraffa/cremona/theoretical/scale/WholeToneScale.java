@@ -2,10 +2,17 @@ package com.gkaraffa.cremona.theoretical.scale;
 
 import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class WholeToneScale extends SymmetricScale {
+  static {
+    IntervalPatternFactory iPF = IntervalPatternFactory.getInstance();
+
+    WHOLE_TONE_PATTERN = iPF.createIntervalPattern("Whole Tone", "P1,M2,M3,A4,A5,A6");
+  }
+
   public WholeToneScale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
       IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleQuality, intervalPattern);
@@ -27,4 +34,6 @@ public class WholeToneScale extends SymmetricScale {
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
+
+  public static IntervalPattern WHOLE_TONE_PATTERN;
 }
