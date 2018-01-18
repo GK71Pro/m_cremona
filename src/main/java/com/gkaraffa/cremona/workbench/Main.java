@@ -47,7 +47,7 @@ public class Main {
   @SuppressWarnings("unused")
   private static void testChord() {
     ChordFactory chordFactory = new ChordFactory();
-    Chord chord = chordFactory.createChordFromIntervalPattern(Chord.MAJOR_SEVENTH_CHORD_PATTERN, Tone.C);
+    Chord chord = chordFactory.createChordFromIntervalPattern(ChordFactory.MAJOR_SEVENTH_CHORD_PATTERN, Tone.C);
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
     System.out.println(chord.getChordQuality().getText());
