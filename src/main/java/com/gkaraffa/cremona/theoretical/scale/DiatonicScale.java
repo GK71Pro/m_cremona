@@ -6,7 +6,7 @@ import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
-public class DiatonicScale extends Scale implements Harmonizable, Modal {
+public class DiatonicScale extends HarmonizableScale implements Modal {
 
   static {
     IntervalPatternFactory iPF = IntervalPatternFactory.getInstance();

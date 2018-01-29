@@ -36,11 +36,11 @@ public abstract class ScaleFactory {
     int toneCount = intervalPattern.getSize();
     ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder();
 
-    toneCollectionBuilder.insert(key);
+    toneCollectionBuilder.append(key);
     for(int index = 1; index <= toneCount; index++) {
       Tone cur = TonalSpectrum.traverseDistance(key,
           intervalPattern.getIntervalByLocation(index - 1).getHalfSteps());
-      toneCollectionBuilder.insert(cur);
+      toneCollectionBuilder.append(cur);
     }
     
     return toneCollectionBuilder.toToneCollection();

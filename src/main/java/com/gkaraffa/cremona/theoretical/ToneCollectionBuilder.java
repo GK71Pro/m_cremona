@@ -6,7 +6,6 @@ public class ToneCollectionBuilder {
   private final ArrayList<Tone> toneList;
 
   public ToneCollectionBuilder() {
-    // super(text);
     toneList = new ArrayList<Tone>();
   }
 
@@ -31,14 +30,24 @@ public class ToneCollectionBuilder {
     }
   }
 
-  public void insert(Tone subject) {
+  public boolean contains(Tone target) {
+    return toneList.contains(target);
+  }
+  
+  public void append(Tone subject) {
     if (!contains(subject)) {
       toneList.add(subject);
     }
   }
-
-  public boolean contains(Tone target) {
-    return toneList.contains(target);
+  
+  public void prepend(Tone subject) {
+    if (!contains(subject)) {
+      toneList.add(0, subject);
+    }    
+  }
+  
+  public void remove(int index) {
+    toneList.remove(index);
   }
 
   public ToneCollection toToneCollection() {

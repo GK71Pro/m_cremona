@@ -15,6 +15,12 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
       throw new IllegalArgumentException("Elements are not distinct.");
     }
   }
+  
+  public IntervalPattern toIntervalPattern() {
+    int toneCount = tones.length;
+    
+    return null;
+  }
 
   public boolean contains(Tone target) {
     for (Tone tone : tones) {
@@ -50,7 +56,7 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
     for (Tone outerTone : tones) {
       for (Tone innerTone : target) {
         if (innerTone.equals(outerTone)) {
-          toneCollectionBuilder.insert(innerTone);
+          toneCollectionBuilder.append(innerTone);
           break;
         }
       }
@@ -63,7 +69,7 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
     ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder(this);
 
     for (Tone tone : target) {
-      toneCollectionBuilder.insert(tone);
+      toneCollectionBuilder.append(tone);
     }
 
     return toneCollectionBuilder.toToneCollection();

@@ -60,6 +60,20 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
     return sb.toString();
   }
 
+  public ToneCollection toToneCollection(Tone tonic) {
+    int toneCount = this.getSize();
+    ToneCollectionBuilder tCB = new ToneCollectionBuilder();
+
+    tCB.append(tonic);
+    for (int index = 1; index < toneCount; index++) {
+      int halfSteps = this.getIntervalByLocation(index).getHalfSteps();
+      Tone currentTone = TonalSpectrum.traverseDistance(tonic, halfSteps);
+      tCB.append(currentTone);
+    }
+
+    return tCB.toToneCollection();
+  }
+  
   public Iterator<Interval> iterator() {
     return new IntervalIterator();
   }

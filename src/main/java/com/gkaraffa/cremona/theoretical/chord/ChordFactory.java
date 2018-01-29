@@ -2,16 +2,16 @@ package com.gkaraffa.cremona.theoretical.chord;
 
 import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
-import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.ToneCollectionBuilder;
+import com.gkaraffa.cremona.theoretical.scale.HarmonizableScale;
 
 public class ChordFactory {
   public ChordFactory() {}
 
   public Chord createChordFromIntervalPattern(IntervalPattern intervalPattern, Tone tonic) {
-    ToneCollection toneCollection = convertIntervalPatternToToneCollection(intervalPattern, tonic);
+    ToneCollection toneCollection = intervalPattern.toToneCollection(tonic);
     ChordQuality chordQuality = evaluateChordQualityFromIntervalPattern(intervalPattern);
 
     Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordQuality.getText(),
@@ -19,20 +19,33 @@ public class ChordFactory {
 
     return chord;
   }
-
-  private ToneCollection convertIntervalPatternToToneCollection(IntervalPattern intervalPattern,
-      Tone tonic) {
-    int toneCount = intervalPattern.getSize();
+  
+  public Chord createChordFromHarmonizableScale(HarmonizableScale harmonizableScale, Tone tonic, int toneCount) {
+    ToneCollection toneCollection = buildToneCollectionFromHarmonizableScaleAndTonic(harmonizableScale, tonic, toneCount);
+    IntervalPattern intervalPattern = convertToneCollectionToIntervalPattern(toneCollection);
+    ChordQuality chordQuality = evaluateChordQualityFromIntervalPattern(intervalPattern);
+    
+    Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordQuality.getText(),
+        toneCollection, chordQuality, intervalPattern, null);
+    
+    return chord;
+  }
+  
+  private ToneCollection buildToneCollectionFromHarmonizableScaleAndTonic(HarmonizableScale harmonizableScale, Tone tonic, int toneCount) {
     ToneCollectionBuilder tCB = new ToneCollectionBuilder();
-
-    tCB.insert(tonic);
-    for (int index = 1; index < toneCount; index++) {
-      int halfSteps = intervalPattern.getIntervalByLocation(index).getHalfSteps();
-      Tone currentTone = TonalSpectrum.traverseDistance(tonic, halfSteps);
-      tCB.insert(currentTone);
+    ToneCollection toneCollection = harmonizableScale.getToneCollection();
+    int position = toneCollection.getPosition(tonic);
+    
+    for (int i = 0, offset = 0; i < toneCount; i++, offset += 2) {
+      tCB.append(toneCollection.getTone(position + offset));
     }
-
+    
     return tCB.toToneCollection();
+  }
+  
+  private IntervalPattern convertToneCollectionToIntervalPattern(ToneCollection toneCollection) {
+    //TO DO
+    return null;
   }
 
   private ChordQuality evaluateChordQualityFromIntervalPattern(IntervalPattern intervalPattern) {
