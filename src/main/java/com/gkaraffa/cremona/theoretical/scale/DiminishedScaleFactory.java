@@ -13,7 +13,7 @@ public class DiminishedScaleFactory extends ScaleFactory {
       throw new IllegalArgumentException("Incorrect Pattern for this Factory.");
     }
 
-    ScaleQuality scaleQuality = ScaleQuality.DIMINISHED;
+    ScaleQuality scaleQuality = this.evaluateScaleQuality(intervalPattern);
     ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
     return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
@@ -22,7 +22,7 @@ public class DiminishedScaleFactory extends ScaleFactory {
 
   @Override
   protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
-    return null;
+    return ScaleQuality.DIMINISHED;
   }
 
   @Override

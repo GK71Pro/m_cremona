@@ -1,7 +1,6 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
-import com.gkaraffa.cremona.theoretical.Spellable;
 import com.gkaraffa.cremona.theoretical.TheoreticalObject;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;

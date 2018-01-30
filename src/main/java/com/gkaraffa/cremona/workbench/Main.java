@@ -6,6 +6,8 @@ import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScaleFactory;
+import com.gkaraffa.cremona.theoretical.scale.DiminishedScale;
+import com.gkaraffa.cremona.theoretical.scale.DiminishedScaleFactory;
 import com.gkaraffa.cremona.theoretical.scale.HarmonizableScale;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
@@ -54,8 +56,8 @@ public class Main {
     System.out.println(chord.getToneCollection().getSpellingString());
     System.out.println(chord.getChordQuality().getText());
 
-    ScaleFactory scaleFactory = new DiatonicScaleFactory();
-    Scale scale = scaleFactory.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
+    ScaleFactory scaleFactory = new DiminishedScaleFactory();
+    Scale scale = scaleFactory.createScale(DiminishedScale.FIRST_DIMINISHED_PATTERN, Tone.C);
     chord = chordFactory.createChordFromHarmonizableScale((HarmonizableScale) scale, scale.getToneCollection().getTone(6), 4); 
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());

@@ -27,7 +27,7 @@ public class ChordFactory {
       int toneCount) {
     ToneCollection toneCollection =
         buildToneCollectionFromHarmonizableScaleAndTonic(harmonizableScale, tonic, toneCount);
-    IntervalPattern intervalPattern = convertToneCollectionToIntervalPattern(toneCollection);
+    IntervalPattern intervalPattern = convertScaleToneCollectionToChordIntervalPattern(toneCollection);
     ChordQuality chordQuality = evaluateChordQualityFromIntervalPattern(intervalPattern);
 
     Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordQuality.getText(),
@@ -49,7 +49,7 @@ public class ChordFactory {
     return tCB.toToneCollection();
   }
 
-  private IntervalPattern convertToneCollectionToIntervalPattern(ToneCollection toneCollection) {
+  private IntervalPattern convertScaleToneCollectionToChordIntervalPattern(ToneCollection toneCollection) {
     int toneCount = toneCollection.getSize();
     IntervalPatternBuilder intervalPatternBuilder = new IntervalPatternBuilder();
 

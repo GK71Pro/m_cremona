@@ -16,33 +16,17 @@ public abstract class ScaleFactory {
 
   abstract protected boolean validateInputPattern(IntervalPattern intervalPattern);
 
-  //TO REMOVE
-  protected Tone[] createToneArray(IntervalPattern intervalPattern, Tone key) {
-    int toneCount = intervalPattern.getSize();
-    Tone[] tones = new Tone[toneCount];
-
-    tones[0] = key;
-
-    for (int index = 1; index < toneCount; index++) {
-      Tone cur = TonalSpectrum.traverseDistance(tones[0],
-          intervalPattern.getIntervalByLocation(index - 1).getHalfSteps());
-      tones[index] = cur;
-    }
-
-    return tones;
-  }
-  
   protected ToneCollection createToneCollection(IntervalPattern intervalPattern, Tone key) {
     int toneCount = intervalPattern.getSize();
     ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder();
 
     toneCollectionBuilder.append(key);
-    for(int index = 1; index <= toneCount; index++) {
+    for (int index = 1; index <= toneCount; index++) {
       Tone cur = TonalSpectrum.traverseDistance(key,
           intervalPattern.getIntervalByLocation(index - 1).getHalfSteps());
       toneCollectionBuilder.append(cur);
     }
-    
+
     return toneCollectionBuilder.toToneCollection();
   }
 
