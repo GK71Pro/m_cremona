@@ -7,17 +7,14 @@ import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class PentatonicScaleFactory extends ScaleFactory {
-  public PentatonicScaleFactory() {}
+
+  public PentatonicScaleFactory() {
+    super();
+  }
 
   @Override
-  public Scale createScale(IntervalPattern intervalPattern, Tone key) {
-    if (!validateInputPattern(intervalPattern)) {
-      throw new IllegalArgumentException("Input pattern is invalid.");
-    }
-
-    ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
-    ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
-
+  protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
+      ScaleQuality scaleQuality) {
     return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
         scaleQuality, intervalPattern);
   }
