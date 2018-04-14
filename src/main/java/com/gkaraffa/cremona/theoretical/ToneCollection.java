@@ -16,12 +16,6 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
     }
   }
   
-  public IntervalPattern toIntervalPattern() {
-    int toneCount = tones.length;
-    
-    return null;
-  }
-
   public boolean contains(Tone target) {
     for (Tone tone : tones) {
       if (tone.equals(target)) {

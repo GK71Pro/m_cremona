@@ -1,13 +1,13 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
 public enum ScaleQuality {
-  DIMINISHED("diminished", "d"),
-  MINOR("minor", "m"),
-  PERFECT("perfect", "P"),
-  MAJOR("major", "M"),
-  AUGMENTED("augmented", "A"),
-  WHOLE_TONE("whole tone", "W"),
-  UNDEFINED("undefined", "U");
+  DIMINISHED("Diminished", "d"),
+  MINOR("Minor", "m"),
+  PERFECT("Perfect", "P"),
+  MAJOR("Major", "M"),
+  AUGMENTED("Augmented", "A"),
+  WHOLE_TONE("Whole Tone", "W"),
+  UNDEFINED("Undefined", "U");
 
   private final String text;
   private final String abbrev;

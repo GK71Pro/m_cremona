@@ -7,12 +7,12 @@ public enum ChordQuality {
   MAJOR("Major", "M"),
   AUGMENTED("Augmented", "A"),
   SUSPENDED_FOURTH("Suspended Fourth", "sus4"),
-  MAJOR_SEVENTH("Major Seventh", "M7"),
+  MAJOR_SEVENTH("Major Seventh", "MA7"),
   DOMINANT_SEVENTH("Dominant Seventh", "7"),
-  MINOR_SEVENTH("Minor Seventh", "m7"),
-  MINOR_MAJOR_SEVENTH("Minor-Major Seventh", "mM7"),
-  HALF_DIMINISHED_SEVENTH("Half-Diminished Seventh", "hd7"),
-  DIMINISHED_SEVENTH("Diminished Seventh", "d7"),
+  MINOR_SEVENTH("Minor Seventh", "-7"),
+  MINOR_MAJOR_SEVENTH("Minor-Major Seventh", "-MA7"),
+  HALF_DIMINISHED_SEVENTH("Half-Diminished Seventh", "-7b5"),
+  DIMINISHED_SEVENTH("Diminished Seventh", "o7"),
   AUGMENTED_MAJOR_SEVENTH("Augmented Major 7th", "AM7");
 
   private final String text;
