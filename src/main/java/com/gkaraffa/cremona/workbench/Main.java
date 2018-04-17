@@ -54,14 +54,14 @@ public class Main {
         chordFactory.createChordFromIntervalPattern(Chord.MAJOR_SEVENTH_CHORD_PATTERN, Tone.C);
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
-    System.out.println(chord.getChordQuality().getText());
+    System.out.println(chord.getChordNomenclature().getText());
 
     ScaleFactory scaleFactory = new DiminishedScaleFactory();
     Scale scale = scaleFactory.createScale(DiminishedScale.FIRST_DIMINISHED_PATTERN, Tone.C);
     chord = chordFactory.createChordFromHarmonizableScale((HarmonizableScale) scale, scale.getToneCollection().getTone(6), 4); 
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
-    System.out.println(chord.getChordQuality().getText());
+    System.out.println(chord.getChordNomenclature().getText());
   }
 
 

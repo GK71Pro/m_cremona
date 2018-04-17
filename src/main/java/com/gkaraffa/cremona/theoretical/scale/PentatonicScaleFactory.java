@@ -14,30 +14,30 @@ public class PentatonicScaleFactory extends ScaleFactory {
 
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
-      ScaleQuality scaleQuality) {
+      ScaleNomenclature scaleNomenclature) {
     return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
-        scaleQuality, intervalPattern);
+        scaleNomenclature, intervalPattern);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
+  protected ScaleNomenclature evaluateScaleNomenclature(IntervalPattern intervalPattern) {
     Interval thirdInterval = intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
-    ScaleQuality scaleQuality = null;
+    ScaleNomenclature scaleNomenclature = null;
 
     switch (thirdInterval) {
       case MINOR_THIRD:
-        scaleQuality = ScaleQuality.MINOR;
+        scaleNomenclature = ScaleNomenclature.MINOR;
         break;
 
       case MAJOR_THIRD:
-        scaleQuality = ScaleQuality.MAJOR;
+        scaleNomenclature = ScaleNomenclature.MAJOR;
         break;
 
       default:
         throw new IllegalArgumentException();
     }
 
-    return scaleQuality;
+    return scaleNomenclature;
   }
 
   @Override

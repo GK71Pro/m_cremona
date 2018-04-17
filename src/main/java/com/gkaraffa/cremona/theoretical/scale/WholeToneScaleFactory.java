@@ -14,14 +14,14 @@ public class WholeToneScaleFactory extends ScaleFactory {
 
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
-      ScaleQuality scaleQuality) {
+      ScaleNomenclature scaleNomenclature) {
     return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
-        scaleQuality, intervalPattern);
+        scaleNomenclature, intervalPattern);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
-    return ScaleQuality.WHOLE_TONE;
+  protected ScaleNomenclature evaluateScaleNomenclature(IntervalPattern intervalPattern) {
+    return ScaleNomenclature.WHOLE_TONE;
   }
 
   @Override

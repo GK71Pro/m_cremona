@@ -4,29 +4,29 @@ import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 
-public class TriadQualityEvaluationRule extends QualityEvaluationRule {
+public class TriadNomenclatureEvaluationRule extends NomenclatureEvaluationRule {
 
-  public TriadQualityEvaluationRule() {}
+  public TriadNomenclatureEvaluationRule() {}
 
   @Override
-  public ChordQuality applyRuleForIntervalPattern(IntervalPattern intervalPattern) {
+  public ChordNomenclature applyRuleForIntervalPattern(IntervalPattern intervalPattern) {
     Interval thirdInterval = intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD);
     Interval fifthInterval = intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH);
 
     if (thirdInterval == Interval.MAJOR_THIRD) {
       if (fifthInterval == Interval.PERFECT_FIFTH) {
-        return ChordQuality.MAJOR;
+        return ChordNomenclature.MAJOR;
       }
       else if (fifthInterval == Interval.AUGMENTED_FIFTH) {
-        return ChordQuality.AUGMENTED;
+        return ChordNomenclature.AUGMENTED;
       }
     }
     else if (thirdInterval == Interval.MINOR_THIRD) {
       if (fifthInterval == Interval.PERFECT_FIFTH) {
-        return ChordQuality.MINOR;
+        return ChordNomenclature.MINOR;
       }
       else if (fifthInterval == Interval.DIMINISHED_FIFTH) {
-        return ChordQuality.DIMINISHED;
+        return ChordNomenclature.DIMINISHED;
       }
     }
 

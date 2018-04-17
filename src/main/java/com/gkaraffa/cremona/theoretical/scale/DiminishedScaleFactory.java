@@ -14,14 +14,14 @@ public class DiminishedScaleFactory extends ScaleFactory {
 
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
-      ScaleQuality scaleQuality) {
+      ScaleNomenclature scaleNomenclature) {
     return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
-        scaleQuality, intervalPattern);
+        scaleNomenclature, intervalPattern);
   }
 
   @Override
-  protected ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern) {
-    return ScaleQuality.DIMINISHED;
+  protected ScaleNomenclature evaluateScaleNomenclature(IntervalPattern intervalPattern) {
+    return ScaleNomenclature.DIMINISHED;
   }
 
   @Override

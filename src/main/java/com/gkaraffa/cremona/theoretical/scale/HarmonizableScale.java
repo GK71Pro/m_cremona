@@ -7,8 +7,8 @@ import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public abstract class HarmonizableScale extends Scale {
 
-  public HarmonizableScale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
+  public HarmonizableScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
       IntervalPattern intervalPattern) {
-    super(name, toneCollection, scaleQuality, intervalPattern);
+    super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 }

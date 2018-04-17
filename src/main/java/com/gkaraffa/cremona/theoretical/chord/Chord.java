@@ -8,7 +8,7 @@ import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class Chord extends TheoreticalObject {
   private Tone tonic;
-  private ChordQuality chordQuality;
+  private ChordNomenclature chordNomenclature;
   private IntervalPattern intervalPattern;
   private ToneCollection toneCollection;
   private HarmonicPreference harmonicPreference;
@@ -33,12 +33,12 @@ public class Chord extends TheoreticalObject {
         iPF.createIntervalPattern("Augmented-Major Seventh", "P1,M3,A5,M7");
   }
 
-  public Chord(String name, ToneCollection toneCollection, ChordQuality chordQuality,
+  public Chord(String name, ToneCollection toneCollection, ChordNomenclature chordNomenclature,
       IntervalPattern intervalPattern, HarmonicPreference harmonicPreference) {
     super(name);
     this.tonic = toneCollection.getTone(0);
     this.toneCollection = toneCollection;
-    this.chordQuality = chordQuality;
+    this.chordNomenclature = chordNomenclature;
     this.intervalPattern = intervalPattern;
     this.harmonicPreference = harmonicPreference;
   }
@@ -47,8 +47,8 @@ public class Chord extends TheoreticalObject {
     return tonic;
   }
 
-  public ChordQuality getChordQuality() {
-    return chordQuality;
+  public ChordNomenclature getChordNomenclature() {
+    return chordNomenclature;
   }
 
   public IntervalPattern getIntervalPattern() {

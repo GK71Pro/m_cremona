@@ -1,6 +1,6 @@
 package com.gkaraffa.cremona.theoretical.chord;
 
-public enum ChordQuality {
+public enum ChordNomenclature {
   DIMINISHED("Diminished", "d"),
   MINOR("Minor", "m"),
   PERFECT("Perfect", "P"),
@@ -18,7 +18,7 @@ public enum ChordQuality {
   private final String text;
   private final String abbrev;
 
-  ChordQuality(String text, String abbrev) {
+  ChordNomenclature(String text, String abbrev) {
     this.text = text;
     this.abbrev = abbrev;
   }

@@ -16,9 +16,9 @@ public class DiminishedScale extends SymmetricScale {
         iPF.createIntervalPattern("Second Diminished", "P1,m2,m3,d4,d5,d6,d7,m7");
   }
 
-  public DiminishedScale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
+  public DiminishedScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
       IntervalPattern intervalPattern) {
-    super(name, toneCollection, scaleQuality, intervalPattern);
+    super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 
   private int calculateLocation(int segment, int offset) {

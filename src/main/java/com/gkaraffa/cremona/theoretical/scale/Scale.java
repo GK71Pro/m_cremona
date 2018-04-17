@@ -7,15 +7,15 @@ import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public abstract class Scale extends TheoreticalObject {
   private Tone key;
-  private ScaleQuality scaleQuality;
+  private ScaleNomenclature scaleNomenclature;
   private IntervalPattern intervalPattern;
   private ToneCollection toneCollection;
 
-  public Scale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
+  public Scale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
       IntervalPattern intervalPattern) {
     super(name);
     this.toneCollection = toneCollection;
-    this.scaleQuality = scaleQuality;
+    this.scaleNomenclature = scaleNomenclature;
     this.key = toneCollection.getTone(0);
     this.intervalPattern = intervalPattern;
   }
@@ -24,8 +24,8 @@ public abstract class Scale extends TheoreticalObject {
     return this.key;
   }
 
-  public ScaleQuality getScaleQuality() {
-    return scaleQuality;
+  public ScaleNomenclature getScaleNomenclature() {
+    return scaleNomenclature;
   }
 
   public IntervalPattern getIntervalPattern() {

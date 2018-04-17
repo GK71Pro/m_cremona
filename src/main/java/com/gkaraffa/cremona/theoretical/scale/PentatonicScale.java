@@ -13,9 +13,9 @@ public class PentatonicScale extends Scale {
     PENTATONIC_MINOR_PATTERN = iPF.createIntervalPattern("Pentatonic Minor", "P1,m3,P4,P5,m7,P8");
   }
 
-  public PentatonicScale(String name, ToneCollection toneCollection, ScaleQuality scaleQuality,
+  public PentatonicScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
       IntervalPattern intervalPattern) {
-    super(name, toneCollection, scaleQuality, intervalPattern);
+    super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 
   public static IntervalPattern PENTATONIC_MAJOR_PATTERN;

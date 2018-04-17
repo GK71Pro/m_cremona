@@ -1,6 +1,6 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
-public enum ScaleQuality {
+public enum ScaleNomenclature {
   DIMINISHED("Diminished", "d"),
   MINOR("Minor", "m"),
   PERFECT("Perfect", "P"),
@@ -12,7 +12,7 @@ public enum ScaleQuality {
   private final String text;
   private final String abbrev;
 
-  ScaleQuality(String text, String abbrev) {
+  ScaleNomenclature(String text, String abbrev) {
     this.text = text;
     this.abbrev = abbrev;
   }

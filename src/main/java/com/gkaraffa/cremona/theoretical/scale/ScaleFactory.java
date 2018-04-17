@@ -11,9 +11,9 @@ public abstract class ScaleFactory {
   public ScaleFactory() {}
 
   protected abstract Scale getScale(Tone key, IntervalPattern intervalPattern,
-      ToneCollection toneCollection, ScaleQuality scaleQuality);
+      ToneCollection toneCollection, ScaleNomenclature scaleNomenclature);
 
-  protected abstract ScaleQuality evaluateScaleQuality(IntervalPattern intervalPattern);
+  protected abstract ScaleNomenclature evaluateScaleNomenclature(IntervalPattern intervalPattern);
 
   protected abstract boolean validateInputPattern(IntervalPattern intervalPattern);
 
@@ -22,10 +22,10 @@ public abstract class ScaleFactory {
       throw new IllegalArgumentException("Input pattern is invalid.");
     }
 
-    ScaleQuality scaleQuality = evaluateScaleQuality(intervalPattern);
+    ScaleNomenclature scaleNomenclature = evaluateScaleNomenclature(intervalPattern);
     ToneCollection toneCollection = this.createToneCollection(intervalPattern, key);
 
-    return getScale(key, intervalPattern, toneCollection, scaleQuality);
+    return getScale(key, intervalPattern, toneCollection, scaleNomenclature);
   }
 
   protected ToneCollection createToneCollection(IntervalPattern intervalPattern, Tone key) {
