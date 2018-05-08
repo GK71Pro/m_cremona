@@ -1,13 +1,14 @@
 package com.gkaraffa.cremona.experimental;
 
 import com.gkaraffa.cremona.common.Pitch;
+import com.gkaraffa.cremona.common.PitchCollection;
 import com.gkaraffa.cremona.instrument.model.GuitarModel;
+import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class FretboardCreator {
   private static final String fret = "---------------------------------------------------------------\n";
 
   public FretboardCreator() {
-    // TODO Auto-generated constructor stub
   }
 
   public static String createFretboard(GuitarModel guitarModel) {
@@ -15,30 +16,67 @@ public class FretboardCreator {
     int numStrings = guitarModel.getStringCount();
     int numFrets = guitarModel.getFretCount();
 
-    //header
-    //append fret line
     sB.append(FretboardCreator.fret);
 
     for (int index = 0; index <= numFrets; index++) {
       Pitch[] currentFret = guitarModel.getRow(index);
 
-      //append fret number
       sB.append(formatFretNumber(Integer.toString(index)));
 
       for (int subindex = 0; subindex < numStrings; subindex++) {
-        //append cell
         sB.append(formatCell(currentFret[subindex]));
       }
       
-      //line complete
-      sB.append("\n");
-      
-      //append fret line
-      sB.append(FretboardCreator.fret);
+      sB.append("\n" + FretboardCreator.fret);
     }
 
     return (sB.toString());
   }
+  
+  public static String createFormattedFretboard(GuitarModel guitarModel, ToneCollection toneCollection) {
+    StringBuilder sB = new StringBuilder();
+    int numStrings = guitarModel.getStringCount();
+    int numFrets = guitarModel.getFretCount();
+
+    sB.append(FretboardCreator.fret);
+
+    for (int index = 0; index <= numFrets; index++) {
+      Pitch[] currentFret = guitarModel.getFilteredRow(index, toneCollection);
+
+      sB.append(formatFretNumber(Integer.toString(index)));
+
+      for (int subindex = 0; subindex < numStrings; subindex++) {
+        sB.append(formatCell(currentFret[subindex]));
+      }
+      
+      sB.append("\n" + FretboardCreator.fret);
+    }
+
+    return (sB.toString());
+  }
+
+  public static String createFormattedFretboard(GuitarModel guitarModel, PitchCollection pitchCollection) {
+    StringBuilder sB = new StringBuilder();
+    int numStrings = guitarModel.getStringCount();
+    int numFrets = guitarModel.getFretCount();
+
+    sB.append(FretboardCreator.fret);
+
+    for (int index = 0; index <= numFrets; index++) {
+      Pitch[] currentFret = guitarModel.getFilteredRow(index, pitchCollection);
+
+      sB.append(formatFretNumber(Integer.toString(index)));
+
+      for (int subindex = 0; subindex < numStrings; subindex++) {
+        sB.append(formatCell(currentFret[subindex]));
+      }
+      
+      sB.append("\n" + FretboardCreator.fret);
+    }
+
+    return (sB.toString());
+  }
+  
   
   private static String formatFretNumber(String fretNumber) {
     StringBuilder sB = new StringBuilder();

@@ -1,6 +1,10 @@
 package com.gkaraffa.cremona.workbench;
 
 import com.gkaraffa.cremona.common.Pitch;
+import com.gkaraffa.cremona.experimental.FretboardCreator;
+import com.gkaraffa.cremona.instrument.model.GuitarModel;
+import com.gkaraffa.cremona.instrument.model.GuitarModelFactory;
+import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
@@ -20,7 +24,7 @@ public class Main {
     System.out.println("Process starts.");
 
     try {
-      testChord();
+      testGuitarModel();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -29,6 +33,19 @@ public class Main {
     System.out.println("Process completes.");
   }
 
+  @SuppressWarnings("unused")
+  private static void testGuitarModel() {
+    ScaleFactory sF = new DiatonicScaleFactory();
+    Scale scaleOne = sF.createScale(DiatonicScale.DORIAN_PATTERN, Tone.FSHARP_GFLAT);
+    Scale scaleTwo = sF.createScale(DiatonicScale.DORIAN_PATTERN, Tone.B);
+
+    InstrumentModelFactory iMF = new GuitarModelFactory();
+    GuitarModel gM = (GuitarModel) iMF.createInstrumentModel();
+
+    String fretBoard = FretboardCreator.createFormattedFretboard(gM,
+        scaleOne.getToneCollection().union(scaleTwo.getToneCollection()));
+    System.out.println(fretBoard);
+  }
 
   @SuppressWarnings("unused")
   private static void testPitch() {
@@ -42,7 +59,7 @@ public class Main {
   @SuppressWarnings("unused")
   private static void testScale() {
     ScaleFactory scaleFactory = new DiatonicScaleFactory();
-    Scale scale = scaleFactory.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
+    Scale scale = scaleFactory.createScale(DiatonicScale.AEOLIAN_PATTERN, Tone.CSHARP_DFLAT);
     System.out.println(scale.getToneCollection().getSpellingString());
     System.out.println(scale.getIntervalPattern().getSpellingString());;
   }
@@ -58,7 +75,8 @@ public class Main {
 
     ScaleFactory scaleFactory = new DiminishedScaleFactory();
     Scale scale = scaleFactory.createScale(DiminishedScale.FIRST_DIMINISHED_PATTERN, Tone.C);
-    chord = chordFactory.createChordFromHarmonizableScale((HarmonizableScale) scale, scale.getToneCollection().getTone(6), 4); 
+    chord = chordFactory.createChordFromHarmonizableScale((HarmonizableScale) scale,
+        scale.getToneCollection().getTone(6), 4);
     System.out.println(chord.getIntervalPattern().getSpellingString());
     System.out.println(chord.getToneCollection().getSpellingString());
     System.out.println(chord.getChordNomenclature().getText());

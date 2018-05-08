@@ -27,12 +27,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getRow(int row) {
-    // check limits
     if (row > fretCount) {
       throw new IllegalArgumentException();
     }
 
-    // get row
     int numStrings = strings.size();
     Pitch[] targetPitchRow = new Pitch[numStrings];
 
@@ -44,12 +42,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getFilteredRow(int row, ToneCollection toneFilter) {
-    // check limits
     if (row > fretCount) {
       throw new IllegalArgumentException();
     }
 
-    // get row
     int numStrings = strings.size();
     Pitch[] targetPitchRow = new Pitch[numStrings];
 
@@ -68,12 +64,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getFilteredRow(int row, PitchCollection pitchFilter) {
-    // check limits
     if (row > fretCount) {
       throw new IllegalArgumentException();
     }
 
-    // get row
     int numStrings = strings.size();
     Pitch[] targetPitchRow = new Pitch[numStrings];
 
@@ -92,12 +86,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getColumn(int column) {
-    // check limits
     if (column > (strings.size() - 1)) {
       throw new IllegalArgumentException();
     }
     
-    // get column
     Pitch[] targetPitchColumn = new Pitch[fretCount];
     targetPitchColumn = strings.get(column).toArray(targetPitchColumn);
     
@@ -105,12 +97,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getFilteredColumn(int column, ToneCollection toneFilter) {
-    // check limits
     if (column > (strings.size() - 1)) {
       throw new IllegalArgumentException();
     }
     
-    // get column
     Pitch[] targetPitchColumn = new Pitch[fretCount];
     ArrayList<Pitch> tempPtr = strings.get(column);
     
@@ -129,12 +119,10 @@ public class GuitarModel extends InstrumentModel implements InstrumentRow, Instr
   }
 
   public Pitch[] getFilteredColumn(int column, PitchCollection pitchFilter) {
-    // check limits
     if (column > (strings.size() - 1)) {
       throw new IllegalArgumentException();
     }
     
-    // get column
     Pitch[] targetPitchColumn = new Pitch[fretCount];
     ArrayList<Pitch> tempPtr = strings.get(column);
     
