@@ -1,10 +1,17 @@
 package com.gkaraffa.cremona.workbench;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
 import com.gkaraffa.cremona.common.Pitch;
 import com.gkaraffa.cremona.experimental.FretboardCreator;
 import com.gkaraffa.cremona.instrument.model.GuitarModel;
 import com.gkaraffa.cremona.instrument.model.GuitarModelFactory;
 import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
+import com.gkaraffa.cremona.quickaccess.QuickAccess;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
@@ -24,7 +31,7 @@ public class Main {
     System.out.println("Process starts.");
 
     try {
-      testGuitarModel();
+      testQuickAccess();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -33,11 +40,96 @@ public class Main {
     System.out.println("Process completes.");
   }
 
+  private static void testQuickAccess() throws IllegalArgumentException {
+    Scale scale = QuickAccess.getScale("C", "Pentatonic Minor");
+    System.out.println(scale);
+  }
+
+  @SuppressWarnings("unused")
+  private static void testReflection() throws ClassNotFoundException {
+    HashMap<String, ScalePair> hashMap = populateMap();
+    Set<String> set = hashMap.keySet();
+    String[] keyArray = set.toArray(new String[set.size()]);
+
+    for (String key : keyArray) {
+      System.out.println("key: " + key);
+      ScalePair pair = hashMap.get(key);
+      System.out.println(pair.className + ": " + pair.scaleField);
+    }
+  }
+
+  @SuppressWarnings("unused")
+  private static String scrubString(String subject) {
+    String exclude = "_PATTERN";
+    int exLocation = subject.indexOf(exclude);
+
+    return subject.substring(0, exLocation);
+  }
+
+  @SuppressWarnings("unused")
+  private static HashMap<String, ScalePair> populateMap() throws ClassNotFoundException {
+    Main localMain = new Main();
+    HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
+    String[] names = new String[4];
+
+    names[0] = "com.gkaraffa.cremona.theoretical.scale.DiatonicScale";
+    names[1] = "com.gkaraffa.cremona.theoretical.scale.DiminishedScale";
+    names[2] = "com.gkaraffa.cremona.theoretical.scale.PentatonicScale";
+    names[3] = "com.gkaraffa.cremona.theoretical.scale.WholeToneScale";
+
+    for (String name : names) {
+      Class<?> scaleClass = Class.forName(name);
+      String canonicalName = scaleClass.getCanonicalName();
+      Field[] fields = scaleClass.getFields();
+
+      for (Field field : fields) {
+        ScalePair scalePair = localMain.new ScalePair();
+
+        scalePair.className = canonicalName;
+        scalePair.scaleField = field.getName();
+        String keyString = scrubString(scalePair.scaleField);
+
+        hashMap.put(keyString, scalePair);
+      }
+    }
+
+    return hashMap;
+  }
+
+  @SuppressWarnings("unused")
+  private static List<ScalePair> populatePairs() throws ClassNotFoundException {
+    Main localMain = new Main();
+    ArrayList<ScalePair> scalePairs = new ArrayList<ScalePair>();
+    String[] names = new String[4];
+
+    names[0] = "com.gkaraffa.cremona.theoretical.scale.DiatonicScale";
+    names[1] = "com.gkaraffa.cremona.theoretical.scale.DiminishedScale";
+    names[2] = "com.gkaraffa.cremona.theoretical.scale.PentatonicScale";
+    names[3] = "com.gkaraffa.cremona.theoretical.scale.WholeToneScale";
+
+    for (String name : names) {
+      Class<?> scaleClass = Class.forName(name);
+      String canonicalName = scaleClass.getCanonicalName();
+      Field[] fields = scaleClass.getFields();
+
+      for (Field field : fields) {
+        ScalePair scalePair = localMain.new ScalePair();
+
+        scalePair.className = canonicalName;
+        scalePair.scaleField = field.getName();
+
+        scalePairs.add(scalePair);
+      }
+    }
+
+    return scalePairs;
+  }
+
   @SuppressWarnings("unused")
   private static void testGuitarModel() {
     ScaleFactory sF = new DiatonicScaleFactory();
-    Scale scaleOne = sF.createScale(DiatonicScale.DORIAN_PATTERN, Tone.FSHARP_GFLAT);
-    Scale scaleTwo = sF.createScale(DiatonicScale.DORIAN_PATTERN, Tone.B);
+    Scale scaleOne = sF.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
+    Scale scaleTwo = sF.createScale(DiatonicScale.IONIAN_PATTERN, Tone.DSHARP_EFLAT);
 
     InstrumentModelFactory iMF = new GuitarModelFactory();
     GuitarModel gM = (GuitarModel) iMF.createInstrumentModel();
@@ -82,6 +174,10 @@ public class Main {
     System.out.println(chord.getChordNomenclature().getText());
   }
 
+  class ScalePair {
+    public String className = null;
+    public String scaleField = null;
+  }
 
 }
 

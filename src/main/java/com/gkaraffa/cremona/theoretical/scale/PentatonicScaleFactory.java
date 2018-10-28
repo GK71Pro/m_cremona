@@ -54,10 +54,6 @@ public class PentatonicScaleFactory extends ScaleFactory {
       return false;
     }
 
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.EIGHTH) == null) {
-      return false;
-    }
-
     return true;
   }
 }

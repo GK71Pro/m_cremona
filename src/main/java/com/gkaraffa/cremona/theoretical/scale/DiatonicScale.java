@@ -22,8 +22,8 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     LOCRIAN_PATTERN = iPF.createIntervalPattern("Locrian", "P1,m2,m3,P4,d5,m6,m7");
   }
 
-  public DiatonicScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
-      IntervalPattern intervalPattern) {
+  public DiatonicScale(String name, ToneCollection toneCollection,
+      ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 
@@ -45,6 +45,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
 
+  @Override
   public Modal getMode(int modalOffset) {
     throw new java.lang.UnsupportedOperationException();
   }

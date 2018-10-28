@@ -16,8 +16,8 @@ public class DiminishedScale extends SymmetricScale {
         iPF.createIntervalPattern("Second Diminished", "P1,m2,m3,d4,d5,d6,d7,m7");
   }
 
-  public DiminishedScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
-      IntervalPattern intervalPattern) {
+  public DiminishedScale(String name, ToneCollection toneCollection,
+      ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 
