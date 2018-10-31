@@ -9,24 +9,50 @@ import com.gkaraffa.cremona.theoretical.scale.Scale;
 import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 
 public class QuickAccess {
-  private static HashMap<String, ScalePair> hashMap;
-  private static QuickAccess local;
+  private HashMap<String, ScalePair> pairMap = null;
+  private HashMap<String, Scale> scaleMap = new HashMap<String, Scale>();
+  private static QuickAccess instance = null;
 
-  static {
-    local = new QuickAccess();
-    hashMap = populatePairs();
+
+  private QuickAccess() {
+    this.pairMap = populatePairs();
   }
 
 
-  public static Scale getScale(String keyString, String scaleString)
-      throws IllegalArgumentException {
-    keyString = keyString.trim().toUpperCase();
+  public static QuickAccess getInstance() {
+    if (instance == null) {
+      return new QuickAccess();
+    }
+    else {
+      return instance;
+    }
+
+  }
+
+  public Scale getScale(String keyString, String scaleString) throws IllegalArgumentException {
+    Tone keyTone = keyStringToTone(keyString);
+
     scaleString = scaleString.trim().toUpperCase().replace(' ', '_');
 
-    // conversion
-    Tone keyTone = Tone.stringToTone(keyString);
+    // try cache lookup
+    String lookupKey = keyTone.getText() + " " + scaleString;
+    Scale scale = searchScaleMap(lookupKey);
+    if (scale != null) {
+      // return if found
+      return scale;
+    }
 
-    ScalePair scalePair = hashMap.get(scaleString);
+    // generate
+    scale = generateScale(keyTone, scaleString);
+
+    // insert into cache Map
+    storeScaleInMap(scale);
+    return scale;
+  }
+
+
+  private Scale generateScale(Tone keyTone, String scaleString) throws IllegalArgumentException {
+    ScalePair scalePair = pairMap.get(scaleString);
     if (scalePair == null) {
       throw new IllegalArgumentException("Cannot map argument to scale");
     }
@@ -41,24 +67,41 @@ public class QuickAccess {
       throw new IllegalArgumentException("Cannot map to a ScaleFactory or IntervalPattern");
     }
 
-    // generation
     Scale scale = scaleFactory.createScale(intervalPattern, keyTone);
 
     return scale;
   }
 
-  private static IntervalPattern getIntervalPattern(ScalePair scalePair)
-      throws ClassNotFoundException, InstantiationException, IllegalAccessException,
-      NoSuchFieldException {
+  private Scale searchScaleMap(String scaleKey) {
+    Scale scale = scaleMap.get(scaleKey);
+    return scale;
+  }
+
+
+  private void storeScaleInMap(Scale scale) {
+    String keyValue = scale.getText().trim().toUpperCase();
+    scaleMap.put(keyValue, scale);
+    System.out.println("Inserted: " + keyValue);
+  }
+
+
+  private Tone keyStringToTone(String keyString) throws IllegalArgumentException {
+    keyString = keyString.trim().toUpperCase();
+    Tone keyTone = Tone.stringToTone(keyString);
+
+    return keyTone;
+  }
+
+  private IntervalPattern getIntervalPattern(ScalePair scalePair) throws ClassNotFoundException,
+      InstantiationException, IllegalAccessException, NoSuchFieldException {
     Class<?> entityClass = Class.forName(scalePair.className);
     Field field = entityClass.getField(scalePair.scaleField);
     IntervalPattern intervalPattern = (IntervalPattern) field.get(null);
 
     return intervalPattern;
-
   }
 
-  private static ScaleFactory getScaleFactory(ScalePair scalePair)
+  private ScaleFactory getScaleFactory(ScalePair scalePair)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     String factoryString = scalePair.className + "Factory";
     Class<?> entityClass = Class.forName(factoryString);
@@ -67,14 +110,14 @@ public class QuickAccess {
     return scaleFactory;
   }
 
-  private static String scrubString(String subject) {
+  private String scrubString(String subject) {
     String exclude = "_PATTERN";
     int exLocation = subject.indexOf(exclude);
 
     return subject.substring(0, exLocation);
   }
 
-  private static HashMap<String, ScalePair> populatePairs() {
+  private HashMap<String, ScalePair> populatePairs() {
     HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
     String[] names = new String[4];
 
@@ -96,7 +139,7 @@ public class QuickAccess {
       Field[] fields = scaleClass.getFields();
 
       for (Field field : fields) {
-        ScalePair scalePair = local.new ScalePair();
+        ScalePair scalePair = new ScalePair();
 
         scalePair.className = canonicalName;
         scalePair.scaleField = field.getName();
@@ -108,7 +151,6 @@ public class QuickAccess {
 
     return hashMap;
   }
-
 
 
   class ScalePair {

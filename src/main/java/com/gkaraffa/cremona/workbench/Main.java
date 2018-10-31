@@ -41,7 +41,14 @@ public class Main {
   }
 
   private static void testQuickAccess() throws IllegalArgumentException {
-    Scale scale = QuickAccess.getScale("C", "Pentatonic Minor");
+    QuickAccess qA = QuickAccess.getInstance();
+    Scale scale = qA.getScale("C", "Pentatonic Minor");
+    System.out.println(scale);
+    scale = qA.getScale("D", "Dorian");
+    System.out.println(scale);
+    scale = qA.getScale("E", "Dorian");
+    System.out.println(scale);
+    scale = qA.getScale("D", "Dorian");
     System.out.println(scale);
   }
 
