@@ -81,7 +81,6 @@ public class QuickAccess {
   private void storeScaleInMap(Scale scale) {
     String keyValue = scale.getText().trim().toUpperCase();
     scaleMap.put(keyValue, scale);
-    System.out.println("Inserted: " + keyValue);
   }
 
 

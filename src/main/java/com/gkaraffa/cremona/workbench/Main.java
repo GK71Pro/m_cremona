@@ -12,7 +12,9 @@ import com.gkaraffa.cremona.instrument.model.GuitarModel;
 import com.gkaraffa.cremona.instrument.model.GuitarModelFactory;
 import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
 import com.gkaraffa.cremona.quickaccess.QuickAccess;
+import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.analysis.RomanNumeral;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
@@ -31,7 +33,7 @@ public class Main {
     System.out.println("Process starts.");
 
     try {
-      testQuickAccess();
+      testRomanNumeral();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -39,7 +41,22 @@ public class Main {
 
     System.out.println("Process completes.");
   }
+  
+  private static void testRomanNumeral() throws IllegalArgumentException {
+    QuickAccess qA = QuickAccess.getInstance();
+    DiatonicScale diatonicScale = (DiatonicScale) qA.getScale("D", "Dorian");
+    ChordFactory chordFactory = new ChordFactory();
+    
+    for (int index = 0; index < 7; index++) {
+      RomanNumeral romanNumeral = RomanNumeral.createRomanNumeral(diatonicScale, index);
+      Tone tone = diatonicScale.getToneCollection().getTone(index);
+      Interval interval = diatonicScale.getIntervalPattern().getIntervalByLocation(index);
+      Chord chord = chordFactory.createChordFromHarmonizableScale(diatonicScale, diatonicScale.getToneCollection().getTone(index), 3);
+      System.out.println(tone.getText() + "\t" + interval.getText() + "\t" + romanNumeral.getText() + "\t" + chord.getText());      
+    }
+  }
 
+  @SuppressWarnings("unused")
   private static void testQuickAccess() throws IllegalArgumentException {
     QuickAccess qA = QuickAccess.getInstance();
     Scale scale = qA.getScale("C", "Pentatonic Minor");

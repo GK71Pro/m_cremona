@@ -3,7 +3,6 @@ package com.gkaraffa.cremona.theoretical.chord;
 public enum ChordNomenclature {
   DIMINISHED("Diminished", "d"),
   MINOR("Minor", "m"),
-  PERFECT("Perfect", "P"),
   MAJOR("Major", "M"),
   AUGMENTED("Augmented", "A"),
   SUSPENDED_FOURTH("Suspended Fourth", "sus4"),
