@@ -45,14 +45,12 @@ public class Main {
   private static void testRomanNumeral() throws IllegalArgumentException {
     QuickAccess qA = QuickAccess.getInstance();
     DiatonicScale diatonicScale = (DiatonicScale) qA.getScale("D", "Dorian");
-    ChordFactory chordFactory = new ChordFactory();
     
     for (int index = 0; index < 7; index++) {
       RomanNumeral romanNumeral = RomanNumeral.createRomanNumeral(diatonicScale, index);
       Tone tone = diatonicScale.getToneCollection().getTone(index);
       Interval interval = diatonicScale.getIntervalPattern().getIntervalByLocation(index);
-      Chord chord = chordFactory.createChordFromHarmonizableScale(diatonicScale, diatonicScale.getToneCollection().getTone(index), 3);
-      System.out.println(tone.getText() + "\t" + interval.getText() + "\t" + romanNumeral.getText() + "\t" + chord.getText());      
+      System.out.println(tone.getText() + "\t" + interval + "\t" + romanNumeral + "\t" + romanNumeral.getChord());      
     }
   }
 

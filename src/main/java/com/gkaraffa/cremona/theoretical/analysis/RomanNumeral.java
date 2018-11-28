@@ -8,13 +8,14 @@ import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class RomanNumeral {
   private Interval interval;
-  private ChordNomenclature chordNomenclature;
+  private Chord chord;
+
   private String text;
 
 
-  public RomanNumeral(Interval interval, ChordNomenclature chordNomenclature, String text) {
+  public RomanNumeral(Interval interval, Chord chord, String text) {
     this.interval = interval;
-    this.chordNomenclature = chordNomenclature;
+    this.chord = chord;
     this.text = text;
   }
 
@@ -22,11 +23,15 @@ public class RomanNumeral {
     return interval;
   }
 
-  public ChordNomenclature getChordNomenclature() {
-    return chordNomenclature;
+  public Chord getChord() {
+    return chord;
   }
 
   public String getText() {
+    return text;
+  }
+  
+  public String toString() {
     return text;
   }
 
@@ -39,15 +44,14 @@ public class RomanNumeral {
     ChordFactory chordFactory = new ChordFactory();
     Chord chord = chordFactory.createChordFromHarmonizableScale(diatonicScale,
         diatonicScale.getToneCollection().getTone(position), 3);
-    ChordNomenclature chordNomenclature = chord.getChordNomenclature();
 
-    String text = evaluate(interval, chordNomenclature);
+    String text = evaluate(interval, chord);
 
-    return new RomanNumeral(interval, chordNomenclature, text);
+    return new RomanNumeral(interval, chord, text);
 
   }
 
-  private static String evaluate(Interval interval, ChordNomenclature chordNomenclature)
+  private static String evaluate(Interval interval, Chord chord)
       throws IllegalArgumentException {
     String raw = null;
 
@@ -77,7 +81,7 @@ public class RomanNumeral {
         throw new IllegalArgumentException("Inapplicable IntervalNumber");
     }
 
-    switch (chordNomenclature) {
+    switch (chord.getChordNomenclature()) {
       case MAJOR:
         return raw;
       case MINOR:
