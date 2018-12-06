@@ -26,7 +26,6 @@ public class QuickAccess {
     else {
       return instance;
     }
-
   }
 
   public Scale getScale(String keyString, String scaleString) throws IllegalArgumentException {
@@ -85,7 +84,7 @@ public class QuickAccess {
 
 
   private Tone keyStringToTone(String keyString) throws IllegalArgumentException {
-    keyString = keyString.trim().toUpperCase();
+    // keyString = keyString.trim().toUpperCase();
     Tone keyTone = Tone.stringToTone(keyString);
 
     return keyTone;

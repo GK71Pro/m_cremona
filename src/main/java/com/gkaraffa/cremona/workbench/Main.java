@@ -14,7 +14,9 @@ import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
 import com.gkaraffa.cremona.quickaccess.QuickAccess;
 import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.Tone;
+import com.gkaraffa.cremona.theoretical.analysis.IntervalAnalysisView;
 import com.gkaraffa.cremona.theoretical.analysis.RomanNumeral;
+import com.gkaraffa.cremona.theoretical.analysis.RomanNumeralAnalysisView;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
@@ -44,14 +46,21 @@ public class Main {
   
   private static void testRomanNumeral() throws IllegalArgumentException {
     QuickAccess qA = QuickAccess.getInstance();
-    DiatonicScale diatonicScale = (DiatonicScale) qA.getScale("D", "Dorian");
+    DiatonicScale diatonicScale = (DiatonicScale) qA.getScale("D#/Eb", "Ionian");
     
+    RomanNumeralAnalysisView view = new RomanNumeralAnalysisView(diatonicScale);
+    System.out.println(view);
+    IntervalAnalysisView view2 = new IntervalAnalysisView(diatonicScale);
+    System.out.println(view2.getText());
+    
+    /*
     for (int index = 0; index < 7; index++) {
       RomanNumeral romanNumeral = RomanNumeral.createRomanNumeral(diatonicScale, index);
       Tone tone = diatonicScale.getToneCollection().getTone(index);
       Interval interval = diatonicScale.getIntervalPattern().getIntervalByLocation(index);
       System.out.println(tone.getText() + "\t" + interval + "\t" + romanNumeral + "\t" + romanNumeral.getChord());      
     }
+    */
   }
 
   @SuppressWarnings("unused")

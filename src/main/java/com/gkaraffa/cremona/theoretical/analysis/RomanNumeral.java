@@ -3,13 +3,11 @@ package com.gkaraffa.cremona.theoretical.analysis;
 import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
-import com.gkaraffa.cremona.theoretical.chord.ChordNomenclature;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class RomanNumeral {
   private Interval interval;
   private Chord chord;
-
   private String text;
 
 
@@ -31,6 +29,7 @@ public class RomanNumeral {
     return text;
   }
   
+  @Override
   public String toString() {
     return text;
   }
