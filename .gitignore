@@ -1,3 +1,9 @@
-target/*
 *.class
-/target/
+/target
+target/*
+/.idea
+.idea/*
+/.settings
+.settings/*
+
+
