@@ -2,4 +2,7 @@
 target
 .idea
 .settings
-
+bin
+.DS_Store
+.project
+.classpath
