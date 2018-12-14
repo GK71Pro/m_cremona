@@ -1,9 +1,5 @@
 *.class
-/target
-target/*
-/.idea
-.idea/*
-/.settings
-.settings/*
-
+target
+.idea
+.settings
 
