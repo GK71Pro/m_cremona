@@ -5,12 +5,7 @@ import java.util.HashMap;
 
 public enum Interval {
   UNISON(0, IntervalNumber.FIRST, Quality.PERFECT, "Perfect Unison", "P1"),
-  DIMINISHED_SECOND(
-      0,
-      IntervalNumber.SECOND,
-      Quality.DIMINISHED,
-      "Diminished Second",
-      "d2"),
+  DIMINISHED_SECOND(0, IntervalNumber.SECOND, Quality.DIMINISHED, "Diminished Second", "d2"),
   MINOR_SECOND(1, IntervalNumber.SECOND, Quality.MINOR, "Minor Second", "m2"),
   MAJOR_SECOND(2, IntervalNumber.SECOND, Quality.MAJOR, "Major Second", "M2"),
   AUGMENTED_SECOND(3, IntervalNumber.SECOND, Quality.AUGMENTED, "Augmented Second", "A2"),
@@ -18,12 +13,7 @@ public enum Interval {
   MINOR_THIRD(3, IntervalNumber.THIRD, Quality.MINOR, "Minor Third", "m3"),
   MAJOR_THIRD(4, IntervalNumber.THIRD, Quality.MAJOR, "Major Third", "M3"),
   AUGMENTED_THIRD(5, IntervalNumber.THIRD, Quality.AUGMENTED, "Augmented Third", "A3"),
-  DIMINISHED_FOURTH(
-      4,
-      IntervalNumber.FOURTH,
-      Quality.DIMINISHED,
-      "Diminished Fourth",
-      "d4"),
+  DIMINISHED_FOURTH(4, IntervalNumber.FOURTH, Quality.DIMINISHED, "Diminished Fourth", "d4"),
   PERFECT_FOURTH(5, IntervalNumber.FOURTH, Quality.PERFECT, "Perfect Fourth", "P4"),
   AUGMENTED_FOURTH(6, IntervalNumber.FOURTH, Quality.AUGMENTED, "Augmented Fourth", "A4"),
   DIMINISHED_FIFTH(6, IntervalNumber.FIFTH, Quality.DIMINISHED, "Diminished Fifth", "d5"),
@@ -33,26 +23,11 @@ public enum Interval {
   MINOR_SIXTH(8, IntervalNumber.SIXTH, Quality.MINOR, "Minor Sixth", "m6"),
   MAJOR_SIXTH(9, IntervalNumber.SIXTH, Quality.MAJOR, "Major Sixth", "M6"),
   AUGMENTED_SIXTH(10, IntervalNumber.SIXTH, Quality.AUGMENTED, "Augmented Sixth", "A6"),
-  DIMINISHED_SEVENTH(
-      9,
-      IntervalNumber.SEVENTH,
-      Quality.DIMINISHED,
-      "Diminished Seventh",
-      "d7"),
+  DIMINISHED_SEVENTH(9, IntervalNumber.SEVENTH, Quality.DIMINISHED, "Diminished Seventh", "d7"),
   MINOR_SEVENTH(10, IntervalNumber.SEVENTH, Quality.MINOR, "Minor Seventh", "m7"),
   MAJOR_SEVENTH(11, IntervalNumber.SEVENTH, Quality.MAJOR, "Major Seventh", "M7"),
-  AUGMENTED_SEVENTH(
-      12,
-      IntervalNumber.SEVENTH,
-      Quality.AUGMENTED,
-      "Augmented Seventh",
-      "A7"),
-  DIMINISHED_EIGHTH(
-      11,
-      IntervalNumber.EIGHTH,
-      Quality.DIMINISHED,
-      "Diminished Eighth",
-      "d8"),
+  AUGMENTED_SEVENTH(12, IntervalNumber.SEVENTH, Quality.AUGMENTED, "Augmented Seventh", "A7"),
+  DIMINISHED_EIGHTH(11, IntervalNumber.EIGHTH, Quality.DIMINISHED, "Diminished Eighth", "d8"),
   PERFECT_EIGHTH(12, IntervalNumber.EIGHTH, Quality.PERFECT, "Perfect Eighth", "P8"),
   DIMINISHED_NINTH(12, IntervalNumber.NINTH, Quality.DIMINISHED, "Diminished Ninth", "d2"),
   MINOR_NINTH(13, IntervalNumber.NINTH, Quality.MINOR, "Minor Ninth", "m9"),
@@ -69,25 +44,10 @@ public enum Interval {
       "Diminished Eleventh",
       "d11"),
   PERFECT_ELEVENTH(17, IntervalNumber.ELEVENTH, Quality.PERFECT, "Perfect Eleventh", "P11"),
-  AUGMENTED_ELEVENTH(
-      18,
-      IntervalNumber.ELEVENTH,
-      Quality.AUGMENTED,
-      "Augmented Eleventh",
-      "A11"),
-  DIMINISHED_TWELFTH(
-      18,
-      IntervalNumber.TWELFTH,
-      Quality.DIMINISHED,
-      "Diminished Twelfth",
-      "d12"),
+  AUGMENTED_ELEVENTH(18, IntervalNumber.ELEVENTH, Quality.AUGMENTED, "Augmented Eleventh", "A11"),
+  DIMINISHED_TWELFTH(18, IntervalNumber.TWELFTH, Quality.DIMINISHED, "Diminished Twelfth", "d12"),
   PERFECT_TWELFTH(19, IntervalNumber.TWELFTH, Quality.PERFECT, "Perfect Twelfth", "P12"),
-  AUGMENTED_TWELFTH(
-      20,
-      IntervalNumber.TWELFTH,
-      Quality.AUGMENTED,
-      "Augmented Twelfth",
-      "A12"),
+  AUGMENTED_TWELFTH(20, IntervalNumber.TWELFTH, Quality.AUGMENTED, "Augmented Twelfth", "A12"),
   DIMINISHED_THIRTEENTH(
       19,
       IntervalNumber.THIRTEENTH,
@@ -147,8 +107,8 @@ public enum Interval {
     }
   }
 
-  Interval(int halfSteps, IntervalNumber intervalNumber, Quality intervalQuality,
-      String text, String abbrev) {
+  Interval(int halfSteps, IntervalNumber intervalNumber, Quality intervalQuality, String text,
+      String abbrev) {
     this.halfSteps = halfSteps;
     this.intervalNumber = intervalNumber;
     this.intervalQuality = intervalQuality;
