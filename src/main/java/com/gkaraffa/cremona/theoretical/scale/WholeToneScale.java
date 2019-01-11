@@ -34,6 +34,26 @@ public class WholeToneScale extends SymmetricScale {
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof WholeToneScale)) {
+      return false;
+    }
+    WholeToneScale wTSO = (WholeToneScale) o;
+
+    return (wTSO.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 41;
+    result = 43 * result + getText().hashCode();
+    return result;
+  }
 
   public static IntervalPattern WHOLE_TONE_PATTERN;
 }

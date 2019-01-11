@@ -38,6 +38,26 @@ public class DiminishedScale extends SymmetricScale {
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof DiminishedScale)) {
+      return false;
+    }
+    DiminishedScale dSO = (DiminishedScale) o;
+
+    return (dSO.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 31;
+    result = 37 * result + getText().hashCode();
+    return result;
+  }
+  
   public static IntervalPattern FIRST_DIMINISHED_PATTERN;
   public static IntervalPattern SECOND_DIMINISHED_PATTERN;
 }

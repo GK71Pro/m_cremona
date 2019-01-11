@@ -50,6 +50,26 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     throw new java.lang.UnsupportedOperationException();
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof DiatonicScale)) {
+      return false;
+    }
+    DiatonicScale dSO = (DiatonicScale) o;
+
+    return (dSO.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 23;
+    result = 27 * result + getText().hashCode();
+    return result;
+  }
+
   public static IntervalPattern IONIAN_PATTERN;
   public static IntervalPattern DORIAN_PATTERN;
   public static IntervalPattern PHRYGIAN_PATTERN;

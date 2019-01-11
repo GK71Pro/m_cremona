@@ -17,6 +17,26 @@ public class PentatonicScale extends Scale {
       ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof PentatonicScale)) {
+      return false;
+    }
+    PentatonicScale pSO = (PentatonicScale) o;
+
+    return (pSO.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 37;
+    result = 41 * result + getText().hashCode();
+    return result;
+  }
 
   public static IntervalPattern PENTATONIC_MAJOR_PATTERN;
   public static IntervalPattern PENTATONIC_MINOR_PATTERN;

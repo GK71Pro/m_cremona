@@ -35,4 +35,24 @@ public abstract class Scale extends TheoreticalObject {
   public ToneCollection getToneCollection() {
     return this.toneCollection;
   }
+  
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof Scale)) {
+      return false;
+    }
+    Scale sO = (Scale) o;
+
+    return (sO.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 17;
+    result = 23 * result + getText().hashCode();
+    return result;
+  }
 }
