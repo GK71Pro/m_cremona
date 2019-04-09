@@ -117,15 +117,16 @@ public class QuickAccess {
 
   private HashMap<String, ScalePair> populatePairs() {
     HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
-    String[] names = new String[4];
-
-    names[0] = "com.gkaraffa.cremona.theoretical.scale.DiatonicScale";
-    names[1] = "com.gkaraffa.cremona.theoretical.scale.DiminishedScale";
-    names[2] = "com.gkaraffa.cremona.theoretical.scale.PentatonicScale";
-    names[3] = "com.gkaraffa.cremona.theoretical.scale.WholeToneScale";
+    String[] names = new String[] {
+        "com.gkaraffa.cremona.theoretical.scale.DiatonicScale",
+        "com.gkaraffa.cremona.theoretical.scale.DiminishedScale",
+        "com.gkaraffa.cremona.theoretical.scale.PentatonicScal",
+        "com.gkaraffa.cremona.theoretical.scale.WholeToneScale"
+    };
 
     for (String name : names) {
       Class<?> scaleClass;
+      
       try {
         scaleClass = Class.forName(name);
       }
@@ -133,13 +134,11 @@ public class QuickAccess {
         continue;
       }
 
-      String canonicalName = scaleClass.getCanonicalName();
       Field[] fields = scaleClass.getFields();
-
       for (Field field : fields) {
         ScalePair scalePair = new ScalePair();
 
-        scalePair.className = canonicalName;
+        scalePair.className = scaleClass.getCanonicalName();
         scalePair.scaleField = field.getName();
         String keyString = scrubString(scalePair.scaleField);
 
