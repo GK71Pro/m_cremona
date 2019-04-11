@@ -11,22 +11,17 @@ import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class HarmonicAnalysisView implements AnalysisView {
   private DiatonicScale dScale = null;
-  // private List<Chord> chords = new ArrayList<Chord>();
   private List<RomanNumeral> romanNumerals = new ArrayList<RomanNumeral>();
   
   public HarmonicAnalysisView() {}
   
   public HarmonicAnalysisView(DiatonicScale dScale) {
     this.dScale = dScale;
-    // this.chords = new ArrayList<Chord>();
-    
-    // generateChords();
     generateRomanNumerals();
   }
 
   @Override
   public String getText() {
-    // TODO Auto-generated method stub
     StringBuilder sB = new StringBuilder();
     
     for(RomanNumeral romanNumeral: romanNumerals) {
@@ -44,20 +39,20 @@ public class HarmonicAnalysisView implements AnalysisView {
 
   @Override
   public String getCSV() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  /*
-  private void generateChords() {
-    ToneCollection tones = this.dScale.getToneCollection();
-    ChordFactory chordFactory = new ChordFactory();
+    StringBuilder sB = new StringBuilder();
     
-    for(Tone tone: tones) {
-      this.chords.add(chordFactory.createChordFromHarmonizableScale(this.dScale, tone, 3));
+    for(RomanNumeral romanNumeral: romanNumerals) {
+      Chord chord = romanNumeral.getChord();
+      sB.append(romanNumeral.getText());
+      sB.append(",");
+      sB.append(chord);
+      sB.append(",");
+      sB.append(this.getSpellingString(chord));
+      sB.append("\n");
     }
+    
+    return sB.toString();
   }
-  */
   
   private void generateRomanNumerals() {
     int exLimit = this.dScale.getToneCollection().getSize();
@@ -81,5 +76,4 @@ public class HarmonicAnalysisView implements AnalysisView {
     
     return sB.toString();
   }
-  
 }

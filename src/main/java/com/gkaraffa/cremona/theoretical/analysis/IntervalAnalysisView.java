@@ -53,7 +53,7 @@ public class IntervalAnalysisView implements AnalysisView {
       sB.append(interval.getText());
       sB.append(",");
       sB.append(scale.getToneCollection().getTone(index));
-      sB.append(",");
+      sB.append("\n");
     }
     
     return sB.toString();
