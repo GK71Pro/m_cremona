@@ -4,15 +4,6 @@ import java.util.*;
 
 public class IntervalPattern extends TheoreticalObject implements Iterable<Interval>, Spellable {
   private List<Interval> intervalList;
-  //private static HashMap<String, Interval> lookup = new HashMap<String, Interval>();
-
-  /*
-  static {
-    for (Interval currInterval : Interval.values()) {
-      lookup.put(currInterval.getAbbrev(), currInterval);
-    }
-  }
-  */
 
   public IntervalPattern(String name, List<Interval> intervalList) {
     super(name);
