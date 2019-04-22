@@ -1,8 +1,6 @@
 package com.gkaraffa.cremona.common;
 
-import com.gkaraffa.cremona.theoretical.*;
-
-public class Duration extends TheoreticalObject {
+public class Duration extends CremonaObject {
   private Fraction length;
 
   public Duration(Duration d) {

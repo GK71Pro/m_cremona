@@ -2,15 +2,15 @@ package com.gkaraffa.cremona.theoretical.chord;
 
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
-import com.gkaraffa.cremona.theoretical.TheoreticalObject;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
+import com.gkaraffa.cremona.theoretical.ToneGroupObject;
 
-public class Chord extends TheoreticalObject {
+public class Chord extends ToneGroupObject {
   private Tone tonic;
   private ChordNomenclature chordNomenclature;
   private IntervalPattern intervalPattern;
-  private ToneCollection toneCollection;
+  // private ToneCollection toneCollection;
   private HarmonicPreference harmonicPreference;
 
   static {
@@ -55,12 +55,19 @@ public class Chord extends TheoreticalObject {
     return intervalPattern;
   }
 
+  @Override
   public ToneCollection getToneCollection() {
     return toneCollection;
   }
 
   public HarmonicPreference getHarmonicPreference() {
     return harmonicPreference;
+  }
+  
+  @Override
+  public boolean contentsEqual(Object o) {
+    // TODO Auto-generated method stub
+    return false;
   }
 
   public static IntervalPattern MAJOR_CHORD_PATTERN;
@@ -74,4 +81,5 @@ public class Chord extends TheoreticalObject {
   public static IntervalPattern HALF_DIMINISHED_SEVENTH_CHORD_PATTERN;
   public static IntervalPattern DIMINISHED_SEVENTH_CHORD_PATTERN;
   public static IntervalPattern AUGMENTED_MAJOR_SEVENTH_CHORD_PATTERN;
+
 }

@@ -35,5 +35,4 @@ public abstract class TheoreticalObject {
     result = 31 * result + text.hashCode();
     return result;
   }
-
 }

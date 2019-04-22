@@ -1,10 +1,9 @@
 package com.gkaraffa.cremona.common;
 
-import com.gkaraffa.cremona.theoretical.TheoreticalObject;
 import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 
-public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
+public class Pitch extends CremonaObject implements Comparable<Pitch> {
   private Tone tone;
   private int range;
   private int absVal;
@@ -65,6 +64,7 @@ public class Pitch extends TheoreticalObject implements Comparable<Pitch> {
     return ( new Pitch( TonalSpectrum.traverseDistance(this.tone, 1), range));   
   }
 
+  @Override
   public int compareTo(Pitch o) {
     if (this.absVal > o.getAbsVal()) {
       return 1;

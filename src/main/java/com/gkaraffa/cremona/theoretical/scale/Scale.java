@@ -1,11 +1,11 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
-import com.gkaraffa.cremona.theoretical.TheoreticalObject;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
+import com.gkaraffa.cremona.theoretical.ToneGroupObject;
 
-public abstract class Scale extends TheoreticalObject {
+public abstract class Scale extends ToneGroupObject {
   private Tone key;
   private ScaleNomenclature scaleNomenclature;
   private IntervalPattern intervalPattern;
@@ -32,12 +32,14 @@ public abstract class Scale extends TheoreticalObject {
     return this.intervalPattern;
   }
 
+  @Override
   public ToneCollection getToneCollection() {
     return this.toneCollection;
   }
   
   @Override
   public boolean equals(Object o) {
+    
     if (o == this) {
       return true;
     }
