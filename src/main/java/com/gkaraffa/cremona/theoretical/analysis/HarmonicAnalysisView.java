@@ -57,7 +57,7 @@ public class HarmonicAnalysisView implements AnalysisView {
     int exLimit = this.dScale.getToneCollection().getSize();
     
     for(int index = 0; index < exLimit; index++) {
-      romanNumerals.add(RomanNumeral.createRomanNumeral(this.dScale, index));
+      romanNumerals.add(RomanNumeral.createRomanNumeral(this.dScale, index, 4));
     }
   }
   

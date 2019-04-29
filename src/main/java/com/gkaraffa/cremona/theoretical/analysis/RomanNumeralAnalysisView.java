@@ -10,7 +10,7 @@ public class RomanNumeralAnalysisView implements AnalysisView{
   public RomanNumeralAnalysisView(DiatonicScale scale) {
     int maxOffset = scale.getToneCollection().getSize() - 1;
     for(int index = 0; index <= maxOffset; index++) {
-      romanNumerals[index] = RomanNumeral.createRomanNumeral(scale, index);
+      romanNumerals[index] = RomanNumeral.createRomanNumeral(scale, index, 4);
     }
   }
   

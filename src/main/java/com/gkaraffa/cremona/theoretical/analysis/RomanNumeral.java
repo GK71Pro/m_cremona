@@ -34,7 +34,7 @@ public class RomanNumeral {
     return text;
   }
 
-  public static RomanNumeral createRomanNumeral(DiatonicScale diatonicScale, int position) {
+  public static RomanNumeral createRomanNumeral(DiatonicScale diatonicScale, int position, int toneCount) {
     // get interval
     Interval interval = diatonicScale.getIntervalPattern().getIntervalByLocation(position);
 
@@ -42,7 +42,7 @@ public class RomanNumeral {
     // create chord
     ChordFactory chordFactory = new ChordFactory();
     Chord chord = chordFactory.createChordFromHarmonizableScale(diatonicScale,
-        diatonicScale.getToneCollection().getTone(position), 3);
+        diatonicScale.getToneCollection().getTone(position), toneCount);
 
     String text = evaluate(interval, chord);
 
@@ -82,12 +82,19 @@ public class RomanNumeral {
 
     switch (chord.getChordNomenclature()) {
       case MAJOR:
+      case MAJOR_SEVENTH:
+      case DOMINANT_SEVENTH:
         return raw;
       case MINOR:
+      case MINOR_SEVENTH:
+      case MINOR_MAJOR_SEVENTH:
         return raw.toLowerCase();
       case DIMINISHED:
+      case HALF_DIMINISHED_SEVENTH:
+      case DIMINISHED_SEVENTH:
         return raw.toLowerCase() + "°";
       case AUGMENTED:
+      case AUGMENTED_MAJOR_SEVENTH:
         return raw + "+";
       default:
         throw new IllegalArgumentException("Inapplicable ChordNomenclature");
