@@ -66,7 +66,27 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
 
     return tCB.toToneCollection();
   }
-  
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+    if (!(o instanceof IntervalPattern)) {
+      return false;
+    }
+    IntervalPattern iP = (IntervalPattern) o;
+
+    return (iP.hashCode() == this.hashCode());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 19;
+    result = 37 * (result + this.getSpellingString().hashCode());
+    return result;
+  }
+
   public Iterator<Interval> iterator() {
     return new IntervalIterator();
   }
