@@ -1,10 +1,10 @@
 package com.gkaraffa.cremona.common;
 
 import com.gkaraffa.cremona.experimental.FretboardCreator;
+import com.gkaraffa.cremona.helper.Helper;
 import com.gkaraffa.cremona.instrument.model.GuitarModel;
 import com.gkaraffa.cremona.instrument.model.GuitarModelFactory;
 import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
-import com.gkaraffa.cremona.quickaccess.QuickAccess;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class TestPlatform {
@@ -15,8 +15,8 @@ public class TestPlatform {
     
     InstrumentModelFactory imf = new GuitarModelFactory();
     GuitarModel gM = (GuitarModel) imf.createInstrumentModel();
-    QuickAccess qA = QuickAccess.getInstance();
-    DiatonicScale diatonicScale = (DiatonicScale) qA.getScale(key, scale);
+    Helper helper = Helper.getInstance();
+    DiatonicScale diatonicScale = (DiatonicScale) helper.getScale(key, scale);
     String fb = FretboardCreator.createFormattedFretboardCSV(gM, diatonicScale.getToneCollection());
     System.out.println(fb);
   }

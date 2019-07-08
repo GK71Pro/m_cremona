@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.quickaccess;
+package com.gkaraffa.cremona.helper;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -8,20 +8,20 @@ import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 
-public class QuickAccess {
+public class Helper {
   private HashMap<String, ScalePair> pairMap = null;
   private HashMap<String, Scale> scaleMap = new HashMap<String, Scale>();
-  private static QuickAccess instance = null;
+  private static Helper instance = null;
 
 
-  private QuickAccess() {
+  private Helper() {
     this.pairMap = populatePairs();
   }
 
 
-  public static QuickAccess getInstance() {
+  public static Helper getInstance() {
     if (instance == null) {
-      return new QuickAccess();
+      return new Helper();
     }
     else {
       return instance;
