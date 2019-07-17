@@ -2,9 +2,9 @@ package com.gkaraffa.cremona.common;
 
 import com.gkaraffa.cremona.experimental.FretboardCreator;
 import com.gkaraffa.cremona.helper.Helper;
-import com.gkaraffa.cremona.instrument.model.GuitarModel;
-import com.gkaraffa.cremona.instrument.model.GuitarModelFactory;
-import com.gkaraffa.cremona.instrument.model.InstrumentModelFactory;
+import com.gkaraffa.cremona.instrument.GuitarModel;
+import com.gkaraffa.cremona.instrument.GuitarModelFactory;
+import com.gkaraffa.cremona.instrument.InstrumentModelFactory;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class TestPlatform {

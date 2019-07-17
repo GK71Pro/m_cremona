@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.instrument.model;
+package com.gkaraffa.cremona.instrument;
 
 public abstract class InstrumentModelParameterObject {
 

@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.theoretical.analysis;
+package com.gkaraffa.cremona.analysis;
 
 public interface AnalysisView {
   public String getText();

@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.theoretical.analysis;
+package com.gkaraffa.cremona.analysis;
 
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 

@@ -2,7 +2,7 @@ package com.gkaraffa.cremona.experimental;
 
 import com.gkaraffa.cremona.common.Pitch;
 import com.gkaraffa.cremona.common.PitchCollection;
-import com.gkaraffa.cremona.instrument.model.GuitarModel;
+import com.gkaraffa.cremona.instrument.GuitarModel;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public class FretboardCreator {

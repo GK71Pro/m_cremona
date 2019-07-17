@@ -1,4 +1,4 @@
-package com.gkaraffa.cremona.theoretical.analysis;
+package com.gkaraffa.cremona.analysis;
 
 import java.util.ArrayList;
 import java.util.List;
