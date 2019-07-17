@@ -1,24 +1,20 @@
 package com.gkaraffa.cremona.common;
 
-import com.gkaraffa.cremona.experimental.FretboardCreator;
+import com.gkaraffa.cremona.analysis.IntervalAnalytic;
+import com.gkaraffa.cremona.analysis.TabularAnalytic;
+import com.gkaraffa.cremona.analysis.TextView;
 import com.gkaraffa.cremona.helper.Helper;
-import com.gkaraffa.cremona.instrument.GuitarModel;
-import com.gkaraffa.cremona.instrument.GuitarModelFactory;
-import com.gkaraffa.cremona.instrument.InstrumentModelFactory;
-import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
+import com.gkaraffa.cremona.theoretical.scale.Scale;
 
 public class TestPlatform {
 
   public static void main(String[] args) {
-    String key = "E";
-    String scale = "Ionian";
-    
-    InstrumentModelFactory imf = new GuitarModelFactory();
-    GuitarModel gM = (GuitarModel) imf.createInstrumentModel();
     Helper helper = Helper.getInstance();
-    DiatonicScale diatonicScale = (DiatonicScale) helper.getScale(key, scale);
-    String fb = FretboardCreator.createFormattedFretboardCSV(gM, diatonicScale.getToneCollection());
-    System.out.println(fb);
+    
+    Scale scale = helper.getScale("C", "Ionian");
+    TabularAnalytic tabularAnalytic = IntervalAnalytic.createIntervalAnalytic(scale);
+    TextView textView = new TextView(tabularAnalytic);
+    System.out.println(textView);
   }
 
 }
