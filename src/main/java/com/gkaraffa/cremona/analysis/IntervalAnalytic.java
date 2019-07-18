@@ -5,7 +5,7 @@ import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 
 public class IntervalAnalytic extends TabularAnalytic {
-  public static final int breadth = 4;
+  // public static final int breadth = 4;
 
   private IntervalAnalytic(HeaderCell[] headerRowCells, HeaderCell[] headerColumnCells,
       AnalyticCell[][] analyticCells) {
@@ -17,11 +17,11 @@ public class IntervalAnalytic extends TabularAnalytic {
   public static IntervalAnalytic createIntervalAnalytic(Scale scale) {
     int scaleSize = scale.getToneCollection().getSize();
     int maxOffset = scaleSize - 1;
-    AnalyticCell[][] analyticCells = new AnalyticCell[scaleSize][breadth];
     HeaderCell[] headerColumnCells = new HeaderCell[scaleSize];
     HeaderCell[] headerRowCells = new HeaderCell[] {new HeaderCell("Abbrev"),
         new HeaderCell("Function"), new HeaderCell("Interval"), new HeaderCell("Tone")};
-
+    AnalyticCell[][] analyticCells = new AnalyticCell[scaleSize][headerRowCells.length];
+    
     for (int index = 0; index <= maxOffset; index++) {
       headerColumnCells[index] = new HeaderCell("");
       Interval interval = scale.getIntervalPattern().getIntervalByLocation(index);
