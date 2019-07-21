@@ -6,12 +6,10 @@ import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
 
 public class RomanNumeralAnalytic extends TabularAnalytic {
-  // public static final int breadth = 3;
 
   private RomanNumeralAnalytic(HeaderCell[] headerRowCells, HeaderCell[] headerColumnCells,
       AnalyticCell[][] analyticCells) {
     this.headerRow = headerRowCells;
-    this.headerColumn = headerColumnCells;
     this.analyticCells = analyticCells;
   }
   

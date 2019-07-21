@@ -6,11 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public abstract class TabularAnalytic
-    implements AnalyticRow, AnalyticColumn, HeaderRow, HeaderColumn {
+    implements AnalyticRow, AnalyticColumn, HeaderRow {
   private HashMap<Integer, List<AnalyticCell>> rowMap = new HashMap<Integer, List<AnalyticCell>>();
   private HashMap<Integer, List<AnalyticCell>> columnMap = new HashMap<Integer, List<AnalyticCell>>();
   protected HeaderCell[] headerRow;
-  protected HeaderCell[] headerColumn;
   protected AnalyticCell[][] analyticCells;
 
   public int getRowCount() {
@@ -64,10 +63,5 @@ public abstract class TabularAnalytic
   @Override
   public List<HeaderCell> getHeaderRow() {
     return Arrays.asList(headerRow);
-  }
-
-  @Override
-  public List<HeaderCell> getHeaderColumn() {
-    return Arrays.asList(headerColumn);
   }
 }

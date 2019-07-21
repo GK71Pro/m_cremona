@@ -5,12 +5,10 @@ import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 
 public class IntervalAnalytic extends TabularAnalytic {
-  // public static final int breadth = 4;
 
   private IntervalAnalytic(HeaderCell[] headerRowCells, HeaderCell[] headerColumnCells,
       AnalyticCell[][] analyticCells) {
     this.headerRow = headerRowCells;
-    this.headerColumn = headerColumnCells;
     this.analyticCells = analyticCells;
   }
 
