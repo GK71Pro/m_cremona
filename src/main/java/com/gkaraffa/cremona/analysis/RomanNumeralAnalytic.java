@@ -1,5 +1,6 @@
 package com.gkaraffa.cremona.analysis;
 
+import com.gkaraffa.cremona.theoretical.RomanNumeral;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.chord.Chord;

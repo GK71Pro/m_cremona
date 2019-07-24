@@ -1,6 +1,5 @@
-package com.gkaraffa.cremona.analysis;
+package com.gkaraffa.cremona.theoretical;
 
-import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.chord.Chord;
 import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
