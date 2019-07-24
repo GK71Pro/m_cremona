@@ -14,7 +14,7 @@ public class TextViewFactory extends ViewFactory{
     sB.append(this.renderFoot(fieldSpace));
     
     String viewString = sB.toString();
-    View outputView = new TextView(viewString, viewString.getBytes());
+    View outputView = new View(viewString, viewString.getBytes());
     
     return outputView;
   }

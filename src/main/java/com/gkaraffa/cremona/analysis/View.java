@@ -1,6 +1,6 @@
 package com.gkaraffa.cremona.analysis;
 
-public abstract class View {
+public class View {
   private String viewString;
   private byte[] byteArray;
 

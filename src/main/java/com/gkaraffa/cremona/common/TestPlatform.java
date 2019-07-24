@@ -3,8 +3,8 @@ package com.gkaraffa.cremona.common;
 import com.gkaraffa.cremona.analysis.IntervalAnalytic;
 import com.gkaraffa.cremona.analysis.RomanNumeralAnalytic;
 import com.gkaraffa.cremona.analysis.TabularAnalytic;
-import com.gkaraffa.cremona.analysis.TextView;
 import com.gkaraffa.cremona.analysis.TextViewFactory;
+import com.gkaraffa.cremona.analysis.View;
 import com.gkaraffa.cremona.analysis.ViewFactory;
 import com.gkaraffa.cremona.helper.Helper;
 import com.gkaraffa.cremona.theoretical.scale.DiatonicScale;
@@ -19,12 +19,12 @@ public class TestPlatform {
     TabularAnalytic romanNumeralAnalytic = RomanNumeralAnalytic.createRomanNumeralAnalytic((DiatonicScale) scale);
     
     ViewFactory viewFactory = new TextViewFactory();
-    TextView[] textViews = new TextView[2];
-    textViews[0] = (TextView) viewFactory.renderView(tabularAnalytic);
-    textViews[1] = (TextView) viewFactory.renderView(romanNumeralAnalytic);
+    View[] views = new View[2];
+    views[0] = (View) viewFactory.renderView(tabularAnalytic);
+    views[1] = (View) viewFactory.renderView(romanNumeralAnalytic);
 
-    for(TextView textView: textViews) {
-      System.out.println(textView);
+    for(View view: views) {
+      System.out.println(view);
     }
   }
 
