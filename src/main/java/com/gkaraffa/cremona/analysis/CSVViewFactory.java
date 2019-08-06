@@ -10,6 +10,7 @@ public class CSVViewFactory extends ViewFactory {
     
     sB.append(this.renderHeader(tabularAnalytic));
     sB.append(this.renderBody(tabularAnalytic));
+    sB.append("\n");
     
     String viewString = sB.toString();
     View outputView = new View(viewString, viewString.getBytes());

@@ -14,7 +14,7 @@ public class TestPlatform {
 
   public static void main(String[] args) {
     Helper helper = Helper.getInstance();
-    Scale scale = helper.getScale("C", "Ionian");
+    Scale scale = helper.getScale("A", "Melodic Minor");
     TabularAnalytic tabularAnalytic = IntervalAnalytic.createIntervalAnalytic(scale);
     TabularAnalytic romanNumeralAnalytic = RomanNumeralAnalytic.createRomanNumeralAnalytic((DiatonicScale) scale);
     

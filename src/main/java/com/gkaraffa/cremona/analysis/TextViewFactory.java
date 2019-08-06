@@ -12,6 +12,7 @@ public class TextViewFactory extends ViewFactory{
     sB.append(this.renderHeader(columnMaxs, fieldSpace, tabularAnalytic));
     sB.append(this.renderBody(columnMaxs, fieldSpace, tabularAnalytic));
     sB.append(this.renderFoot(fieldSpace));
+    sB.append("\n");
     
     String viewString = sB.toString();
     View outputView = new View(viewString, viewString.getBytes());

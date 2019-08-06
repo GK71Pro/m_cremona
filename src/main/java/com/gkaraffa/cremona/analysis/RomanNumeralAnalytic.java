@@ -19,7 +19,7 @@ public class RomanNumeralAnalytic extends TabularAnalytic {
     int maxOffset = scaleSize - 1;
     HeaderCell[] headerColumnCells = new HeaderCell[scaleSize];
     HeaderCell[] headerRowCells = new HeaderCell[] {new HeaderCell("Degree"),
-        new HeaderCell("Chord"), new HeaderCell("Spelling")};
+        new HeaderCell("Chord"), new HeaderCell("Root Spelling")};
     AnalyticCell[][] analyticCells = new AnalyticCell[scaleSize][headerRowCells.length];
 
     for (int index = 0; index <= maxOffset; index++) {
@@ -40,7 +40,7 @@ public class RomanNumeralAnalytic extends TabularAnalytic {
     ToneCollection chordTones = chord.getToneCollection();
     for(Tone tone: chordTones) {
       sB.append(tone);
-      sB.append(", ");
+      sB.append("->");
     }
     
     int size = sB.length();
