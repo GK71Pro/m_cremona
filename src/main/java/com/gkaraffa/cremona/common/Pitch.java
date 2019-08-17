@@ -9,7 +9,7 @@ public class Pitch extends CremonaObject implements Comparable<Pitch> {
   private int absVal;
 
   public Pitch(Pitch p) {
-    super(p.getText()); 
+    super(p.getText());
     this.tone = p.getTone();
     this.range = p.getRange();
     this.absVal = generateAbsVal(this.tone, this.range);
@@ -35,33 +35,22 @@ public class Pitch extends CremonaObject implements Comparable<Pitch> {
   }
 
   private int generateAbsVal(Tone tone, int range) {
-    int toneOrd = tone.ordinal();
-    
-    /*
-    if (toneOrd >= 9) {
-      toneOrd -= 9;
-    }
-    else {
-      toneOrd += 3;
-    }
-    */
-
-    int generated = ((range - 1) * 12) + toneOrd;
+    int generated = ((range - 1) * 12) + tone.ordinal();
 
     return generated;
   }
-  
+
   public Pitch generatePitchByOffset(int offset) {
     if (offset < 0) {
       throw new IllegalArgumentException();
     }
-    
+
     int range = this.range;
     if (this.tone == Tone.B) {
       range++;
     }
 
-    return ( new Pitch( TonalSpectrum.traverseDistance(this.tone, 1), range));   
+    return (new Pitch(TonalSpectrum.traverseDistance(this.tone, 1), range));
   }
 
   @Override
@@ -99,6 +88,5 @@ public class Pitch extends CremonaObject implements Comparable<Pitch> {
 
     return result;
   }
-
 
 }
