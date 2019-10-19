@@ -8,20 +8,18 @@ import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 
-public class Helper {
-  private HashMap<String, ScalePair> pairMap = null;
+public class ScaleHelper {
+  private HashMap<String, ScalePair> scalePairMap = null;
   private HashMap<String, Scale> scaleMap = new HashMap<String, Scale>();
-  private static Helper instance = null;
+  private static ScaleHelper instance = null;
 
-
-  private Helper() {
-    this.pairMap = populatePairs();
+  private ScaleHelper() {
+    this.scalePairMap = populateScalePairs();
   }
 
-
-  public static Helper getInstance() {
+  public static ScaleHelper getInstance() {
     if (instance == null) {
-      return new Helper();
+      return new ScaleHelper();
     }
     else {
       return instance;
@@ -49,9 +47,8 @@ public class Helper {
     return scale;
   }
 
-
   private Scale generateScale(Tone keyTone, String scaleString) throws IllegalArgumentException {
-    ScalePair scalePair = pairMap.get(scaleString);
+    ScalePair scalePair = scalePairMap.get(scaleString);
     if (scalePair == null) {
       throw new IllegalArgumentException("Cannot map argument to scale");
     }
@@ -115,18 +112,16 @@ public class Helper {
     return subject.substring(0, exLocation);
   }
 
-  private HashMap<String, ScalePair> populatePairs() {
+  private HashMap<String, ScalePair> populateScalePairs() {
     HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
-    String[] names = new String[] {
-        "com.gkaraffa.cremona.theoretical.scale.DiatonicScale",
+    String[] names = new String[] {"com.gkaraffa.cremona.theoretical.scale.DiatonicScale",
         "com.gkaraffa.cremona.theoretical.scale.DiminishedScale",
         "com.gkaraffa.cremona.theoretical.scale.PentatonicScal",
-        "com.gkaraffa.cremona.theoretical.scale.WholeToneScale"
-    };
+        "com.gkaraffa.cremona.theoretical.scale.WholeToneScale"};
 
     for (String name : names) {
       Class<?> scaleClass;
-      
+
       try {
         scaleClass = Class.forName(name);
       }
