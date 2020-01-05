@@ -11,7 +11,7 @@ public class TestPlatform {
     ScaleHelper scaleHelper = ScaleHelper.getInstance();
     Scale scale = scaleHelper.getScale("A", "Melodic Minor");
     scale.getText();
-    
+
     ChordHelper chordHelper = ChordHelper.getInstance();
     Chord chord = chordHelper.getChord("C", "dominant seventh");
     System.out.println(chord.getText());
