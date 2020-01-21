@@ -63,7 +63,7 @@ public class Chord extends ToneGroupObject {
   public HarmonicPreference getHarmonicPreference() {
     return harmonicPreference;
   }
-  
+
   @Override
   public boolean contentsEqual(Object o) {
     // TODO Auto-generated method stub

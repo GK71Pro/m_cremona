@@ -136,6 +136,7 @@ public enum Interval {
     return abbrev;
   }
 
+  @Override
   public final String toString() {
     return text;
   }

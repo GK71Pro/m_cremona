@@ -5,8 +5,8 @@ import com.gkaraffa.cremona.theoretical.ToneCollection;
 
 public abstract class SymmetricScale extends HarmonizableScale {
 
-  public SymmetricScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
-      IntervalPattern intervalPattern) {
+  public SymmetricScale(String name, ToneCollection toneCollection,
+      ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 }

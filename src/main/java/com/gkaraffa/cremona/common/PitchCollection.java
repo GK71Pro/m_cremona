@@ -46,8 +46,8 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
   }
 
   public PitchCollection intersection(PitchCollection target) {
-    PitchCollectionBuilder pitchCollectionBuilder =
-        new PitchCollectionBuilder("Intersection of " + this.getText() + " and " + target.getText());
+    PitchCollectionBuilder pitchCollectionBuilder = new PitchCollectionBuilder(
+        "Intersection of " + this.getText() + " and " + target.getText());
 
     for (Pitch outerPitch : pitches) {
       for (Pitch innerPitch : target) {
@@ -117,6 +117,7 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
     return true;
   }
 
+  @Override
   public Iterator<Pitch> iterator() {
     return new PitchIterator();
   }
@@ -124,14 +125,17 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
   class PitchIterator implements Iterator<Pitch> {
     private int index = 0;
 
+    @Override
     public boolean hasNext() {
       return index < getSize();
     }
 
+    @Override
     public Pitch next() {
       return getpitch(index++);
     }
 
+    @Override
     public void remove() {
       throw new UnsupportedOperationException("not supported yet");
     }

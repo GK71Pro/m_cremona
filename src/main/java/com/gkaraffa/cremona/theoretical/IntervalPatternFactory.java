@@ -20,10 +20,10 @@ public class IntervalPatternFactory {
     if (instance == null) {
       instance = new IntervalPatternFactory();
     }
-    
+
     return instance;
   }
-  
+
   public IntervalPattern createIntervalPattern(String name, String patternString) {
     String[] intervalArray = patternString.split(",");
     List<Interval> intervalList = new ArrayList<Interval>();
@@ -35,10 +35,10 @@ public class IntervalPatternFactory {
 
     return new IntervalPattern(name, intervalList);
   }
-  
+
   public IntervalPattern createIntervalPattern(String name, String[] patternStringArray) {
     List<Interval> intervalList = new ArrayList<Interval>();
-    
+
     for (String currentIntervalString : patternStringArray) {
       Interval currentIntervalUnit = getIntervalByString(currentIntervalString);
       intervalList.add(currentIntervalUnit);
@@ -46,7 +46,7 @@ public class IntervalPatternFactory {
 
     return new IntervalPattern(name, intervalList);
   }
-  
+
   /*
   public IntervalPattern createIntervalPattern(String name, int[] stepArray) {
     List<Interval> intervalList = new ArrayList<Interval>();

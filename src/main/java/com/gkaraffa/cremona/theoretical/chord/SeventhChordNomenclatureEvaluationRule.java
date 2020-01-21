@@ -19,35 +19,41 @@ public class SeventhChordNomenclatureEvaluationRule extends NomenclatureEvaluati
         if (seventhInterval == Interval.MAJOR_SEVENTH) {
           return ChordNomenclature.MAJOR_SEVENTH;
         }
-        else if (seventhInterval == Interval.MINOR_SEVENTH) {
-          return ChordNomenclature.DOMINANT_SEVENTH;
-        }
+        else
+          if (seventhInterval == Interval.MINOR_SEVENTH) {
+            return ChordNomenclature.DOMINANT_SEVENTH;
+          }
       }
-      else if (fifthInterval == Interval.AUGMENTED_FIFTH) {
-        if (seventhInterval == Interval.MAJOR_SEVENTH) {
-          return ChordNomenclature.AUGMENTED_MAJOR_SEVENTH;
+      else
+        if (fifthInterval == Interval.AUGMENTED_FIFTH) {
+          if (seventhInterval == Interval.MAJOR_SEVENTH) {
+            return ChordNomenclature.AUGMENTED_MAJOR_SEVENTH;
+          }
         }
-      }
     }
-    else if (thirdInterval == Interval.MINOR_THIRD) {
-      if (fifthInterval == Interval.PERFECT_FIFTH) {
-        if (seventhInterval == Interval.MINOR_SEVENTH) {
-          return ChordNomenclature.MINOR_SEVENTH;
+    else
+      if (thirdInterval == Interval.MINOR_THIRD) {
+        if (fifthInterval == Interval.PERFECT_FIFTH) {
+          if (seventhInterval == Interval.MINOR_SEVENTH) {
+            return ChordNomenclature.MINOR_SEVENTH;
+          }
+          else
+            if (seventhInterval == Interval.MAJOR_SEVENTH) {
+              return ChordNomenclature.MINOR_MAJOR_SEVENTH;
+            }
         }
-        else if (seventhInterval == Interval.MAJOR_SEVENTH) {
-          return ChordNomenclature.MINOR_MAJOR_SEVENTH;
-        }
+        else
+          if (fifthInterval == Interval.DIMINISHED_FIFTH) {
+            if (seventhInterval == Interval.MINOR_SEVENTH) {
+              return ChordNomenclature.HALF_DIMINISHED_SEVENTH;
+            }
+            else
+              if (seventhInterval == Interval.DIMINISHED_SEVENTH) {
+                return ChordNomenclature.DIMINISHED_SEVENTH;
+              }
+          }
       }
-      else if (fifthInterval == Interval.DIMINISHED_FIFTH) {
-        if (seventhInterval == Interval.MINOR_SEVENTH) {
-          return ChordNomenclature.HALF_DIMINISHED_SEVENTH;
-        }
-        else if (seventhInterval == Interval.DIMINISHED_SEVENTH) {
-          return ChordNomenclature.DIMINISHED_SEVENTH;
-        }
-      }
-    }
-    
+
     throw new IllegalArgumentException();
   }
 }

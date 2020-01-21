@@ -41,6 +41,7 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
     return intervalList.size();
   }
 
+  @Override
   public String getSpellingString() {
     StringBuilder sb = new StringBuilder();
     for (Interval interval : intervalList) {
@@ -87,6 +88,7 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
     return result;
   }
 
+  @Override
   public Iterator<Interval> iterator() {
     return new IntervalIterator();
   }
@@ -94,14 +96,17 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
   class IntervalIterator implements Iterator<Interval> {
     private int index = 0;
 
+    @Override
     public boolean hasNext() {
       return index < getSize();
     }
 
+    @Override
     public Interval next() {
       return getIntervalByLocation(index++);
     }
 
+    @Override
     public void remove() {
       throw new UnsupportedOperationException("not supported yet");
     }

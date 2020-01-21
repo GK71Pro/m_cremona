@@ -40,7 +40,7 @@ public class DiminishedScaleFactory extends ScaleFactory {
         || (fifthInterval != Interval.DIMINISHED_FIFTH)) {
       return false;
     }
-    
+
     return true;
   }
 }

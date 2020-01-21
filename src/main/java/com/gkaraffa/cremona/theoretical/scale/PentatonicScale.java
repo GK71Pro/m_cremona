@@ -17,7 +17,7 @@ public class PentatonicScale extends Scale {
       ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (o == this) {

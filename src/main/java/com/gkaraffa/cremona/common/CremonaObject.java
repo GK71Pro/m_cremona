@@ -7,6 +7,7 @@ public abstract class CremonaObject {
     this.text = text;
   }
 
+  @Override
   public String toString() {
     return this.text;
   }

@@ -47,7 +47,7 @@ public class IntervalPatternBuilder {
     intervalList.remove(index);
   }
 
-  
+
   public IntervalPattern toIntervalPattern() {
     if (intervalList.isEmpty()) {
       return null;

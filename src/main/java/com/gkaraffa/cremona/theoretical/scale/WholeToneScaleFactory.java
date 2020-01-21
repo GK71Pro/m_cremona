@@ -40,7 +40,7 @@ public class WholeToneScaleFactory extends ScaleFactory {
         || (fifthInterval != Interval.AUGMENTED_FIFTH)) {
       return false;
     }
-    
+
     return true;
   }
 }

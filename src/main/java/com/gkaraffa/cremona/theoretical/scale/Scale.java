@@ -36,10 +36,10 @@ public abstract class Scale extends ToneGroupObject {
   public ToneCollection getToneCollection() {
     return this.toneCollection;
   }
-  
+
   @Override
   public boolean equals(Object o) {
-    
+
     if (o == this) {
       return true;
     }

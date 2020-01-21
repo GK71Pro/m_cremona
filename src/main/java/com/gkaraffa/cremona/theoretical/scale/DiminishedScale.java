@@ -57,7 +57,7 @@ public class DiminishedScale extends SymmetricScale {
     result = 37 * result + getText().hashCode();
     return result;
   }
-  
+
   public static IntervalPattern FIRST_DIMINISHED_PATTERN;
   public static IntervalPattern SECOND_DIMINISHED_PATTERN;
 }

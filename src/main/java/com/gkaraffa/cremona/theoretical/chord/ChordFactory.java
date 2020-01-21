@@ -15,10 +15,12 @@ public class ChordFactory {
 
   public Chord createChordFromIntervalPattern(IntervalPattern intervalPattern, Tone tonic) {
     ToneCollection toneCollection = intervalPattern.toToneCollection(tonic);
-    ChordNomenclature chordNomenclature = evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
+    ChordNomenclature chordNomenclature =
+        evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
-    Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
-        toneCollection, chordNomenclature, intervalPattern, null);
+    Chord chord =
+        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
+            toneCollection, chordNomenclature, intervalPattern, null);
 
     return chord;
   }
@@ -27,11 +29,14 @@ public class ChordFactory {
       int toneCount) {
     ToneCollection toneCollection =
         buildToneCollectionFromHarmonizableScaleAndTonic(harmonizableScale, tonic, toneCount);
-    IntervalPattern intervalPattern = convertScaleToneCollectionToChordIntervalPattern(toneCollection);
-    ChordNomenclature chordNomenclature = evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
+    IntervalPattern intervalPattern =
+        convertScaleToneCollectionToChordIntervalPattern(toneCollection);
+    ChordNomenclature chordNomenclature =
+        evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
-    Chord chord = new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
-        toneCollection, chordNomenclature, intervalPattern, null);
+    Chord chord =
+        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
+            toneCollection, chordNomenclature, intervalPattern, null);
 
     return chord;
   }
@@ -49,7 +54,8 @@ public class ChordFactory {
     return tCB.toToneCollection();
   }
 
-  private IntervalPattern convertScaleToneCollectionToChordIntervalPattern(ToneCollection toneCollection) {
+  private IntervalPattern convertScaleToneCollectionToChordIntervalPattern(
+      ToneCollection toneCollection) {
     int toneCount = toneCollection.getSize();
     IntervalPatternBuilder intervalPatternBuilder = new IntervalPatternBuilder();
 
@@ -66,7 +72,8 @@ public class ChordFactory {
     return intervalPatternBuilder.toIntervalPattern();
   }
 
-  private ChordNomenclature evaluatechordNomenclatureFromIntervalPattern(IntervalPattern intervalPattern) {
+  private ChordNomenclature evaluatechordNomenclatureFromIntervalPattern(
+      IntervalPattern intervalPattern) {
     NomenclatureEvaluationRule qualityRule =
         chooseQualityEvaluationRuleForIntervalPattern(intervalPattern);
     ChordNomenclature chordNomenclature = qualityRule.applyRuleForIntervalPattern(intervalPattern);
@@ -79,9 +86,10 @@ public class ChordFactory {
     if (isTriad(intervalPattern)) {
       return new TriadNomenclatureEvaluationRule();
     }
-    else if (isSeventhChord(intervalPattern)) {
-      return new SeventhChordNomenclatureEvaluationRule();
-    }
+    else
+      if (isSeventhChord(intervalPattern)) {
+        return new SeventhChordNomenclatureEvaluationRule();
+      }
 
     throw new IllegalArgumentException();
   }

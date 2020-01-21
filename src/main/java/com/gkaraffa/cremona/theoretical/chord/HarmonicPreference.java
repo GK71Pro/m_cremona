@@ -21,6 +21,7 @@ public enum HarmonicPreference {
     return this.offset;
   }
 
+  @Override
   public final String toString() {
     return this.text;
   }

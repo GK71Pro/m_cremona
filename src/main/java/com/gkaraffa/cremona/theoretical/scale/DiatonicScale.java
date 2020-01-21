@@ -49,7 +49,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
   public Modal getModeByNumber(int modalOffset) {
     throw new java.lang.UnsupportedOperationException();
   }
-  
+
   @Override
   public Modal getModeByName(String modeName) {
     throw new java.lang.UnsupportedOperationException();

@@ -13,8 +13,8 @@ public class WholeToneScale extends SymmetricScale {
     WHOLE_TONE_PATTERN = iPF.createIntervalPattern("Whole Tone", "P1,M2,M3,A4,A5,A6");
   }
 
-  public WholeToneScale(String name, ToneCollection toneCollection, ScaleNomenclature scaleNomenclature,
-      IntervalPattern intervalPattern) {
+  public WholeToneScale(String name, ToneCollection toneCollection,
+      ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
 
@@ -34,7 +34,7 @@ public class WholeToneScale extends SymmetricScale {
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
-  
+
   @Override
   public boolean equals(Object o) {
     if (o == this) {

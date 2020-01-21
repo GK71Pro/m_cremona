@@ -23,6 +23,7 @@ public enum Quality {
     return this.abbrev;
   }
 
+  @Override
   public final String toString() {
     return this.text;
   }

@@ -50,11 +50,12 @@ public enum IntervalNumber {
   public final String getAbbrev() {
     return this.abbrev;
   }
-  
+
   public final String getDiatonicFunction() {
     return this.diatonicFunction;
   }
 
+  @Override
   public final String toString() {
     return this.text;
   }

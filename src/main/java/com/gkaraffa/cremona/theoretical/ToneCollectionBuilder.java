@@ -1,6 +1,7 @@
 package com.gkaraffa.cremona.theoretical;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ToneCollectionBuilder {
   private final ArrayList<Tone> toneList;
@@ -12,9 +13,7 @@ public class ToneCollectionBuilder {
   public ToneCollectionBuilder(ToneCollection toneCollection) {
     toneList = new ArrayList<Tone>();
 
-    for (Tone tone : toneCollection) {
-      toneList.add(tone);
-    }
+    toneList.addAll(toneCollection.getListCopy());
   }
 
   public int getSize() {
@@ -33,21 +32,29 @@ public class ToneCollectionBuilder {
   public boolean contains(Tone target) {
     return toneList.contains(target);
   }
-  
+
   public void append(Tone subject) {
     if (!contains(subject)) {
       toneList.add(subject);
     }
   }
-  
+
   public void prepend(Tone subject) {
     if (!contains(subject)) {
       toneList.add(0, subject);
-    }    
+    }
   }
-  
+
   public void remove(int index) {
     toneList.remove(index);
+  }
+  
+  public void remove(Tone subject) {
+    int index = toneList.indexOf(subject);
+    
+    if (index != -1) {
+      this.remove(index);
+    }    
   }
 
   public ToneCollection toToneCollection() {
@@ -55,6 +62,6 @@ public class ToneCollectionBuilder {
       return null;
     }
 
-    return new ToneCollection(toneList.toArray(new Tone[toneList.size()]));
+    return new ToneCollection(toneList);
   }
 }

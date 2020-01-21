@@ -25,6 +25,7 @@ public enum ScaleNomenclature {
     return this.abbrev;
   }
 
+  @Override
   public final String toString() {
     return this.text;
   }
