@@ -10,7 +10,6 @@ public class Chord extends ToneGroupObject {
   private Tone tonic;
   private ChordNomenclature chordNomenclature;
   private IntervalPattern intervalPattern;
-  // private ToneCollection toneCollection;
   private HarmonicPreference harmonicPreference;
 
   static {
@@ -63,12 +62,39 @@ public class Chord extends ToneGroupObject {
   public HarmonicPreference getHarmonicPreference() {
     return harmonicPreference;
   }
-
+  
   @Override
   public boolean contentsEqual(Object o) {
-    // TODO Auto-generated method stub
-    return false;
+    if (!super.contentsEqual(o)) {
+      return false;
+    }
+    
+    return true;
   }
+
+  /*
+  @Override
+  public boolean contentsEqual(Object o) {
+    if (!super.contentsEqual(o)) {
+      return false;
+    }
+    
+    Chord chord = (Chord) o;
+    if (chord.getTonic() != this.tonic) {
+      return false;
+    }
+    
+    if (chord.getChordNomenclature() != this.chordNomenclature) {
+      return false;
+    }
+    
+    if (!chord.getIntervalPattern().equals(this.intervalPattern)) {
+      return false;
+    }
+    
+    
+  }
+  */
 
   public static IntervalPattern MAJOR_CHORD_PATTERN;
   public static IntervalPattern MINOR_CHORD_PATTERN;

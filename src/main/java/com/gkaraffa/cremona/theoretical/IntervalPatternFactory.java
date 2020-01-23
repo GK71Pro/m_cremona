@@ -29,35 +29,14 @@ public class IntervalPatternFactory {
     List<Interval> intervalList = new ArrayList<Interval>();
 
     for (String currentIntervalString : intervalArray) {
-      Interval currentIntervalUnit = getIntervalByString(currentIntervalString);
+      Interval currentIntervalUnit = this.getIntervalByString(currentIntervalString);
       intervalList.add(currentIntervalUnit);
     }
 
     return new IntervalPattern(name, intervalList);
   }
 
-  public IntervalPattern createIntervalPattern(String name, String[] patternStringArray) {
-    List<Interval> intervalList = new ArrayList<Interval>();
-
-    for (String currentIntervalString : patternStringArray) {
-      Interval currentIntervalUnit = getIntervalByString(currentIntervalString);
-      intervalList.add(currentIntervalUnit);
-    }
-
-    return new IntervalPattern(name, intervalList);
-  }
-
-  /*
-  public IntervalPattern createIntervalPattern(String name, int[] stepArray) {
-    List<Interval> intervalList = new ArrayList<Interval>();
-    
-    for (int step: stepArray) {
-      
-    }
-  }
-  */
-
-  public Interval getIntervalByString(String lookupString) {
+  private Interval getIntervalByString(String lookupString) {
     Interval lookupValue = lookup.get(lookupString);
 
     if (lookupValue == null) {
@@ -70,5 +49,5 @@ public class IntervalPatternFactory {
   public IntervalPattern createIntervalPattern(List<Interval> patternList) {
     return null;
   }
-
+  
 }
