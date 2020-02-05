@@ -1,7 +1,6 @@
 package com.gkaraffa.cremona.common;
 
 import com.gkaraffa.cremona.helper.ScaleHelper;
-import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.scale.Scale;
 

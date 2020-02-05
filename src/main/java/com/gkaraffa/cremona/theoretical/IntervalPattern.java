@@ -1,6 +1,7 @@
 package com.gkaraffa.cremona.theoretical;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
 
 public class IntervalPattern extends TheoreticalObject implements Iterable<Interval>, Spellable {
   private List<Interval> intervalList;

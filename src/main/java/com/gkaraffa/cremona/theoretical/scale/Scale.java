@@ -39,13 +39,14 @@ public abstract class Scale extends ToneGroupObject {
 
   @Override
   public boolean equals(Object o) {
-
     if (o == this) {
       return true;
     }
+
     if (!(o instanceof Scale)) {
       return false;
     }
+
     Scale sO = (Scale) o;
 
     return (sO.hashCode() == this.hashCode());
@@ -54,7 +55,9 @@ public abstract class Scale extends ToneGroupObject {
   @Override
   public int hashCode() {
     int result = 17;
+    
     result = 23 * result + getText().hashCode();
+    
     return result;
   }
 }

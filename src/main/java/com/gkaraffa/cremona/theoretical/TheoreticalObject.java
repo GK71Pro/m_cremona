@@ -7,13 +7,23 @@ public abstract class TheoreticalObject {
     this.text = text;
   }
 
+  public final String getText() {
+    return this.text;
+  }
+
   @Override
   public String toString() {
     return this.text;
   }
 
-  public final String getText() {
-    return this.text;
+  @Override
+  public int hashCode() {
+    int prime = 3;
+    int result = 5;
+    
+    result = prime * result + ((text == null) ? 0 : text.hashCode());
+    
+    return result;
   }
 
   @Override
@@ -21,18 +31,13 @@ public abstract class TheoreticalObject {
     if (o == this) {
       return true;
     }
+
     if (!(o instanceof TheoreticalObject)) {
       return false;
     }
+
     TheoreticalObject tO = (TheoreticalObject) o;
 
     return (tO.hashCode() == this.hashCode());
-  }
-
-  @Override
-  public int hashCode() {
-    int result = 17;
-    result = 31 * result + text.hashCode();
-    return result;
   }
 }

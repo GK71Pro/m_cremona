@@ -1,26 +1,12 @@
 package com.gkaraffa.cremona.theoretical;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
 public class ToneCollection implements Iterable<Tone>, Spellable {
-  // prefer ArrayList to Array
   private final List<Tone> toneList = new ArrayList<Tone>();
-  // private final Tone[] tones;
-
-  /*
-  public ToneCollection(Tone[] tones) {
-    if (this.areTonesDistinct(tones)) {
-      this.tones = tones;
-    }
-    else {
-      throw new IllegalArgumentException("Elements are not distinct.");
-    }
-  }
-  */
 
   public ToneCollection(List<Tone> toneList) {
     if (this.areTonesDistinct(toneList)) {
@@ -33,52 +19,19 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
 
   public boolean contains(Tone target) {
     return this.toneList.contains(target);
-    /*
-    for (Tone tone : tones) {
-      if (tone.equals(target)) {
-        return true;
-      }
-    }
-    
-    return false;
-    */
   }
 
-  /*
-  public Tone[] getArrayCopy() {
-    return Arrays.copyOf(this.tones, this.tones.length);
-  }
-  */
-  
   public List<Tone> getListCopy() {
     return new ArrayList<Tone>(this.toneList);
   }
 
   public boolean contains(ToneCollection target) {
-    /*
     for (Tone targetElement : target) {
-      boolean found = false;
-
-      for (Tone tone : tones) {
-        if (tone.equals(targetElement)) {
-          found = true;
-        }
-      }
-
-      if (!found) {
-        return false;
-      }
-    }
-
-    return true;
-    */
-    
-    for (Tone targetElement: target) {
       if (!this.toneList.contains(targetElement)) {
         return false;
       }
     }
-    
+
     return true;
   }
 
@@ -143,27 +96,15 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
     }
   }
 
-  public int getPosition(Tone target) {    
+  public int getPosition(Tone target) {
     int index = this.toneList.indexOf(target);
-    
+
     if (index != -1) {
       return index;
-    }    
-    
-    throw new IllegalArgumentException("Tone does not exist in this ToneCollection");
-  }
-
-  /*
-  private boolean areTonesDistinct(Tone[] tones) {
-    TreeSet<Tone> treeSet = new TreeSet<Tone>(Arrays.asList(tones));
-
-    if (tones.length != treeSet.size()) {
-      return false;
     }
 
-    return true;
+    throw new IllegalArgumentException("Tone does not exist in this ToneCollection");
   }
-  */
 
   private boolean areTonesDistinct(List<Tone> toneList) {
     TreeSet<Tone> treeSet = new TreeSet<Tone>(toneList);
@@ -173,6 +114,31 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
     }
 
     return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int prime = 5;
+    int result = 7;
+
+    result = prime * result + ((toneList == null) ? 0 : toneList.hashCode());
+
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == this) {
+      return true;
+    }
+
+    if (!(o instanceof ToneCollection)) {
+      return false;
+    }
+
+    ToneCollection tC = (ToneCollection) o;
+
+    return (tC.hashCode() == this.hashCode());
   }
 
   @Override

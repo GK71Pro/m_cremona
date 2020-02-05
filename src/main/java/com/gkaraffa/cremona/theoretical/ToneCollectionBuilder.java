@@ -1,7 +1,6 @@
 package com.gkaraffa.cremona.theoretical;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ToneCollectionBuilder {
   private final ArrayList<Tone> toneList;

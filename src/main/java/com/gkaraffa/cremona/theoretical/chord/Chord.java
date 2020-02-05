@@ -63,15 +63,6 @@ public class Chord extends ToneGroupObject {
     return harmonicPreference;
   }
   
-  @Override
-  public boolean contentsEqual(Object o) {
-    if (!super.contentsEqual(o)) {
-      return false;
-    }
-    
-    return true;
-  }
-
   /*
   @Override
   public boolean contentsEqual(Object o) {
@@ -79,20 +70,7 @@ public class Chord extends ToneGroupObject {
       return false;
     }
     
-    Chord chord = (Chord) o;
-    if (chord.getTonic() != this.tonic) {
-      return false;
-    }
-    
-    if (chord.getChordNomenclature() != this.chordNomenclature) {
-      return false;
-    }
-    
-    if (!chord.getIntervalPattern().equals(this.intervalPattern)) {
-      return false;
-    }
-    
-    
+    return true;
   }
   */
 
