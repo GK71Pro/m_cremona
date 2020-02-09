@@ -39,20 +39,4 @@ public abstract class ToneGroupObject extends TheoreticalObject {
 
     return (tGO.hashCode() == this.hashCode());
   }
-
-  /*
-  public boolean contentsEqual(Object o) {
-    if (!(o instanceof ToneGroupObject)) {
-      return false;
-    }
-
-    ToneCollection tC = (ToneCollection) o;
-
-    if (this.toneCollection.contains(tC) && tC.contains(toneCollection)) {
-      return true;
-    }
-
-    return false;
-  }
-  */
 }

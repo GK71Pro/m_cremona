@@ -63,17 +63,6 @@ public class Chord extends ToneGroupObject {
     return harmonicPreference;
   }
   
-  /*
-  @Override
-  public boolean contentsEqual(Object o) {
-    if (!super.contentsEqual(o)) {
-      return false;
-    }
-    
-    return true;
-  }
-  */
-
   public static IntervalPattern MAJOR_CHORD_PATTERN;
   public static IntervalPattern MINOR_CHORD_PATTERN;
   public static IntervalPattern DIMINISHED_CHORD_PATTERN;
