@@ -175,7 +175,7 @@ public enum Interval {
       }
 
       IntervalKey iK = (IntervalKey) o;
-      if ((iK.halfSteps == this.halfSteps) && (iK.intervalNumber == this.intervalNumber)) {
+      if (iK.hashCode() == this.hashCode()) {
         return true;
       }
 
@@ -186,7 +186,7 @@ public enum Interval {
     public int hashCode() {
       int result = 17;
       result = 31 * result + halfSteps;
-      result = 31 * result + intervalNumber.hashCode();
+      result = 31 * result + ((intervalNumber == null) ? 0 : intervalNumber.hashCode());
       return result;
     }
   }

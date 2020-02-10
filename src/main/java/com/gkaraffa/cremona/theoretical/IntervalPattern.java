@@ -74,11 +74,11 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
     if (o == this) {
       return true;
     }
-    
+
     if (!(o instanceof IntervalPattern)) {
       return false;
     }
-    
+
     IntervalPattern iP = (IntervalPattern) o;
 
     return (iP.hashCode() == this.hashCode());
