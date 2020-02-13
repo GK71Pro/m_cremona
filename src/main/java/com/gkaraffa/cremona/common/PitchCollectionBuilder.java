@@ -59,6 +59,6 @@ public class PitchCollectionBuilder extends CremonaObject {
       return null;
     }
 
-    return new PitchCollection(this.getText(), pitchList.toArray(new Pitch[pitchList.size()]));
+    return new PitchCollection(this.toString(), pitchList.toArray(new Pitch[pitchList.size()]));
   }
 }

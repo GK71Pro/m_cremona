@@ -47,7 +47,8 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
 
   public PitchCollection intersection(PitchCollection target) {
     PitchCollectionBuilder pitchCollectionBuilder = new PitchCollectionBuilder(
-        "Intersection of " + this.getText() + " and " + target.getText());
+        "Intersection of " + this.toString() + " and " + target.toString());
+    //  "Intersection of " + this.getText() + " and " + target.getText());
 
     for (Pitch outerPitch : pitches) {
       for (Pitch innerPitch : target) {
@@ -63,7 +64,8 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
 
   public PitchCollection union(PitchCollection target) {
     PitchCollectionBuilder pitchCollectionBuilder =
-        new PitchCollectionBuilder("Union of " + this.getText() + " and " + target.getText(), this);
+        new PitchCollectionBuilder("Union of " + this.toString() + " and " + target.toString(), this);
+        // new PitchCollectionBuilder("Union of " + this.getText() + " and " + target.getText(), this);
 
     for (Pitch pitch : target) {
       pitchCollectionBuilder.insert(pitch);
@@ -76,7 +78,8 @@ public class PitchCollection extends CremonaObject implements Iterable<Pitch> {
     StringBuilder sb = new StringBuilder();
 
     for (Pitch pitch : pitches) {
-      sb.append(pitch.getText() + ", ");
+      sb.append(pitch.toString() + ", ");
+      // sb.append(pitch.getText() + ", ");
     }
 
     sb.setLength(sb.length() - 2);

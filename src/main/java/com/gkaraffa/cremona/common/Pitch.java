@@ -9,7 +9,8 @@ public class Pitch extends CremonaObject implements Comparable<Pitch> {
   private int absVal;
 
   public Pitch(Pitch p) {
-    super(p.getText());
+    // super(p.getText());
+    super(p.toString());
     this.tone = p.getTone();
     this.range = p.getRange();
     this.absVal = generateAbsVal(this.tone, this.range);

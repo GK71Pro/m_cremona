@@ -12,7 +12,9 @@ public abstract class CremonaObject {
     return this.text;
   }
 
+  /*
   public final String getText() {
     return this.text;
   }
+  */
 }
