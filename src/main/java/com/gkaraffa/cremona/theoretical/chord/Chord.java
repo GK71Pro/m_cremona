@@ -38,6 +38,7 @@ public class Chord extends ToneGroupObject {
     this.tonic = toneCollection.getTone(0);
     this.toneCollection = toneCollection;
     this.chordNomenclature = chordNomenclature;
+    this.setAbbrev(this.tonic.getText() + this.chordNomenclature.getAbbrev());
     this.intervalPattern = intervalPattern;
     this.harmonicPreference = harmonicPreference;
   }
