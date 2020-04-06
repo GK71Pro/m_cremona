@@ -54,7 +54,7 @@ public class DiminishedScale extends SymmetricScale {
   @Override
   public int hashCode() {
     int result = 31;
-    result = 37 * result + getText().hashCode();
+    result = 37 * result + getLongName().hashCode();
     return result;
   }
 

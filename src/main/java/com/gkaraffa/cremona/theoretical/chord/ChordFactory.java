@@ -19,7 +19,7 @@ public class ChordFactory {
         evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
     Chord chord =
-        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
+        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
             toneCollection, chordNomenclature, intervalPattern, null);
 
     return chord;
@@ -35,7 +35,7 @@ public class ChordFactory {
         evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
     Chord chord =
-        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getText(),
+        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
             toneCollection, chordNomenclature, intervalPattern, null);
 
     return chord;

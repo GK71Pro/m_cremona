@@ -71,7 +71,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
   @Override
   public int hashCode() {
     int result = 23;
-    result = 27 * result + getText().hashCode();
+    result = 27 * result + getLongName().hashCode();
     return result;
   }
 

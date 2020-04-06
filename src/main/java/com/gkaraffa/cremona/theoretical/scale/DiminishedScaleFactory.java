@@ -15,7 +15,7 @@ public class DiminishedScaleFactory extends ScaleFactory {
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
       ScaleNomenclature scaleNomenclature) {
-    return new DiminishedScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+    return new DiminishedScale(key.getText() + " " + intervalPattern.getLongName(), toneCollection,
         scaleNomenclature, intervalPattern);
   }
 

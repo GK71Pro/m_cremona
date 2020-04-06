@@ -14,25 +14,25 @@ public enum ChordNomenclature {
   DIMINISHED_SEVENTH("Diminished Seventh", "o7"),
   AUGMENTED_MAJOR_SEVENTH("Augmented Major 7th", "+^7");
 
-  private final String text;
-  private final String abbrev;
+  private final String longName;
+  private final String shortName;
 
-  ChordNomenclature(String text, String abbrev) {
-    this.text = text;
-    this.abbrev = abbrev;
+  ChordNomenclature(String longName, String shortName) {
+    this.longName = longName;
+    this.shortName = shortName;
   }
 
-  public String getText() {
-    return this.text;
+  public String getLongName() {
+    return this.longName;
   }
 
-  public String getAbbrev() {
-    return this.abbrev;
+  public String getShortName() {
+    return this.shortName;
   }
 
   @Override
   public final String toString() {
-    return this.text;
+    return this.longName;
   }
 
 }

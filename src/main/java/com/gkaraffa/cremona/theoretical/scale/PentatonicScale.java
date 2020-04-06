@@ -34,7 +34,7 @@ public class PentatonicScale extends Scale {
   @Override
   public int hashCode() {
     int result = 37;
-    result = 41 * result + getText().hashCode();
+    result = 41 * result + getLongName().hashCode();
     return result;
   }
 

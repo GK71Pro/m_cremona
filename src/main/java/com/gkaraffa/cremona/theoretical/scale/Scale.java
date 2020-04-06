@@ -56,7 +56,7 @@ public abstract class Scale extends ToneGroupObject {
   public int hashCode() {
     int result = 17;
     
-    result = 23 * result + getText().hashCode();
+    result = 23 * result + getLongName().hashCode();
     
     return result;
   }

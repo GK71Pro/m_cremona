@@ -15,7 +15,7 @@ public class DiatonicScaleFactory extends ScaleFactory {
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
       ScaleNomenclature scaleNomenclature) {
-    return new DiatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+    return new DiatonicScale(key.getText() + " " + intervalPattern.getLongName(), toneCollection,
         scaleNomenclature, intervalPattern);
   }
 

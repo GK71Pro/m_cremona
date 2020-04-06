@@ -51,7 +51,7 @@ public class WholeToneScale extends SymmetricScale {
   @Override
   public int hashCode() {
     int result = 41;
-    result = 43 * result + getText().hashCode();
+    result = 43 * result + getLongName().hashCode();
     return result;
   }
 

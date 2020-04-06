@@ -75,7 +75,7 @@ public class ScaleHelper {
 
 
   private void storeScaleInMap(Scale scale) {
-    String keyValue = scale.getText().trim().toUpperCase();
+    String keyValue = scale.getLongName().trim().toUpperCase();
     scaleMap.put(keyValue, scale);
   }
 

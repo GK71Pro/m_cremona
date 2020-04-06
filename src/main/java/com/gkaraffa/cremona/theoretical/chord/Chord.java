@@ -11,6 +11,7 @@ public class Chord extends ToneGroupObject {
   private ChordNomenclature chordNomenclature;
   private IntervalPattern intervalPattern;
   private HarmonicPreference harmonicPreference;
+  private String abbrev;
 
   static {
     IntervalPatternFactory iPF = IntervalPatternFactory.getInstance();
@@ -38,7 +39,7 @@ public class Chord extends ToneGroupObject {
     this.tonic = toneCollection.getTone(0);
     this.toneCollection = toneCollection;
     this.chordNomenclature = chordNomenclature;
-    this.setAbbrev(this.tonic.getText() + this.chordNomenclature.getAbbrev());
+    this.abbrev = this.tonic.getText() + this.chordNomenclature.getShortName();
     this.intervalPattern = intervalPattern;
     this.harmonicPreference = harmonicPreference;
   }
@@ -64,6 +65,10 @@ public class Chord extends ToneGroupObject {
     return harmonicPreference;
   }
   
+  public String getAbbrev() {
+    return abbrev;
+  }
+
   public static IntervalPattern MAJOR_CHORD_PATTERN;
   public static IntervalPattern MINOR_CHORD_PATTERN;
   public static IntervalPattern DIMINISHED_CHORD_PATTERN;

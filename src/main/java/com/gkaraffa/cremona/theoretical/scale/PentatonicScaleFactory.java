@@ -15,7 +15,7 @@ public class PentatonicScaleFactory extends ScaleFactory {
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
       ScaleNomenclature scaleNomenclature) {
-    return new PentatonicScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+    return new PentatonicScale(key.getText() + " " + intervalPattern.getLongName(), toneCollection,
         scaleNomenclature, intervalPattern);
   }
 

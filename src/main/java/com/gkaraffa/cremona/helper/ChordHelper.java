@@ -93,7 +93,7 @@ public class ChordHelper {
   }
 
   private void storeChordInMap(Chord chord) {
-    String keyValue = chord.getText().trim().toUpperCase();
+    String keyValue = chord.getLongName().trim().toUpperCase();
     chordMap.put(keyValue, chord);
   }
 

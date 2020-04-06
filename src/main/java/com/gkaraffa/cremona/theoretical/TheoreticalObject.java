@@ -1,28 +1,19 @@
 package com.gkaraffa.cremona.theoretical;
 
 public abstract class TheoreticalObject {
-  private String text = null;
-  private String abbrev = null;
+  private String longName = null;
 
-  public TheoreticalObject(String text) {
-    this.text = text;
+  public TheoreticalObject(String longName) {
+    this.longName = longName;
   }
 
-  public final String getText() {
-    return this.text;
-  }
-
-  public final String getAbbrev() {
-    return abbrev;
-  }
-
-  public final void setAbbrev(String abbrev) {
-    this.abbrev = abbrev;
+  public final String getLongName() {
+    return this.longName;
   }
 
   @Override
   public String toString() {
-    return this.text;
+    return this.longName;
   }
 
   @Override
@@ -30,7 +21,7 @@ public abstract class TheoreticalObject {
     int prime = 3;
     int result = 5;
 
-    result = prime * result + ((text == null) ? 0 : text.hashCode());
+    result = prime * result + ((longName == null) ? 0 : longName.hashCode());
 
     return result;
   }

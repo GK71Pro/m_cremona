@@ -15,7 +15,7 @@ public class WholeToneScaleFactory extends ScaleFactory {
   @Override
   protected Scale getScale(Tone key, IntervalPattern intervalPattern, ToneCollection toneCollection,
       ScaleNomenclature scaleNomenclature) {
-    return new WholeToneScale(key.getText() + " " + intervalPattern.getText(), toneCollection,
+    return new WholeToneScale(key.getText() + " " + intervalPattern.getLongName(), toneCollection,
         scaleNomenclature, intervalPattern);
   }
 
