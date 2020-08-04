@@ -1,5 +1,6 @@
 package com.gkaraffa.cremona.theoretical;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,12 +62,32 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
 
     tCB.append(tonic);
     for (int index = 1; index < toneCount; index++) {
-      int halfSteps = this.getIntervalByLocation(index).getHalfSteps();
+      int halfSteps = this.getIntervalByLocation(index).getHalfStepsFromTonic();
       Tone currentTone = TonalSpectrum.traverseDistance(tonic, halfSteps);
       tCB.append(currentTone);
     }
 
     return tCB.toToneCollection();
+  }
+  
+  public List<Integer> halfStepList(){
+    List<Integer> halfStepList = new ArrayList<Integer>();
+    
+    int lastDistance = 0;
+    for (Interval interval: intervalList) {
+      int currentDistance = interval.getHalfStepsFromTonic();
+      if (currentDistance == 0) {
+        continue;
+      }
+      
+      int calcGap = currentDistance - lastDistance;
+      halfStepList.add(calcGap);
+      lastDistance = currentDistance;
+    }
+    
+    halfStepList.add(12 - lastDistance);
+    
+    return halfStepList;
   }
 
   @Override

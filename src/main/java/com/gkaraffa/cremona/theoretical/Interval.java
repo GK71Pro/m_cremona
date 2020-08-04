@@ -77,7 +77,7 @@ public enum Interval {
       "Augmented Fourteenth",
       "A14");
 
-  private final int halfSteps;
+  private final int halfStepsFromTonic;
   private final IntervalNumber intervalNumber;
   private final Quality intervalQuality;
   private final String text;
@@ -90,34 +90,34 @@ public enum Interval {
   static {
     for (Interval interval : Interval.values()) {
       intervalKeyToIntervalMap.put(
-          interval.new IntervalKey(interval.getHalfSteps(), interval.getIntervalNumber()),
+          interval.new IntervalKey(interval.getHalfStepsFromTonic(), interval.getIntervalNumber()),
           interval);
     }
 
     for (Interval interval : Interval.values()) {
-      if (halfStepToIntervalListMap.containsKey(interval.halfSteps)) {
-        ArrayList<Interval> currentAL = halfStepToIntervalListMap.get(interval.halfSteps);
+      if (halfStepToIntervalListMap.containsKey(interval.halfStepsFromTonic)) {
+        ArrayList<Interval> currentAL = halfStepToIntervalListMap.get(interval.halfStepsFromTonic);
         currentAL.add(interval);
       }
       else {
         ArrayList<Interval> currentAL = new ArrayList<Interval>();
         currentAL.add(interval);
-        halfStepToIntervalListMap.put(interval.halfSteps, currentAL);
+        halfStepToIntervalListMap.put(interval.halfStepsFromTonic, currentAL);
       }
     }
   }
 
-  Interval(int halfSteps, IntervalNumber intervalNumber, Quality intervalQuality, String text,
+  Interval(int halfStepsFromTonic, IntervalNumber intervalNumber, Quality intervalQuality, String text,
       String abbrev) {
-    this.halfSteps = halfSteps;
+    this.halfStepsFromTonic = halfStepsFromTonic;
     this.intervalNumber = intervalNumber;
     this.intervalQuality = intervalQuality;
     this.text = text;
     this.abbrev = abbrev;
   }
 
-  public final int getHalfSteps() {
-    return halfSteps;
+  public final int getHalfStepsFromTonic() {
+    return halfStepsFromTonic;
   }
 
   public final IntervalNumber getIntervalNumber() {
