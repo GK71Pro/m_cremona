@@ -4,6 +4,7 @@ import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
+@ScaleType
 public class PentatonicScale extends Scale {
 
   static {

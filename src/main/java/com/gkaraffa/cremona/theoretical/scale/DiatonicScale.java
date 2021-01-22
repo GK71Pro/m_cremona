@@ -6,6 +6,7 @@ import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 
+@ScaleType
 public class DiatonicScale extends HarmonizableScale implements Modal {
 
   static {

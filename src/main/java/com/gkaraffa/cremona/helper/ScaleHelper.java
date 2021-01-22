@@ -116,7 +116,7 @@ public class ScaleHelper {
     HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
     String[] names = new String[] {"com.gkaraffa.cremona.theoretical.scale.DiatonicScale",
         "com.gkaraffa.cremona.theoretical.scale.DiminishedScale",
-        "com.gkaraffa.cremona.theoretical.scale.PentatonicScal",
+        "com.gkaraffa.cremona.theoretical.scale.PentatonicScale",
         "com.gkaraffa.cremona.theoretical.scale.WholeToneScale"};
 
     for (String name : names) {
