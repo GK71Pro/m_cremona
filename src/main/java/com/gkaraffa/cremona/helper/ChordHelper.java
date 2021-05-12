@@ -51,7 +51,7 @@ public class ChordHelper {
     Chord chord = chordMap.get(chordKey);
 
     return chord;
-  }
+  } 
 
   private ChordFactory getChordFactory(ChordPair chordPair)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
