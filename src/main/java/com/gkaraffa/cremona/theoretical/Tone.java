@@ -26,7 +26,8 @@ public enum Tone {
   }
 
   public static final Tone stringToTone(String toneString) throws IllegalArgumentException {
-    Tone tone = hashMap.get(toneString.trim().toUpperCase());
+    Tone tone = hashMap.get(toneString.trim());
+    // Tone tone = hashMap.get(toneString.trim().toUpperCase());
 
     if (tone == null) {
       throw new IllegalArgumentException("toneString <" + toneString + "> does not map to a Tone");
