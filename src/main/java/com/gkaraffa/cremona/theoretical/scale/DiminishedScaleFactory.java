@@ -31,11 +31,7 @@ public class DiminishedScaleFactory extends ScaleFactory {
 
     if (((thirdInterval =
         intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD)) == null)
-        || (thirdInterval != Interval.MINOR_THIRD)) {
-      return false;
-    }
-
-    if (((fifthInterval =
+        || (thirdInterval != Interval.MINOR_THIRD) || ((fifthInterval =
         intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH)) == null)
         || (fifthInterval != Interval.DIMINISHED_FIFTH)) {
       return false;

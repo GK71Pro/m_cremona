@@ -14,7 +14,7 @@ public abstract class ToneGroupObject extends TheoreticalObject {
   public void setToneCollection(ToneCollection toneCollection) {
     this.toneCollection = toneCollection;
   }
-  
+
   @Override
   public int hashCode() {
     int prime = 7;

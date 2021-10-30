@@ -83,9 +83,9 @@ public enum Interval {
   private final String text;
   private final String abbrev;
   private final static HashMap<IntervalKey, Interval> intervalKeyToIntervalMap =
-      new HashMap<IntervalKey, Interval>();
+      new HashMap<>();
   private final static HashMap<Integer, ArrayList<Interval>> halfStepToIntervalListMap =
-      new HashMap<Integer, ArrayList<Interval>>();
+      new HashMap<>();
 
   static {
     for (Interval interval : Interval.values()) {
@@ -100,15 +100,15 @@ public enum Interval {
         currentAL.add(interval);
       }
       else {
-        ArrayList<Interval> currentAL = new ArrayList<Interval>();
+        ArrayList<Interval> currentAL = new ArrayList<>();
         currentAL.add(interval);
         halfStepToIntervalListMap.put(interval.halfStepsFromTonic, currentAL);
       }
     }
   }
 
-  Interval(int halfStepsFromTonic, IntervalNumber intervalNumber, Quality intervalQuality, String text,
-      String abbrev) {
+  Interval(int halfStepsFromTonic, IntervalNumber intervalNumber, Quality intervalQuality,
+      String text, String abbrev) {
     this.halfStepsFromTonic = halfStepsFromTonic;
     this.intervalNumber = intervalNumber;
     this.intervalQuality = intervalQuality;

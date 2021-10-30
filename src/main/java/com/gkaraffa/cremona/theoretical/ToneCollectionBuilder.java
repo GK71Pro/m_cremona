@@ -6,11 +6,11 @@ public class ToneCollectionBuilder {
   private final ArrayList<Tone> toneList;
 
   public ToneCollectionBuilder() {
-    toneList = new ArrayList<Tone>();
+    toneList = new ArrayList<>();
   }
 
   public ToneCollectionBuilder(ToneCollection toneCollection) {
-    toneList = new ArrayList<Tone>();
+    toneList = new ArrayList<>();
 
     toneList.addAll(toneCollection.getListCopy());
   }
@@ -47,13 +47,13 @@ public class ToneCollectionBuilder {
   public void remove(int index) {
     toneList.remove(index);
   }
-  
+
   public void remove(Tone subject) {
     int index = toneList.indexOf(subject);
-    
+
     if (index != -1) {
       this.remove(index);
-    }    
+    }
   }
 
   public ToneCollection toToneCollection() {

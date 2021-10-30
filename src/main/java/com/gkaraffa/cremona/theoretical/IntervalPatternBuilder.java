@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntervalPatternBuilder {
-  private List<Interval> intervalList = new ArrayList<Interval>();
+  private List<Interval> intervalList = new ArrayList<>();
 
   public IntervalPatternBuilder() {}
 

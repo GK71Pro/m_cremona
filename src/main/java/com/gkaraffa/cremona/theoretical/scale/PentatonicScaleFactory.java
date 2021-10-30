@@ -42,15 +42,7 @@ public class PentatonicScaleFactory extends ScaleFactory {
 
   @Override
   protected boolean validateInputPattern(IntervalPattern intervalPattern) {
-    if (intervalPattern.getSize() != 5) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD) == null) {
-      return false;
-    }
-
-    if (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH) == null) {
+    if ((intervalPattern.getSize() != 5) || (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD) == null) || (intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH) == null)) {
       return false;
     }
 

@@ -7,18 +7,18 @@ public class PitchCollectionBuilder extends CremonaObject {
 
   public PitchCollectionBuilder() {
     super("");
-    pitchList = new ArrayList<Pitch>();
+    pitchList = new ArrayList<>();
   }
 
   public PitchCollectionBuilder(String text) {
     super(text);
-    pitchList = new ArrayList<Pitch>();
+    pitchList = new ArrayList<>();
   }
 
   public PitchCollectionBuilder(String text, PitchCollection pitchCollection) {
     super(text);
 
-    pitchList = new ArrayList<Pitch>();
+    pitchList = new ArrayList<>();
 
     for (Pitch pitch : pitchCollection) {
       pitchList.add(pitch);

@@ -17,7 +17,7 @@ public enum Tone {
   B("B");
 
   private final String text;
-  private final static HashMap<String, Tone> hashMap = new HashMap<String, Tone>();
+  private final static HashMap<String, Tone> hashMap = new HashMap<>();
 
   static {
     for (Tone tone : Tone.values()) {

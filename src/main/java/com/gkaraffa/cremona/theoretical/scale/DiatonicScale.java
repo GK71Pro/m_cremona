@@ -21,6 +21,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     MIXOLYDIAN_PATTERN = iPF.createIntervalPattern("Mixolydian", "P1,M2,M3,P4,P5,M6,m7");
     AEOLIAN_PATTERN = iPF.createIntervalPattern("Aeolian", "P1,M2,m3,P4,P5,m6,m7");
     LOCRIAN_PATTERN = iPF.createIntervalPattern("Locrian", "P1,m2,m3,P4,d5,m6,m7");
+    LYDIAN_DOMINANT_PATTERN = iPF.createIntervalPattern("Lydian Dominant", "P1,M2,M3,A4,P5,M6,m7");
   }
 
   public DiatonicScale(String name, ToneCollection toneCollection,
@@ -85,4 +86,5 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
   public static IntervalPattern LOCRIAN_PATTERN;
   public static IntervalPattern HARMONIC_MINOR_PATTERN;
   public static IntervalPattern MELODIC_MINOR_PATTERN;
+  public static IntervalPattern LYDIAN_DOMINANT_PATTERN;
 }

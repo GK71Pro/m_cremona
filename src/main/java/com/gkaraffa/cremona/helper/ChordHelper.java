@@ -10,7 +10,7 @@ import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 
 public class ChordHelper {
   private HashMap<String, ChordPair> chordPairMap = null;
-  private HashMap<String, Chord> chordMap = new HashMap<String, Chord>();
+  private HashMap<String, Chord> chordMap = new HashMap<>();
   private static ChordHelper instance = null;
 
   private ChordHelper() {
@@ -51,7 +51,7 @@ public class ChordHelper {
     Chord chord = chordMap.get(chordKey);
 
     return chord;
-  } 
+  }
 
   private ChordFactory getChordFactory(ChordPair chordPair)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -107,7 +107,7 @@ public class ChordHelper {
   }
 
   private HashMap<String, ChordPair> populateChordPairs() {
-    HashMap<String, ChordPair> hashMap = new HashMap<String, ChordPair>();
+    HashMap<String, ChordPair> hashMap = new HashMap<>();
     Class<?> chordClass = Chord.class;
     Field[] fields = chordClass.getFields();
 

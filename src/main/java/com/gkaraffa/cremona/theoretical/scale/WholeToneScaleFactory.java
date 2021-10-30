@@ -31,11 +31,7 @@ public class WholeToneScaleFactory extends ScaleFactory {
 
     if (((thirdInterval =
         intervalPattern.getIntervalByIntervalNumber(IntervalNumber.THIRD)) == null)
-        || (thirdInterval != Interval.MAJOR_THIRD)) {
-      return false;
-    }
-
-    if (((fifthInterval =
+        || (thirdInterval != Interval.MAJOR_THIRD) || ((fifthInterval =
         intervalPattern.getIntervalByIntervalNumber(IntervalNumber.FIFTH)) == null)
         || (fifthInterval != Interval.AUGMENTED_FIFTH)) {
       return false;

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class ToneCollection implements Iterable<Tone>, Spellable {
-  private final List<Tone> toneList = new ArrayList<Tone>();
+  private final List<Tone> toneList = new ArrayList<>();
 
   public ToneCollection(List<Tone> toneList) {
     if (this.areTonesDistinct(toneList)) {
@@ -22,7 +22,7 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
   }
 
   public List<Tone> getListCopy() {
-    return new ArrayList<Tone>(this.toneList);
+    return new ArrayList<>(this.toneList);
   }
 
   public boolean contains(ToneCollection target) {
@@ -107,7 +107,7 @@ public class ToneCollection implements Iterable<Tone>, Spellable {
   }
 
   private boolean areTonesDistinct(List<Tone> toneList) {
-    TreeSet<Tone> treeSet = new TreeSet<Tone>(toneList);
+    TreeSet<Tone> treeSet = new TreeSet<>(toneList);
 
     if (toneList.size() != treeSet.size()) {
       return false;

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class IntervalPatternFactory {
   private static IntervalPatternFactory instance = null;
-  private static HashMap<String, Interval> lookup = new HashMap<String, Interval>();
+  private static HashMap<String, Interval> lookup = new HashMap<>();
 
   static {
     for (Interval currInterval : Interval.values()) {
@@ -26,7 +26,7 @@ public class IntervalPatternFactory {
 
   public IntervalPattern createIntervalPattern(String name, String patternString) {
     String[] intervalArray = patternString.split(",");
-    List<Interval> intervalList = new ArrayList<Interval>();
+    List<Interval> intervalList = new ArrayList<>();
 
     for (String currentIntervalString : intervalArray) {
       Interval currentIntervalUnit = this.getIntervalByString(currentIntervalString);
@@ -49,5 +49,5 @@ public class IntervalPatternFactory {
   public IntervalPattern createIntervalPattern(List<Interval> patternList) {
     return null;
   }
-  
+
 }

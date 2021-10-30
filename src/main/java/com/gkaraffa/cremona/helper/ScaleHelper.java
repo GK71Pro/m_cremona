@@ -10,7 +10,7 @@ import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 
 public class ScaleHelper {
   private HashMap<String, ScalePair> scalePairMap = null;
-  private HashMap<String, Scale> scaleMap = new HashMap<String, Scale>();
+  private HashMap<String, Scale> scaleMap = new HashMap<>();
   private static ScaleHelper instance = null;
 
   private ScaleHelper() {
@@ -113,7 +113,7 @@ public class ScaleHelper {
   }
 
   private HashMap<String, ScalePair> populateScalePairs() {
-    HashMap<String, ScalePair> hashMap = new HashMap<String, ScalePair>();
+    HashMap<String, ScalePair> hashMap = new HashMap<>();
     String[] names = new String[] {"com.gkaraffa.cremona.theoretical.scale.DiatonicScale",
         "com.gkaraffa.cremona.theoretical.scale.DiminishedScale",
         "com.gkaraffa.cremona.theoretical.scale.PentatonicScale",

@@ -24,7 +24,7 @@ public enum IntervalNumber {
   private String abbrev;
   private String diatonicFunction;
   private final static HashMap<Integer, IntervalNumber> integerToIntervalLookupMap =
-      new HashMap<Integer, IntervalNumber>();
+      new HashMap<>();
 
   static {
     for (IntervalNumber intervalNumber : IntervalNumber.values()) {

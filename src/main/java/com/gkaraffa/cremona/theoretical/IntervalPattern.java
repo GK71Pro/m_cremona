@@ -69,24 +69,24 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
 
     return tCB.toToneCollection();
   }
-  
-  public List<Integer> halfStepList(){
-    List<Integer> halfStepList = new ArrayList<Integer>();
-    
+
+  public List<Integer> halfStepList() {
+    List<Integer> halfStepList = new ArrayList<>();
+
     int lastDistance = 0;
-    for (Interval interval: intervalList) {
+    for (Interval interval : intervalList) {
       int currentDistance = interval.getHalfStepsFromTonic();
       if (currentDistance == 0) {
         continue;
       }
-      
+
       int calcGap = currentDistance - lastDistance;
       halfStepList.add(calcGap);
       lastDistance = currentDistance;
     }
-    
+
     halfStepList.add(12 - lastDistance);
-    
+
     return halfStepList;
   }
 

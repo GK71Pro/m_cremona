@@ -64,7 +64,7 @@ public class Chord extends ToneGroupObject {
   public HarmonicPreference getHarmonicPreference() {
     return harmonicPreference;
   }
-  
+
   public String getAbbrev() {
     return abbrev;
   }
