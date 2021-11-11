@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.gkaraffa.cremona.common.CircularList;
+
 public class IntervalPattern extends TheoreticalObject implements Iterable<Interval>, Spellable {
   private List<Interval> intervalList;
 
@@ -70,7 +72,7 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
     return tCB.toToneCollection();
   }
 
-  public List<Integer> halfStepList() {
+  public List<Integer> generateHalfStepList() {
     List<Integer> halfStepList = new ArrayList<>();
 
     int lastDistance = 0;
@@ -89,6 +91,46 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
 
     return halfStepList;
   }
+
+  public IntervalPattern getShiftedIntervalPattern(int offset) {
+    List<Integer> oldHSL = this.generateHalfStepList();
+    List<Integer> newHSL = getShiftedHalfStepList(oldHSL, offset);
+    int extent = newHSL.size() - 1;
+
+    IntervalPatternBuilder iPB = new IntervalPatternBuilder();
+    iPB.append(Interval.UNISON);
+
+    int accumulatedHalfSteps = 0;
+    int iN = 0;
+    for (int index = 0; index <= extent - 1; index++) {
+      accumulatedHalfSteps += newHSL.get(index);
+      iN++;
+
+      Interval nInterval = Interval.halfStepsAndIntervalNumberToInterval(accumulatedHalfSteps,
+          IntervalNumber.integerToIntervalNumber(iN));
+      iPB.append(nInterval);
+    }
+
+    IntervalPattern intervalPattern = iPB.toIntervalPattern();
+
+    return intervalPattern;
+  }
+
+
+  private List<Integer> getShiftedHalfStepList(List<Integer> oldHSL, int offset) {
+    List<Integer> newHSL = new ArrayList<Integer>();
+    CircularList<Integer> cL = new CircularList<Integer>((List<Integer>) oldHSL);
+
+    cL.reset(offset);
+    Integer i = null;
+
+    while ((i = cL.visitAndMove()) != null) {
+      newHSL.add(i);
+    }
+
+    return newHSL;
+  }
+
 
   @Override
   public boolean equals(Object o) {
