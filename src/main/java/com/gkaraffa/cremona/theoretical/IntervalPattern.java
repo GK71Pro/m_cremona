@@ -111,9 +111,23 @@ public class IntervalPattern extends TheoreticalObject implements Iterable<Inter
       iPB.append(nInterval);
     }
 
-    IntervalPattern intervalPattern = iPB.toIntervalPattern();
+    String name = this.getLongName() + " Mode " + (offset + 1);
+    IntervalPattern intervalPattern = iPB.toIntervalPattern(name);
 
     return intervalPattern;
+  }
+  
+  public List<IntervalPattern> deriveIntervalPatternListForModes(){
+    int intervalCount = this.getSize();
+    List<IntervalPattern> modeList = new ArrayList<IntervalPattern>(intervalCount);
+    
+    modeList.add(this);
+    
+    for(int index = 2; index <= intervalCount; index++) {
+      modeList.add(this.getShiftedIntervalPattern(index - 1));
+    }
+
+    return modeList;
   }
 
 

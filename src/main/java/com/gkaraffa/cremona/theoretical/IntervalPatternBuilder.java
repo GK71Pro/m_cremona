@@ -55,4 +55,8 @@ public class IntervalPatternBuilder {
 
     return new IntervalPattern("", intervalList);
   }
+  
+  public IntervalPattern toIntervalPattern(String name) {
+    return new IntervalPattern(name, intervalList);
+  }
 }
