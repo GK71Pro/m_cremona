@@ -28,7 +28,7 @@ public abstract class ScaleFactory {
     return getScale(key, intervalPattern, toneCollection, scaleNomenclature);
   }
 
-  protected ToneCollection createToneCollection(IntervalPattern intervalPattern, Tone key) {
+  private ToneCollection createToneCollection(IntervalPattern intervalPattern, Tone key) {
     int toneCount = intervalPattern.getSize();
     ToneCollectionBuilder toneCollectionBuilder = new ToneCollectionBuilder();
 
