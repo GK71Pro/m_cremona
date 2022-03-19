@@ -4,7 +4,6 @@ public class Duration extends CremonaObject {
   private Fraction length;
 
   public Duration(Duration d) {
-    // super(d.getText());
     super(d.toString());
     this.length = d.getLength();
   }

@@ -11,18 +11,14 @@ import com.gkaraffa.cremona.theoretical.ToneCollectionBuilder;
 import com.gkaraffa.cremona.theoretical.scale.HarmonizableScale;
 
 public class ChordFactory {
-  public ChordFactory() {}
 
   public Chord createChordFromIntervalPattern(IntervalPattern intervalPattern, Tone tonic) {
     ToneCollection toneCollection = intervalPattern.toToneCollection(tonic);
     ChordNomenclature chordNomenclature =
         evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
-    Chord chord =
-        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
-            toneCollection, chordNomenclature, intervalPattern, null);
-
-    return chord;
+    return new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
+        toneCollection, chordNomenclature, intervalPattern, null);
   }
 
   public Chord createChordFromHarmonizableScale(HarmonizableScale harmonizableScale, Tone tonic,
@@ -34,11 +30,8 @@ public class ChordFactory {
     ChordNomenclature chordNomenclature =
         evaluatechordNomenclatureFromIntervalPattern(intervalPattern);
 
-    Chord chord =
-        new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
-            toneCollection, chordNomenclature, intervalPattern, null);
-
-    return chord;
+    return new Chord(toneCollection.getTone(0).toString() + " " + chordNomenclature.getLongName(),
+        toneCollection, chordNomenclature, intervalPattern, null);
   }
 
   private ToneCollection buildToneCollectionFromHarmonizableScaleAndTonic(
