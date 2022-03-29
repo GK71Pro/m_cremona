@@ -23,7 +23,7 @@ public enum IntervalNumber {
   private String text;
   private String abbrev;
   private String diatonicFunction;
-  private final static HashMap<Integer, IntervalNumber> integerToIntervalLookupMap =
+  private static final HashMap<Integer, IntervalNumber> integerToIntervalLookupMap =
       new HashMap<>();
 
   static {

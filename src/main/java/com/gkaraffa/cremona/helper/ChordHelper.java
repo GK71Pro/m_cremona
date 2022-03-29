@@ -48,27 +48,22 @@ public class ChordHelper {
   }
 
   private Chord searchChordMap(String chordKey) {
-    Chord chord = chordMap.get(chordKey);
-
-    return chord;
+    return chordMap.get(chordKey);
   }
 
   private ChordFactory getChordFactory(ChordPair chordPair)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     String factoryString = chordPair.className + "Factory";
     Class<?> entityClass = Class.forName(factoryString);
-    ChordFactory chordFactory = (ChordFactory) entityClass.newInstance();
-
-    return chordFactory;
+    
+    return (ChordFactory) entityClass.newInstance();
   }
 
   private IntervalPattern getIntervalPattern(ChordPair chordPair) throws ClassNotFoundException,
-      InstantiationException, IllegalAccessException, NoSuchFieldException {
+      IllegalAccessException, NoSuchFieldException {
     Class<?> entityClass = Class.forName(chordPair.className);
     Field field = entityClass.getField(chordPair.chordField);
-    IntervalPattern intervalPattern = (IntervalPattern) field.get(null);
-
-    return intervalPattern;
+    return (IntervalPattern) field.get(null);
   }
 
   private Chord generateChord(Tone keyTone, String chordString) throws IllegalArgumentException {
@@ -87,9 +82,7 @@ public class ChordHelper {
       throw new IllegalArgumentException("Cannot map to a ScaleFactory or IntervalPattern");
     }
 
-    Chord chord = chordFactory.createChordFromIntervalPattern(intervalPattern, keyTone);
-
-    return chord;
+    return chordFactory.createChordFromIntervalPattern(intervalPattern, keyTone);
   }
 
   private void storeChordInMap(Chord chord) {
@@ -126,7 +119,23 @@ public class ChordHelper {
 
 
   class ChordPair {
-    public String className = null;
-    public String chordField = null;
+    private String className = null;
+    private String chordField = null;
+    
+    public String getClassName() {
+      return className;
+    }
+    
+    public void setClassName(String className) {
+      this.className = className;
+    }
+    
+    public String getChordField() {
+      return chordField;
+    }
+    
+    public void setChordField(String chordField) {
+      this.chordField = chordField;
+    }
   }
 }

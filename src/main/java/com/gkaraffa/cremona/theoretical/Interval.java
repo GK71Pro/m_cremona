@@ -2,6 +2,7 @@ package com.gkaraffa.cremona.theoretical;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public enum Interval {
   UNISON(0, IntervalNumber.FIRST, Quality.PERFECT, "Perfect Unison", "P1"),
@@ -82,9 +83,9 @@ public enum Interval {
   private final Quality intervalQuality;
   private final String text;
   private final String abbrev;
-  private final static HashMap<IntervalKey, Interval> intervalKeyToIntervalMap =
+  private static final HashMap<IntervalKey, Interval> intervalKeyToIntervalMap =
       new HashMap<>();
-  private final static HashMap<Integer, ArrayList<Interval>> halfStepToIntervalListMap =
+  private static final HashMap<Integer, ArrayList<Interval>> halfStepToIntervalListMap =
       new HashMap<>();
 
   static {
@@ -151,7 +152,7 @@ public enum Interval {
     return output;
   }
 
-  public static final ArrayList<Interval> halfStepsToIntervalList(int halfSteps) {
+  public static final List<Interval> halfStepsToIntervalList(int halfSteps) {
     ArrayList<Interval> output = null;
 
     output = halfStepToIntervalListMap.get(halfSteps);
@@ -160,8 +161,8 @@ public enum Interval {
   }
 
   public class IntervalKey {
-    public int halfSteps;
-    public IntervalNumber intervalNumber;
+    private int halfSteps;
+    private IntervalNumber intervalNumber;
 
     IntervalKey(int halfSteps, IntervalNumber intervalNumber) {
       this.halfSteps = halfSteps;
@@ -175,11 +176,8 @@ public enum Interval {
       }
 
       IntervalKey iK = (IntervalKey) o;
-      if (iK.hashCode() == this.hashCode()) {
-        return true;
-      }
 
-      return false;
+      return (iK.hashCode() == this.hashCode());
     }
 
     @Override

@@ -69,16 +69,16 @@ public class Chord extends ToneGroupObject {
     return abbrev;
   }
 
-  public static IntervalPattern MAJOR_CHORD_PATTERN;
-  public static IntervalPattern MINOR_CHORD_PATTERN;
-  public static IntervalPattern DIMINISHED_CHORD_PATTERN;
-  public static IntervalPattern AUGMENTED_CHORD_PATTERN;
-  public static IntervalPattern MAJOR_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern DOMINANT_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern MINOR_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern MINORMAJOR_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern HALF_DIMINISHED_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern DIMINISHED_SEVENTH_CHORD_PATTERN;
-  public static IntervalPattern AUGMENTED_MAJOR_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern MAJOR_CHORD_PATTERN;
+  public static final IntervalPattern MINOR_CHORD_PATTERN;
+  public static final IntervalPattern DIMINISHED_CHORD_PATTERN;
+  public static final IntervalPattern AUGMENTED_CHORD_PATTERN;
+  public static final IntervalPattern MAJOR_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern DOMINANT_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern MINOR_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern MINORMAJOR_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern HALF_DIMINISHED_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern DIMINISHED_SEVENTH_CHORD_PATTERN;
+  public static final IntervalPattern AUGMENTED_MAJOR_SEVENTH_CHORD_PATTERN;
 
 }

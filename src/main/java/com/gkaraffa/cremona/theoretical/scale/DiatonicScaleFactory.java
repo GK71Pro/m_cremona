@@ -57,7 +57,7 @@ public class DiatonicScaleFactory extends ScaleFactory {
       return false;
     }
 
-    IntervalNumber intervalNumbers[] = IntervalNumber.values();
+    IntervalNumber[] intervalNumbers = IntervalNumber.values();
     for (int index = 1; index < 7; index++) {
       if (intervalPattern.getIntervalByIntervalNumber(intervalNumbers[index]) == null) {
         return false;

@@ -59,6 +59,6 @@ public class DiminishedScale extends SymmetricScale {
     return result;
   }
 
-  public static IntervalPattern FIRST_DIMINISHED_PATTERN;
-  public static IntervalPattern SECOND_DIMINISHED_PATTERN;
+  public static final IntervalPattern FIRST_DIMINISHED_PATTERN;
+  public static final IntervalPattern SECOND_DIMINISHED_PATTERN;
 }

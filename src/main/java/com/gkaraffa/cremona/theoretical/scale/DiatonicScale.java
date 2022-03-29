@@ -77,14 +77,14 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     return result;
   }
 
-  public static IntervalPattern IONIAN_PATTERN;
-  public static IntervalPattern DORIAN_PATTERN;
-  public static IntervalPattern PHRYGIAN_PATTERN;
-  public static IntervalPattern LYDIAN_PATTERN;
-  public static IntervalPattern MIXOLYDIAN_PATTERN;
-  public static IntervalPattern AEOLIAN_PATTERN;
-  public static IntervalPattern LOCRIAN_PATTERN;
-  public static IntervalPattern HARMONIC_MINOR_PATTERN;
-  public static IntervalPattern MELODIC_MINOR_PATTERN;
-  public static IntervalPattern LYDIAN_DOMINANT_PATTERN;
+  public static final IntervalPattern IONIAN_PATTERN;
+  public static final IntervalPattern DORIAN_PATTERN;
+  public static final IntervalPattern PHRYGIAN_PATTERN;
+  public static final IntervalPattern LYDIAN_PATTERN;
+  public static final IntervalPattern MIXOLYDIAN_PATTERN;
+  public static final IntervalPattern AEOLIAN_PATTERN;
+  public static final IntervalPattern LOCRIAN_PATTERN;
+  public static final IntervalPattern HARMONIC_MINOR_PATTERN;
+  public static final IntervalPattern MELODIC_MINOR_PATTERN;
+  public static final IntervalPattern LYDIAN_DOMINANT_PATTERN;
 }

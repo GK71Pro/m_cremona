@@ -69,9 +69,7 @@ public class ChordFactory {
       IntervalPattern intervalPattern) {
     NomenclatureEvaluationRule qualityRule =
         chooseQualityEvaluationRuleForIntervalPattern(intervalPattern);
-    ChordNomenclature chordNomenclature = qualityRule.applyRuleForIntervalPattern(intervalPattern);
-
-    return chordNomenclature;
+    return qualityRule.applyRuleForIntervalPattern(intervalPattern);
   }
 
   private NomenclatureEvaluationRule chooseQualityEvaluationRuleForIntervalPattern(
@@ -97,11 +95,7 @@ public class ChordFactory {
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.THIRD);
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIFTH);
 
-    if (count != 3) {
-      return false;
-    }
-
-    return true;
+    return (count != 3);
   }
 
   private boolean isSeventhChord(IntervalPattern intervalPattern) {
@@ -115,10 +109,6 @@ public class ChordFactory {
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIFTH);
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.SEVENTH);
 
-    if (count != 4) {
-      return false;
-    }
-
-    return true;
+    return (count != 4);
   }
 }

@@ -26,7 +26,7 @@ public class CircularList<E>{
       return null;
     }
     
-    E element = (E) iList.get(current);
+    E element = iList.get(current);
     
     ticker--;
     current++;
