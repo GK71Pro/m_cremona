@@ -1,12 +1,15 @@
 package com.gkaraffa.cremona.theoretical.chord;
 
+import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
+import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.ToneGroupObject;
+import com.gkaraffa.cremona.theoretical.Transposable;
 
-public class Chord extends ToneGroupObject {
+public class Chord extends ToneGroupObject implements Transposable{
   private Tone tonic;
   private ChordNomenclature chordNomenclature;
   private IntervalPattern intervalPattern;
@@ -68,6 +71,44 @@ public class Chord extends ToneGroupObject {
   public String getAbbrev() {
     return abbrev;
   }
+  
+  private Chord generateNewChord(IntervalPattern intervalPattern, Tone tonic) {
+    ChordFactory chordFactory = new ChordFactory();
+    Chord genChord = chordFactory.createChordFromIntervalPattern(this.intervalPattern, tonic);    
+    
+    return genChord;
+  }
+  
+  @Override
+  public ToneGroupObject transposeUp(Interval interval) {
+    Tone transTonic = TonalSpectrum.traverseInterval(this.tonic, interval);
+    
+    return this.generateNewChord(this.intervalPattern, transTonic);
+  }
+
+  @Override
+  public ToneGroupObject transposeUp(int halfSteps) {
+    Tone transTonic = TonalSpectrum.traverseDistance(this.tonic, halfSteps);      
+    
+    return this.generateNewChord(this.intervalPattern, transTonic);
+  }
+
+  @Override
+  public ToneGroupObject transposeDown(Interval interval) {
+    int inverseHalfSteps = TonalSpectrum.getInverseDistance(interval.getHalfStepsFromTonic());    
+    Tone transTonic = TonalSpectrum.traverseDistance(this.tonic, inverseHalfSteps);  
+
+    return this.generateNewChord(this.intervalPattern, transTonic);
+  }
+  
+
+  @Override
+  public ToneGroupObject transposeDown(int halfSteps) {
+    int inverseHalfSteps = TonalSpectrum.getInverseDistance(halfSteps);    
+    Tone transTonic = TonalSpectrum.traverseDistance(this.tonic, inverseHalfSteps);  
+    
+    return this.generateNewChord(this.intervalPattern, transTonic);
+  }
 
   public static final IntervalPattern MAJOR_CHORD_PATTERN;
   public static final IntervalPattern MINOR_CHORD_PATTERN;
@@ -80,5 +121,4 @@ public class Chord extends ToneGroupObject {
   public static final IntervalPattern HALF_DIMINISHED_SEVENTH_CHORD_PATTERN;
   public static final IntervalPattern DIMINISHED_SEVENTH_CHORD_PATTERN;
   public static final IntervalPattern AUGMENTED_MAJOR_SEVENTH_CHORD_PATTERN;
-
 }

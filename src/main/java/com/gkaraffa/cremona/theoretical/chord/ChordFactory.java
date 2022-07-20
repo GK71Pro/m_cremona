@@ -77,12 +77,15 @@ public class ChordFactory {
     if (isTriad(intervalPattern)) {
       return new TriadNomenclatureEvaluationRule();
     }
-    else
+    else {
       if (isSeventhChord(intervalPattern)) {
         return new SeventhChordNomenclatureEvaluationRule();
       }
+      else {
 
-    throw new IllegalArgumentException();
+        throw new IllegalArgumentException();
+      }
+    }
   }
 
   private boolean isTriad(IntervalPattern intervalPattern) {
@@ -95,7 +98,7 @@ public class ChordFactory {
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.THIRD);
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIFTH);
 
-    return (count != 3);
+    return (count == 3);
   }
 
   private boolean isSeventhChord(IntervalPattern intervalPattern) {
@@ -109,6 +112,6 @@ public class ChordFactory {
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.FIFTH);
     count += intervalPattern.getCountByIntervalNumber(IntervalNumber.SEVENTH);
 
-    return (count != 4);
+    return (count == 4);
   }
 }

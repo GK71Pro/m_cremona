@@ -62,6 +62,10 @@ public class TonalSpectrum {
 
     return getNote(location);
   }
+  
+  public static int getInverseDistance(int distance) {
+    return octave - distance;
+  }
 
   public static Tone traverseInterval(Tone tonic, Interval interval) {
     return traverseDistance(tonic, interval.getHalfStepsFromTonic());
