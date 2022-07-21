@@ -95,8 +95,7 @@ public class Chord extends ToneGroupObject implements Transposable{
 
   @Override
   public ToneGroupObject transposeDown(Interval interval) {
-    int inverseHalfSteps = TonalSpectrum.getInverseDistance(interval.getHalfStepsFromTonic());    
-    Tone transTonic = TonalSpectrum.traverseDistance(this.tonic, inverseHalfSteps);  
+    Tone transTonic =  TonalSpectrum.reverseInterval(this.tonic, interval);
 
     return this.generateNewChord(this.intervalPattern, transTonic);
   }
@@ -104,8 +103,7 @@ public class Chord extends ToneGroupObject implements Transposable{
 
   @Override
   public ToneGroupObject transposeDown(int halfSteps) {
-    int inverseHalfSteps = TonalSpectrum.getInverseDistance(halfSteps);    
-    Tone transTonic = TonalSpectrum.traverseDistance(this.tonic, inverseHalfSteps);  
+    Tone transTonic = TonalSpectrum.reverseDistance(this.tonic, halfSteps);
     
     return this.generateNewChord(this.intervalPattern, transTonic);
   }

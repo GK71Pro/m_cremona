@@ -52,8 +52,8 @@ public class TonalSpectrum {
   }
 
   public static Tone traverseDistance(Tone tonic, int distance) {
-
     int location = locateNote(tonic);
+    
     location += distance;
 
     while (location > upperLimit) {
@@ -62,9 +62,18 @@ public class TonalSpectrum {
 
     return getNote(location);
   }
-  
-  public static int getInverseDistance(int distance) {
-    return octave - distance;
+
+  public static Tone reverseDistance(Tone tonic, int distance) {
+    int location = locateNote(tonic);
+    int invertDistance = 12 - distance;
+    
+    location += invertDistance;
+    
+    while (location > upperLimit) {
+      location -= octave;
+    }
+    
+    return getNote(location); 
   }
 
   public static Tone traverseInterval(Tone tonic, Interval interval) {
