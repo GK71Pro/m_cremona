@@ -1,10 +1,12 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
+import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
+import com.gkaraffa.cremona.theoretical.ToneGroupObject;
 
 @ScaleType
 public class DiatonicScale extends HarmonizableScale implements Modal {
@@ -58,6 +60,11 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
   }
 
   @Override
+  protected ScaleFactory getScaleFactory() {
+    return new DiatonicScaleFactory();
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (o == this) {
       return true;
@@ -76,6 +83,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     result = 27 * result + getLongName().hashCode();
     return result;
   }
+  
 
   public static final IntervalPattern IONIAN_PATTERN;
   public static final IntervalPattern DORIAN_PATTERN;

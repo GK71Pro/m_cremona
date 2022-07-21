@@ -19,15 +19,20 @@ public class TestPlatform {
   public static void main(String[] args) {
     Interval interval = Interval.MAJOR_SIXTH;
     int halfStep = 2;
-    ChordFactory chordFactory = new ChordFactory();
+    // ChordFactory chordFactory = new ChordFactory();
+    ScaleFactory scaleFactory = new DiatonicScaleFactory();
     
-    Chord chord = chordFactory.createChordFromIntervalPattern(Chord.MAJOR_CHORD_PATTERN, Tone.C);
-    Chord transChord = (Chord) chord.transposeUp(halfStep);
-    Chord tdChord = (Chord) chord.transposeDown(halfStep);
-    
-    System.out.println(chord);
-    System.out.println(transChord);
-    System.out.println(tdChord);
+    // Chord chord = chordFactory.createChordFromIntervalPattern(Chord.MAJOR_CHORD_PATTERN, Tone.C);
+    Scale scale = scaleFactory.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
+    // Chord transChord = (Chord) chord.transposeUp(halfStep);
+    // Chord tdChord = (Chord) chord.transposeDown(halfStep);
+
+    Scale transScale = (Scale) scale.transposeUp(halfStep);
+    Scale tdScale = (Scale) scale.transposeDown(halfStep);
+
+    System.out.println(scale);
+    System.out.println(transScale);
+    System.out.println(tdScale);
     
     
     /*

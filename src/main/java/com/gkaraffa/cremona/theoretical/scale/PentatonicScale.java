@@ -18,6 +18,11 @@ public class PentatonicScale extends Scale {
       ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
   }
+  
+  @Override
+  protected ScaleFactory getScaleFactory() {
+    return new PentatonicScaleFactory();
+  }
 
   @Override
   public boolean equals(Object o) {

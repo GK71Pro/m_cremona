@@ -1,11 +1,16 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
+import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
+import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.ToneGroupObject;
+import com.gkaraffa.cremona.theoretical.Transposable;
+import com.gkaraffa.cremona.theoretical.chord.Chord;
+import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 
-public abstract class Scale extends ToneGroupObject {
+public abstract class Scale extends ToneGroupObject implements Transposable{
   private Tone key;
   private ScaleNomenclature scaleNomenclature;
   private IntervalPattern intervalPattern;
@@ -59,5 +64,42 @@ public abstract class Scale extends ToneGroupObject {
     result = 23 * result + getLongName().hashCode();
 
     return result;
+  }
+  
+  private Scale generateNewScale(IntervalPattern intervalPattern, Tone tonic) {
+    ScaleFactory scaleFactory = this.getScaleFactory();    
+    Scale genScale = scaleFactory.createScale(intervalPattern, tonic);
+    
+    return genScale;
+  }
+
+  protected abstract ScaleFactory getScaleFactory();
+
+  @Override
+  public ToneGroupObject transposeUp(Interval interval) {
+    Tone transTonic = TonalSpectrum.traverseInterval(this.toneCollection.getTone(0), interval);
+
+    return this.generateNewScale(intervalPattern, transTonic);
+  }
+
+  @Override
+  public ToneGroupObject transposeUp(int halfSteps) {
+    Tone transTonic = TonalSpectrum.traverseDistance(this.toneCollection.getTone(0), halfSteps);
+
+    return this.generateNewScale(intervalPattern, transTonic);
+  }
+
+  @Override
+  public ToneGroupObject transposeDown(Interval interval) {
+    Tone transTonic =  TonalSpectrum.reverseInterval(this.toneCollection.getTone(0), interval);
+
+    return this.generateNewScale(intervalPattern, transTonic);
+  }
+
+  @Override
+  public ToneGroupObject transposeDown(int halfSteps) {
+    Tone transTonic =  TonalSpectrum.reverseDistance(this.toneCollection.getTone(0), halfSteps);
+
+    return this.generateNewScale(intervalPattern, transTonic);
   }
 }

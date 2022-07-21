@@ -21,7 +21,7 @@ public class WholeToneScale extends SymmetricScale {
 
   private int calculateLocation(int segment, int offset) {
     int location = segment + offset;
-    int limit = IntervalNumber.NINTH.getPosition();
+    int limit = IntervalNumber.SEVENTH.getPosition();
 
     if (location > limit) {
       location -= limit;
@@ -36,6 +36,11 @@ public class WholeToneScale extends SymmetricScale {
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
 
+  @Override
+  protected ScaleFactory getScaleFactory() {
+    return new DiatonicScaleFactory();
+  }
+  
   @Override
   public boolean equals(Object o) {
     if (o == this) {

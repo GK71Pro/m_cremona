@@ -38,6 +38,11 @@ public class DiminishedScale extends SymmetricScale {
     return this.getToneCollection()
         .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
+  
+  @Override
+  protected ScaleFactory getScaleFactory() {
+    return new DiminishedScaleFactory();
+  }
 
   @Override
   public boolean equals(Object o) {
