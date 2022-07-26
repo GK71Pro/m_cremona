@@ -1,12 +1,8 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
-import com.gkaraffa.cremona.theoretical.Interval;
-import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.IntervalPatternFactory;
-import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
-import com.gkaraffa.cremona.theoretical.ToneGroupObject;
 
 @ScaleType
 public class DiatonicScale extends HarmonizableScale implements Modal {
@@ -29,24 +25,6 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
   public DiatonicScale(String name, ToneCollection toneCollection,
       ScaleNomenclature scaleNomenclature, IntervalPattern intervalPattern) {
     super(name, toneCollection, scaleNomenclature, intervalPattern);
-  }
-
-  private int calculateLocation(int segment, int offset) {
-    int location = segment + offset;
-    int limit = IntervalNumber.EIGHTH.getPosition();
-
-    if (location > limit) {
-      location -= limit;
-    }
-
-    return location;
-  }
-
-  public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
-      IntervalNumber offsetInterval) {
-
-    return this.getToneCollection()
-        .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
   }
 
   @Override
@@ -72,7 +50,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     if (!(o instanceof DiatonicScale)) {
       return false;
     }
-    DiatonicScale dSO = (DiatonicScale) o;
+    Scale dSO = (Scale) o;
 
     return (dSO.hashCode() == this.hashCode());
   }
@@ -83,7 +61,7 @@ public class DiatonicScale extends HarmonizableScale implements Modal {
     result = 27 * result + getLongName().hashCode();
     return result;
   }
-  
+
 
   public static final IntervalPattern IONIAN_PATTERN;
   public static final IntervalPattern DORIAN_PATTERN;

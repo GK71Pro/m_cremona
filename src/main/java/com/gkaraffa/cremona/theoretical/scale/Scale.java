@@ -1,16 +1,15 @@
 package com.gkaraffa.cremona.theoretical.scale;
 
 import com.gkaraffa.cremona.theoretical.Interval;
+import com.gkaraffa.cremona.theoretical.IntervalNumber;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.TonalSpectrum;
 import com.gkaraffa.cremona.theoretical.Tone;
 import com.gkaraffa.cremona.theoretical.ToneCollection;
 import com.gkaraffa.cremona.theoretical.ToneGroupObject;
 import com.gkaraffa.cremona.theoretical.Transposable;
-import com.gkaraffa.cremona.theoretical.chord.Chord;
-import com.gkaraffa.cremona.theoretical.chord.ChordFactory;
 
-public abstract class Scale extends ToneGroupObject implements Transposable{
+public abstract class Scale extends ToneGroupObject implements Transposable {
   private Tone key;
   private ScaleNomenclature scaleNomenclature;
   private IntervalPattern intervalPattern;
@@ -65,15 +64,33 @@ public abstract class Scale extends ToneGroupObject implements Transposable{
 
     return result;
   }
-  
+
   private Scale generateNewScale(IntervalPattern intervalPattern, Tone tonic) {
-    ScaleFactory scaleFactory = this.getScaleFactory();    
+    ScaleFactory scaleFactory = this.getScaleFactory();
     Scale genScale = scaleFactory.createScale(intervalPattern, tonic);
-    
+
     return genScale;
   }
 
   protected abstract ScaleFactory getScaleFactory();
+
+  private int calculateLocation(int segment, int offset) {
+    int location = segment + offset;
+    int limit = this.getToneCollection().getSize() + 1;
+
+    if (location > limit) {
+      location -= limit;
+    }
+
+    return location;
+  }
+
+  public Tone getToneAtRelativeIntervalNumber(IntervalNumber rootInterval,
+      IntervalNumber offsetInterval) {
+
+    return this.getToneCollection()
+        .getTone(calculateLocation(rootInterval.getPosition(), offsetInterval.getPosition()));
+  }
 
   @Override
   public ToneGroupObject transposeUp(Interval interval) {
@@ -91,15 +108,17 @@ public abstract class Scale extends ToneGroupObject implements Transposable{
 
   @Override
   public ToneGroupObject transposeDown(Interval interval) {
-    Tone transTonic =  TonalSpectrum.reverseInterval(this.toneCollection.getTone(0), interval);
+    Tone transTonic = TonalSpectrum.reverseInterval(this.toneCollection.getTone(0), interval);
 
     return this.generateNewScale(intervalPattern, transTonic);
   }
 
   @Override
   public ToneGroupObject transposeDown(int halfSteps) {
-    Tone transTonic =  TonalSpectrum.reverseDistance(this.toneCollection.getTone(0), halfSteps);
+    Tone transTonic = TonalSpectrum.reverseDistance(this.toneCollection.getTone(0), halfSteps);
 
     return this.generateNewScale(intervalPattern, transTonic);
   }
+
+
 }
