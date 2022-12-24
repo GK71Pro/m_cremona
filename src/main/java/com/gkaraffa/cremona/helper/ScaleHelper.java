@@ -96,6 +96,7 @@ public class ScaleHelper {
     return intervalPattern;
   }
 
+  @SuppressWarnings("deprecation")
   private ScaleFactory getScaleFactory(ScalePair scalePair)
       throws ClassNotFoundException, InstantiationException, IllegalAccessException {
     String factoryString = scalePair.className + "Factory";
@@ -138,6 +139,9 @@ public class ScaleHelper {
         String keyString = scrubString(scalePair.scaleField);
 
         hashMap.put(keyString, scalePair);
+        //  System.out.println("keyString: " + keyString + ": className: " + scalePair.className + ", scaleFiled: " + scalePair.scaleField);
+        
+        
       }
     }
 

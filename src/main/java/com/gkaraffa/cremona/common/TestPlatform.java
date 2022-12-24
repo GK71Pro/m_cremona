@@ -3,6 +3,7 @@ package com.gkaraffa.cremona.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gkaraffa.cremona.helper.ScaleHelper;
 import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
 import com.gkaraffa.cremona.theoretical.TonalSpectrum;
@@ -17,6 +18,9 @@ import com.gkaraffa.cremona.theoretical.scale.ScaleFactory;
 public class TestPlatform {
 
   public static void main(String[] args) {
+    ScaleHelper scaleHelper = ScaleHelper.getInstance();
+    Scale scale = scaleHelper.getScale("C","Ionian");
+    /*
     Interval interval = Interval.MAJOR_SIXTH;
     int halfStep = 2;
     // ChordFactory chordFactory = new ChordFactory();
@@ -33,7 +37,7 @@ public class TestPlatform {
     System.out.println(scale);
     System.out.println(transScale);
     System.out.println(tdScale);
-    
+    */
     
     /*
     int stepUp = interval.getHalfStepsFromTonic();
