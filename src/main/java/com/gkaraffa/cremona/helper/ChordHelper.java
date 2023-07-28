@@ -106,6 +106,11 @@ public class ChordHelper {
     Field[] fields = chordClass.getFields();
 
     for (Field field : fields) {
+      String fieldName = field.getName();
+      if(!fieldName.contains("_CHORD_PATTERN")) {
+        continue;
+      }
+      
       ChordPair chordPair = new ChordPair();
 
       chordPair.className = chordClass.getCanonicalName();

@@ -3,6 +3,7 @@ package com.gkaraffa.cremona.common;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gkaraffa.cremona.helper.ChordHelper;
 import com.gkaraffa.cremona.helper.ScaleHelper;
 import com.gkaraffa.cremona.theoretical.Interval;
 import com.gkaraffa.cremona.theoretical.IntervalPattern;
@@ -19,15 +20,18 @@ public class TestPlatform {
 
   public static void main(String[] args) {
     ScaleHelper scaleHelper = ScaleHelper.getInstance();
+    ChordHelper chordHelper = ChordHelper.getInstance();
+    
     Scale scale = scaleHelper.getScale("C","Ionian");
-    /*
+    Chord chord = chordHelper.getChord("C","major");
+    
     Interval interval = Interval.MAJOR_SIXTH;
     int halfStep = 2;
     // ChordFactory chordFactory = new ChordFactory();
     ScaleFactory scaleFactory = new DiatonicScaleFactory();
     
     // Chord chord = chordFactory.createChordFromIntervalPattern(Chord.MAJOR_CHORD_PATTERN, Tone.C);
-    Scale scale = scaleFactory.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
+    // Scale scale = scaleFactory.createScale(DiatonicScale.IONIAN_PATTERN, Tone.C);
     // Chord transChord = (Chord) chord.transposeUp(halfStep);
     // Chord tdChord = (Chord) chord.transposeDown(halfStep);
 
@@ -37,7 +41,9 @@ public class TestPlatform {
     System.out.println(scale);
     System.out.println(transScale);
     System.out.println(tdScale);
-    */
+    
+    System.out.println(chord);
+    
     
     /*
     int stepUp = interval.getHalfStepsFromTonic();

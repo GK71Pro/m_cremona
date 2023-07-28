@@ -73,12 +73,10 @@ public class ScaleHelper {
     return scale;
   }
 
-
   private void storeScaleInMap(Scale scale) {
     String keyValue = scale.getLongName().trim().toUpperCase();
     scaleMap.put(keyValue, scale);
   }
-
 
   private Tone keyStringToTone(String keyString) throws IllegalArgumentException {
     // keyString = keyString.trim().toUpperCase();
@@ -131,23 +129,27 @@ public class ScaleHelper {
       }
 
       Field[] fields = scaleClass.getFields();
-      for (Field field : fields) {
+      for (Field field : fields) {       
+        String fieldName = field.getName();
+        
+        if(!fieldName.contains("_PATTERN")) {
+          continue;
+        }
+        
         ScalePair scalePair = new ScalePair();
+        scalePair.scaleField = fieldName;
 
         scalePair.className = scaleClass.getCanonicalName();
-        scalePair.scaleField = field.getName();
         String keyString = scrubString(scalePair.scaleField);
 
         hashMap.put(keyString, scalePair);
-        //  System.out.println("keyString: " + keyString + ": className: " + scalePair.className + ", scaleFiled: " + scalePair.scaleField);
-        
-        
+        // System.out.println("keyString: " + keyString + ": className: " +
+        // scalePair.className + ", scaleFiled: " + scalePair.scaleField);
       }
     }
 
     return hashMap;
   }
-
 
   class ScalePair {
     public String className = null;
