@@ -22,8 +22,10 @@ public class TestPlatform {
     ScaleHelper scaleHelper = ScaleHelper.getInstance();
     ChordHelper chordHelper = ChordHelper.getInstance();
     
-    Scale scale = scaleHelper.getScale("C","Ionian");
-    Chord chord = chordHelper.getChord("C","major");
+    Scale scale = scaleHelper.getScale("B","First Diminished");
+    Chord chord = chordHelper.getChord("C","Major");
+    
+    System.out.println(scale.getToneCollection().getSpellingString());
     
     Interval interval = Interval.MAJOR_SIXTH;
     int halfStep = 2;
