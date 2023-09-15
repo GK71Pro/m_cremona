@@ -1,5 +1,10 @@
 package com.gkaraffa.cremona.theoretical;
 
+/**
+ * Representation of 12-tone western chromatic scale
+ * 
+ * @author Gabriel Karaffa
+ */
 public class TonalSpectrum {
   public static final int octave = 12;
   public static final int upperLimit = octave - 1;
@@ -40,6 +45,12 @@ public class TonalSpectrum {
     return index;
   }
 
+  /**
+   * 
+   * @param startTone
+   * @param stopTone
+   * @return distance between tones in half-steps
+   */
   public static int measureDistance(Tone startTone, Tone stopTone) {
     int startLoc = locateNote(startTone);
     int stopLoc = locateNote(stopTone);
@@ -51,9 +62,15 @@ public class TonalSpectrum {
     return (stopLoc - startLoc);
   }
 
+  /**
+   * 
+   * @param tonic
+   * @param distance
+   * @return Tone at (distance) half-steps from (tonic)
+   */
   public static Tone traverseDistance(Tone tonic, int distance) {
     int location = locateNote(tonic);
-    
+
     location += distance;
 
     while (location > upperLimit) {
@@ -63,23 +80,41 @@ public class TonalSpectrum {
     return getNote(location);
   }
 
+  /**
+   * 
+   * @param tonic
+   * @param distance
+   * @return Tone at (distance) half-steps from (tonic) in reverse
+   */
   public static Tone reverseDistance(Tone tonic, int distance) {
     int location = locateNote(tonic);
     int invertDistance = 12 - distance;
-    
+
     location += invertDistance;
-    
+
     while (location > upperLimit) {
       location -= octave;
     }
-    
-    return getNote(location); 
+
+    return getNote(location);
   }
 
+  /**
+   * 
+   * @param tonic
+   * @param interval
+   * @return Tone at (interval) from (tonic)
+   */
   public static Tone traverseInterval(Tone tonic, Interval interval) {
     return traverseDistance(tonic, interval.getHalfStepsFromTonic());
   }
 
+  /**
+   * 
+   * @param tonic
+   * @param interval
+   * @return Tone at (interval) from (tonic) in reverse
+   */
   public static Tone reverseInterval(Tone tonic, Interval interval) {
     return traverseDistance(tonic, 12 - interval.getHalfStepsFromTonic());
   }
